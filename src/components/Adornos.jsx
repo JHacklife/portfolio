@@ -7,26 +7,36 @@ function Square({ text }) {
     height: "50px",
     position: "relative",
     overflow: "hidden",
-    color: "gray",
     fontSize: "24px",
     fontWeight: "bold",
-    border: "3px solid white",  // Añadido para hacer visible el cuadrado
+    border: "1px solid white",  // Añadido para hacer visible el cuadrado
   };
 
-  const lineStyle = {
+  const crossStyle = {
     position: "absolute",
-    top: "0",
+    top: "50%",
     left: "50%",
-    width: "2px",
-    height: "100%",
-    background: "gray",
-    transform: "translateX(-50%) rotate(-45deg)",
+    width: "20px",
+    height: "2px",
+    background: "white",
+    transform: "translate(-50%, -50%)",
+  };
+
+  const crossDiagonalStyle = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    width: "20px",
+    height: "2px",
+    background: "white",
+    transform: "translate(-50%, -50%) rotate(90deg)",
   };
 
   return (
     <Box sx={squareStyle}>
       {text}
-      <div style={lineStyle}></div>
+      <div style={crossStyle}></div>
+      <div style={crossDiagonalStyle}></div>
     </Box>
   );
 }
