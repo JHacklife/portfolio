@@ -1,35 +1,33 @@
 ﻿import React, { useState } from 'react'
 
 // UI COMPONENTS
-import { Grid, Link, Stack, Typography } from '@mui/material'
-import Square from '../components/Adornos'
+import { Box, Grid, Link, Stack, Typography } from '@mui/material'
+import Square from '../../components/Adornos'
+import Visible from '../../components/Visible'
 
 // ICONS
 
 // APIS
+import { sortLanguages, useData, getLevel } from '../../api/codestats'
 
 // PROVIDERS
 
 // UTILS
+import LangExp from './components/LangExp'
+import abbreviateNumber from '../../utils/abbreviateNumber'
 
 function LangsAndTools() {
 
-  function LangExp({ lang, exp }) {
-    return (
-      <Stack spacing={0.5}>
-        <Typography variant="h2" fontSize={"4.66rem"} color="tertiary.main" align="left">{exp}k</Typography>
-        <Typography variant="body1" bgcolor="tertiary.main" color="black.main" align="left" px={1} width="100%"><b>{lang}</b></Typography>
-      </Stack>
-    );
-  }
+  const { data: { languages, new_xp, total_xp } = {} } = useData("jwildemer") ?? {};
+  const lenguajes = languages ?? null;
 
   return (
     <Grid id="langsAndTools" className="welcome" justifyContent="center" alignItems="center" container sx={{
       px: {
         xs: '0.5rem', // Tamaño de fuente para dispositivos móviles
         sm: '1.2rem', // Tamaño de fuente para dispositivos pequeños
-        md: '5rem', // Tamaño de fuente para dispositivos medianos
-        lg: '10rem', // Tamaño de fuente para dispositivos grandes
+        md: '3rem', // Tamaño de fuente para dispositivos medianos
+        lg: '5rem', // Tamaño de fuente para dispositivos grandes
         xl: '20rem', // Tamaño de fuente para dispositivos extra grandes
       },
     }}>
@@ -45,24 +43,14 @@ function LangsAndTools() {
         </Typography>
 
         <Grid container justifyContent="space-between">
-          <Grid item xs={6} md={2}>
-            <LangExp lang="Dart" exp="646" />
-          </Grid>
-          <Grid item xs={6} md={2}>
-            <LangExp lang="Javascript" exp="370" />
-          </Grid>
-          <Grid item xs={6} md={2}>
-            <LangExp lang="React" exp="363" />
-          </Grid>
-          <Grid item xs={6} md={2}>
-            <LangExp lang="Python" exp="248" />
-          </Grid>
-          <Grid item xs={6} md={2}>
-            <LangExp lang="HTML" exp="118" />
-          </Grid>
+          {lenguajes?.slice(0, 5).map((lang, index) => <Grid key={index} item xs={6} md={2}>
+            <LangExp lang={lang?.name} exp={lang?.value?.xps} newExp={lang?.value?.new_xps} />
+          </Grid>)}
         </Grid>
 
-        <Typography variant="h5" bgcolor="tertiary.main" color="black.main" align="left" mt={4} px={1} width="fit-content">Actividad de hoy</Typography>
+        <Typography className="scale" variant="h5" bgcolor="tertiary.main" color="black.main" align="left" mt={4} px={1} width="fit-content">
+          Actividad de hoy <Visible condition={new_xp != 0}>[+{(new_xp)}]</Visible>
+        </Typography>
       </Grid>
     </Grid>
   )

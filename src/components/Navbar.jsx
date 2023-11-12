@@ -7,7 +7,7 @@ import { AppBar, Slide, Box, Button, IconButton, Stack, Toolbar, Tooltip, Typogr
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import Logo from './Logo'
-import logoLabs from '/public/Logo-1.svg'
+import logoLabs from '../assets/Logo-1.svg'
 
 // ICONS
 import { ListAlt, Logout } from '@mui/icons-material/'

@@ -3,7 +3,7 @@
 // UI COMPONENTS
 import { Grid, Link, Stack, Typography } from '@mui/material'
 import profileIMG from '../assets/profile.jpg'
-import Square from '../components/Adornos'
+import Square from '../../components/Adornos'
 
 // ICONS
 

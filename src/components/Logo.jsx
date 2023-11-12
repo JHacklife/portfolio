@@ -1,5 +1,5 @@
 ﻿import React from 'react'
-import { Box, Typography } from '@mui/material'
+import { Link } from '@mui/material'
 
 /**
  * Renderiza un componente de logo con una imagen, enlace y estilos opcionales.
@@ -22,9 +22,9 @@ function Logo({ imgUrl, alt = "logo", link = "/", sx = {
   textDecoration: 'none',
 } }) {
   return (
-    <Box component="a" href={link} sx={sx}>
-      <Box component="img" src={imgUrl} alt={alt} sx={{ height: 30 }}></Box>
-    </Box>
+    <Link href={link} sx={sx}>
+      <img src={imgUrl} alt={alt} height="30" />
+    </Link>
   )
 }
 

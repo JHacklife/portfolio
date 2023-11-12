@@ -1,12 +1,9 @@
 import { Box, Link, Stack, Typography } from '@mui/material'
-import React, { useState } from 'react'
-import Navbar from '../components/Navbar'
-import mailTo, { config } from '../utils/mail'
+import React from 'react'
+import Navbar from '../../components/Navbar'
+import mailTo, { config } from '../../utils/mail'
 
 function Home() {
-  const [count, setCount] = useState(0)
-  console.log(count)
-
   return (
     <Stack>
       <Navbar />

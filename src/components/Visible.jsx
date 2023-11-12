@@ -6,7 +6,7 @@
  * @return {JSX.Element} El componente renderizado
  */
 
-export function Visible({ condition, alternative, children }) {
+export default function Visible({ condition, alternative, children }) {
   if (condition !== null && condition !== undefined && condition !== "" && condition !== false) {
     return children
   } else {
