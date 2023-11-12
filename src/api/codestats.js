@@ -2,6 +2,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { useEffect } from 'react'
 import converToArray from '../utils/convertToArray';
+import quickSort from '../utils/quicksort';
 
 export const replaceLang = (array, objMap) => {
   // Itera sobre la lista
@@ -28,13 +29,25 @@ export const getLevel = (xp) => {
   return Math.floor(0.025 * Math.sqrt(xp))
 }
 
+function compareDates(date1, date2) {
+  const value1 = new Date(date1.name);
+  const value2 = new Date(date2.name);
+
+  if (value1 < value2) {
+    return -1;
+  } else if (value1 > value2) {
+    return 1;
+  } else {
+    return 0;
+  }
+}
 
 export const getData = async (filtro = "") => {
   try {
     const response = await axios.get(`https://codestats.net/api/users/${filtro}`)
     // Retornar los datos de la respuesta
     console.log("Obteniendo data (API)", response?.data)
-    response.data.dates = converToArray(response?.data?.dates)
+    response.data.dates = quickSort(converToArray(response?.data?.dates), compareDates)
     response.data.languages = replaceLang(converToArray(response?.data?.languages), {
       "JavaScript (JSX)": "ReactJS"
     })?.sort((a, b) => b.value.xps - a.value.xps)

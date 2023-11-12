@@ -31,7 +31,9 @@ function About() {
         {/* IMAGEN */}
         <Grid item>
           {/* <img src={profileIMG} alt="profile" height="100%" width="300px" style={{ objectFit: 'cover' }} /> */}
-          <a href="https://app.daily.dev/jhacklife"><img src="https://api.daily.dev/devcards/e55b32da7af645e3981c0f2882576f88.png?r=mxn" height="100%" width="300px" style={{ objectFit: 'cover' }} alt="Jonathan Hacklife's Dev Card" /></a>
+          <Link href="https://app.daily.dev/jhacklife" target="_blank">
+            <img src="https://api.daily.dev/devcards/e55b32da7af645e3981c0f2882576f88.png?r=mxn" height="100%" width="300px" style={{ objectFit: 'cover' }} alt="Jonathan Hacklife's Dev Card" />
+          </Link>
         </Grid>
 
         <Grid item md flexWrap="wrap">

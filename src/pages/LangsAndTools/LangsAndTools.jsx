@@ -15,12 +15,18 @@ import { sortLanguages, useData, getLevel } from '../../api/codestats'
 // UTILS
 import LangExp from './components/LangExp'
 import abbreviateNumber from '../../utils/abbreviateNumber'
+import { LineChart } from '../../components/Graphs'
+import { calcularPromedioMinMax, filterDatesByRange } from './helpers'
 
 function LangsAndTools() {
 
-  const { data: { languages, new_xp, total_xp } = {} } = useData("jwildemer") ?? {};
-  const lenguajes = languages ?? null;
+  const { data: { dates, languages, new_xp, total_xp } = {} } = useData("jwildemer") ?? {};
 
+  const endDate = new Date() // Fecha actual
+  const startDate = new Date().setDate(endDate.getDate() - 14) // Resta 7 días
+
+  const last7Days = filterDatesByRange(dates, startDate, endDate)
+  console.log("FECHAS", last7Days)
   return (
     <Grid id="langsAndTools" className="welcome" justifyContent="center" alignItems="center" container sx={{
       px: {
@@ -42,8 +48,10 @@ function LangsAndTools() {
           <br></br>Todos los datos se actualizan en tiempo real mientras trabajo.
         </Typography>
 
+
         <Grid container justifyContent="space-between">
-          {lenguajes?.slice(0, 5).map((lang, index) => <Grid key={index} item xs={6} md={2}>
+
+          {languages?.slice(0, 5).map((lang, index) => <Grid key={index} item xs={6} md={2}>
             <LangExp lang={lang?.name} exp={lang?.value?.xps} newExp={lang?.value?.new_xps} />
           </Grid>)}
         </Grid>
@@ -57,6 +65,24 @@ function LangsAndTools() {
           </Typography>
         </Stack>
 
+        <LineChart label="Actividad" responsive
+          valueX={last7Days?.map(date => date?.name)}
+          valueY={last7Days?.map(date => date?.value)}
+          datasets={[{
+            label: `Actividad`,
+            data: last7Days?.map(date => date?.value),
+            borderWidth: 2,
+            pointRadius: 8,
+            pointStyle: 'rectRot',
+          }, {
+            label: `Promedio`,
+            data: Array(last7Days?.length).fill(calcularPromedioMinMax(last7Days?.map(date => date?.value))),
+            borderWidth: 2,
+            pointRadius: 8,
+            pointStyle: 'cross',
+          }]}
+
+        />
       </Grid>
     </Grid>
   )

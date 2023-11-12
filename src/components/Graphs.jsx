@@ -136,7 +136,21 @@ export const DoughnutChart = (props) => {
   )
 }
 
-
+/**
+ * Renderiza un gráfico de línea.
+ * @param {Array} valueX - Los valores del eje x.
+ * @param {Array} valueY - Los valores del eje y.
+ * @param {boolean} responsive - Si el gráfico debe ser responsivo.
+ * @param {boolean} legend - Si se debe mostrar la leyenda.
+ * @param {number} maxHeight - La altura máxima del gráfico.
+ * @param {number} minHeight - La altura mínima del gráfico.
+ * @param {boolean} maintainAspectRatio - Si se debe mantener la relación de aspecto.
+ * @param {number} aspectRatio - La relación de aspecto del gráfico.
+ * @param {number} height - La altura del gráfico.
+ * @param {boolean} viewGrid - Si se debe mostrar la cuadrícula.
+ * @param {Array} datasets - Los conjuntos de datos del gráfico.
+ * @returns {JSX.Element} El gráfico de línea renderizado.
+ */
 export const LineChart = ({
   valueX,
   valueY,
