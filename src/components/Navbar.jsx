@@ -1,12 +1,13 @@
 ﻿import React, { useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 // UI COMPONENTS
-import { Stack, Tooltip, Avatar, Box, IconButton, Button, Typography, AppBar, Toolbar } from '@mui/material/AppBar'
 import MenuIcon from '@mui/icons-material/Menu'
+import { AppBar, Slide, Box, Button, IconButton, Stack, Toolbar, Tooltip, Typography, useScrollTrigger } from '@mui/material'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import Logo from './Logo'
+import logoLabs from '/public/Logo-1.svg'
 
 // ICONS
 import { ListAlt, Logout } from '@mui/icons-material/'
@@ -22,23 +23,16 @@ const Navbar = () => {
   const navigateTo = useNavigate()
 
   const pages = [
-    { path: '/hogares', label: 'Hogares', show: true },
-    { path: '/solicitudes', label: 'Solicitudes', show: true },
-    { path: '/caja', label: 'Flujo de cajas', show: true },
-    { path: '/objetivos', label: 'Objetivos', show: true },
+    { path: '/', label: 'Home', show: true },
+    { path: '#about', label: 'About', show: true },
+    { path: '#tools', label: 'Lang&Tools', show: true },
+    { path: '#projects', label: 'Projects', show: true },
+    { path: '#contact', label: 'Contact', show: true },
   ]
 
   const settings = [
-    {
-      label: 'Caja chica',
-      icon: <ListAlt />,
-      action: () => navigateTo("/caja")
-    },
-    {
-      label: 'Cerrar sesión',
-      icon: <Logout />,
-      action: () => console.log()
-    },
+    { label: 'Perfil', icon: <ListAlt />, action: () => navigateTo("/caja") },
+    { label: 'Cerrar sesión', icon: <Logout />, action: () => console.log("Cerrando sesión") }
   ]
 
   const [anchorElNav, setAnchorElNav] = useState(null)
@@ -59,61 +53,62 @@ const Navbar = () => {
     setAnchorElUser(null)
   }
 
+  function HideOnScroll(props) {
+    const { children, window } = props;
+    // Note that you normally won't need to set the window ref as useScrollTrigger
+    // will default to window.
+    const trigger = useScrollTrigger({ target: window ? window() : undefined })
+    return <Slide appear={false} direction="down" in={!trigger}>{children}</Slide>
+  }
+
   return (
-    <AppBar position="relative" color="secondary">
-      <Toolbar>
-        {/* MOBILE */}
-        {/* LOGO */}
-        <Logo imgUrl="https://b3hogar.com/wp-content/uploads/2020/07/cropped-Logo_B3-06.png"
-          alt="logo" link="/" sx={{ display: { xs: 'none', md: 'flex' } }} />
+    <HideOnScroll>
+      <AppBar position="fixed" id="navbar" >
+        <Toolbar variant="dense">
+          {/* MOBILE */}
+          {/* LOGO */}
+          <Stack direction="row" justifyContent="space-between" spacing={1} sx={{ flexGrow: 1, display: { md: 'none' } }}>
+            <Logo imgUrl={logoLabs} alt="logo" sx={{ mr: 2 }} />
+            <Box>
+              <IconButton onClick={handleOpenNavMenu}
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                color="inherit">
+                <MenuIcon />
+              </IconButton>
+              <Menu id="menu-appbar"
+                anchorEl={anchorElNav}
+                anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
+                keepMounted
+                transformOrigin={{ vertical: 'top', horizontal: 'left' }}
+                open={Boolean(anchorElNav)}
+                onClose={handleCloseNavMenu}
+                sx={{ display: { xs: 'block', md: 'none' } }}>
+                {pages?.filter(page => page?.show).map((page) => (
+                  <MenuItem key={page.label} onClick={() => navigateTo(page.path)}>
+                    <Typography textAlign="center">{page.label}</Typography>
+                  </MenuItem>
+                ))}
+              </Menu>
+            </Box>
+          </Stack>
 
-        <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-          <IconButton
-            size="large"
-            aria-label="account of current user"
-            aria-controls="menu-appbar"
-            aria-haspopup="true"
-            onClick={handleOpenNavMenu}
-            color="inherit">
-            <MenuIcon />
-          </IconButton>
+          {/* DESKTOP */}
+          {/* LOGO */}
 
-          <Menu
-            id="menu-appbar"
-            anchorEl={anchorElNav}
-            anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
-            keepMounted
-            transformOrigin={{ vertical: 'top', horizontal: 'left' }}
-            open={Boolean(anchorElNav)}
-            onClose={handleCloseNavMenu}
-            sx={{ display: { xs: 'block', md: 'none' } }}>
-            {pages?.filter(page => page?.show).map((page) => (
-              <MenuItem key={page.label} onClick={() => navigateTo(page.path)}>
-                <Typography textAlign="center">{page.label}</Typography>
-              </MenuItem>
+          <Logo imgUrl={logoLabs} alt="logo" sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }} />
+          <Stack direction="row" justifyContent="space-between" spacing={1} sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+            {pages?.filter(page => page?.show).map((page, index) => (
+              <Button key={index} onClick={() => navigateTo(page.path)}><Typography variant="h6">{page.label}</Typography></Button>
             ))}
-          </Menu>
-        </Box>
+          </Stack>
 
-        {/* DESKTOP */}
-        {/* LOGO */}
-        <Logo imgUrl="https://b3hogar.com/wp-content/uploads/2020/07/cropped-Logo_B3-06.png"
-          alt="logo" link="/" sx={{ mr: 2, display: { xs: 'flex', md: 'none' }, flexGrow: 1 }} />
-
-        <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-          {pages?.filter(page => page?.show).map((page, index) => (
-            <Button key={index}
-              sx={{ my: 2, color: 'primary.contrastText', display: 'block' }}
-              onClick={() => navigateTo(page.path)}>{page.label}
-            </Button>
-          ))}
-        </Box>
-
-        <Box sx={{ flexGrow: 0 }}>
+          {/* <Box sx={{ flexGrow: 0 }}>
           <Tooltip title="Abrir ajustes">
             <Button aria-controls="menu-appbar" aria-haspopup="true" variant="contained" onClick={handleOpenUserMenu}>
               <Stack direction="row" alignItems="center" spacing={1}>
-                <Avatar alt="Usuario" sx={{ width: 24, height: 24 }} />
                 <Typography variant="h6">Usuario</Typography>
               </Stack>
             </Button>
@@ -134,10 +129,11 @@ const Navbar = () => {
               </MenuItem>
             ))}
           </Menu>
-        </Box>
+        </Box> */}
 
-      </Toolbar>
-    </AppBar>
+        </Toolbar>
+      </AppBar>
+    </HideOnScroll>
   )
 }
 

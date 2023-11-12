@@ -23,7 +23,7 @@ function Logo({ imgUrl, alt = "logo", link = "/", sx = {
 } }) {
   return (
     <Box component="a" href={link} sx={sx}>
-      <Box component="img" src={imgUrl} alt={alt} sx={{ height: 50 }}></Box>
+      <Box component="img" src={imgUrl} alt={alt} sx={{ height: 30 }}></Box>
     </Box>
   )
 }

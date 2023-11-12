@@ -11,7 +11,7 @@ import { Link, Typography } from '@mui/material'
 
 export default function Copyright({ url, name }) {
   return (
-    <Typography variant="body2" color="text.secondary" align="center" sx={{ mt: 5, mb: 4 }}>
+    <Typography variant="body2" align="center" sx={{ mt: 5, mb: 4 }}>
       {'© '}
       <Link color="inherit" href={url}>{name}</Link>{' - '}
       {new Date().getFullYear()}
