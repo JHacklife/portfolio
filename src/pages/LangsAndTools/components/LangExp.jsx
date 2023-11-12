@@ -10,7 +10,7 @@ export default function LangExp({ lang, exp, newExp }) {
       <Box className="scale">
         <Stack direction="row">
           <Typography variant="body1" bgcolor="tertiary.main" color="black.main" align="left" px={1} width="100%"><b>{lang}</b></Typography>
-          <Visible condition={newExp != 0}><Typography variant="body1" bgcolor="tertiary.main" color="black.main" align="right" px={1} width="100%"><b>[+{newExp}]</b></Typography></Visible>
+          <Visible condition={newExp != 0}><Typography variant="body1" bgcolor="tertiary.main" color="black.main" align="right" px={1} width="100%"><b>[+{abbreviateNumber(newExp)}]</b></Typography></Visible>
         </Stack>
         <Stack direction="row">
           <Typography variant="body1" bgcolor="black.main" color="primary.main" align="left" px={1} width="100%"><b>Nvl</b></Typography>

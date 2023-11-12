@@ -48,9 +48,14 @@ function LangsAndTools() {
           </Grid>)}
         </Grid>
 
-        <Typography className="scale" variant="h5" bgcolor="tertiary.main" color="black.main" align="left" mt={4} px={1} width="fit-content">
-          Actividad de hoy <Visible condition={new_xp != 0}>[+{(new_xp)}]</Visible>
-        </Typography>
+        <Stack direction="row" justifyContent="space-between" mt={4}>
+          <Typography className="scale" variant="h5" bgcolor="tertiary.main" color="black.main" align="left" px={1} width="fit-content">
+            Actividad total <Visible condition={total_xp != 0}>[{abbreviateNumber(total_xp)}]</Visible>
+          </Typography>
+          <Typography className="scale" variant="h5" bgcolor="black.main" color="primary.main" align="left" px={1} width="fit-content">
+            Actividad de hoy <Visible condition={new_xp != 0}>[+{abbreviateNumber(new_xp)}]</Visible>
+          </Typography>
+        </Stack>
       </Grid>
     </Grid>
   )
