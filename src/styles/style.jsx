@@ -119,7 +119,7 @@ const theme = createTheme({
       }
     },
     subtitle1custom: {
-      fontFamily: 'Barlow',
+      fontFamily: 'MoonGlossDisplayThick',
       fontSize: '1rem',
       marginTop: 1,
       "@media (max-width: 600px)": {
