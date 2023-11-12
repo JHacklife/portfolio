@@ -1,7 +1,7 @@
 ﻿import React from 'react';
 import Box from '@mui/material/Box';
 
-function Square({ text }) {
+function Square({ text, color = "white" }) {
   const squareStyle = {
     width: "50px",
     height: "50px",
@@ -9,27 +9,27 @@ function Square({ text }) {
     overflow: "hidden",
     fontSize: "24px",
     fontWeight: "bold",
-    border: "1px solid white",  // Añadido para hacer visible el cuadrado
+    border: `1px solid ${color}`,  // Añadido para hacer visible el cuadrado
   };
 
   const crossStyle = {
     position: "absolute",
     top: "50%",
     left: "50%",
-    width: "20px",
-    height: "2px",
-    background: "white",
-    transform: "translate(-50%, -50%)",
+    width: "100%",
+    height: "1px",
+    background: color,
+    transform: "translate(-50%, -50%) rotate(-45deg)",
   };
 
   const crossDiagonalStyle = {
     position: "absolute",
     top: "50%",
     left: "50%",
-    width: "20px",
-    height: "2px",
-    background: "white",
-    transform: "translate(-50%, -50%) rotate(90deg)",
+    width: "100%",
+    height: "1px",
+    background: color,
+    transform: "translate(-50%, -50%) rotate(45deg)",
   };
 
   return (

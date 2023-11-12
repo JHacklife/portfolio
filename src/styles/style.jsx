@@ -2,7 +2,7 @@
 
 const theme = createTheme({
   typography: {
-    fontFamily: 'Arame, Barlow, Arial, sans-serif',
+    fontFamily: 'Arame, Barlow, MoonGlossDisplayThick, Arial, sans-serif',
     h1custom: {
       fontFamily: 'Barlow',
       fontSize: '6rem',
@@ -19,8 +19,9 @@ const theme = createTheme({
       marginTop: -10,
     },
     h4custom: {
-      fontFamily: 'Barlow',
+      fontFamily: 'MoonGlossDisplayThick',
       fontSize: '2.125rem',
+      letterSpacing: "4.56px",
       marginTop: -6,
     },
     h5custom: {
