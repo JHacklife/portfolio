@@ -24,7 +24,7 @@ function LangsAndTools() {
   return (
     <Grid id="langsAndTools" className="welcome" justifyContent="center" alignItems="center" container sx={{
       px: {
-        xs: '0.5rem', // Tamaño de fuente para dispositivos móviles
+        xs: '2rem', // Tamaño de fuente para dispositivos móviles
         sm: '1.2rem', // Tamaño de fuente para dispositivos pequeños
         md: '3rem', // Tamaño de fuente para dispositivos medianos
         lg: '5rem', // Tamaño de fuente para dispositivos grandes
@@ -56,6 +56,7 @@ function LangsAndTools() {
             Actividad de hoy <Visible condition={new_xp != 0}>[+{abbreviateNumber(new_xp)}]</Visible>
           </Typography>
         </Stack>
+
       </Grid>
     </Grid>
   )
