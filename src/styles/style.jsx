@@ -3,54 +3,136 @@
 const theme = createTheme({
   typography: {
     fontFamily: 'Arame, Barlow, MoonGlossDisplayThick, Arial, sans-serif',
+    h1: {
+      "@media (max-width: 600px)": {
+        fontSize: "4rem", // Tamaño de fuente para dispositivos pequeños
+      },
+    },
+    h2: {
+      "@media (max-width: 600px)": {
+        fontSize: "3rem",
+      }
+    },
+    h3: {
+      "@media (max-width: 600px)": {
+        fontSize: "2rem",
+      }
+    },
+    h4: {
+      "@media (max-width: 600px)": {
+        fontSize: "1.4rem",
+      },
+    },
+    h5: {
+      "@media (max-width: 600px)": {
+        fontSize: "1.5rem",
+        letterSpacing: "2px",
+      },
+    },
+    h6: {
+      "@media (max-width: 600px)": {
+        fontSize: "1.2rem",
+      },
+    },
+    body1: {
+      "@media (max-width: 600px)": {
+        fontSize: "1.1rem",
+      },
+    },
+    body2: {
+      "@media (max-width: 600px)": {
+        fontSize: "1rem",
+      }
+    },
+    subtitle1: {
+      "@media (max-width: 600px)": {
+        fontSize: "1rem",
+      },
+    },
+    subtitle2: {
+      "@media (max-width: 600px)": {
+        fontSize: "0.8rem",
+      },
+    },
     h1custom: {
       fontFamily: 'Barlow',
       fontSize: '6rem',
+      "@media (max-width: 600px)": {
+        fontSize: "4rem", // Tamaño de fuente para dispositivos pequeños
+      },
       marginTop: 3,
     },
     h2custom: {
       fontFamily: 'Barlow',
       fontSize: '3.75rem',
       marginTop: 3,
+      "@media (max-width: 600px)": {
+        fontSize: "3rem",
+      }
     },
     h3custom: {
       fontFamily: 'Barlow',
       fontSize: '3rem',
       marginTop: -10,
+      "@media (max-width: 600px)": {
+        fontSize: "1.7rem",
+      }
     },
     h4custom: {
       fontFamily: 'MoonGlossDisplayThick',
       fontSize: '2.125rem',
       letterSpacing: "4.56px",
       marginTop: -6,
+      "@media (max-width: 600px)": {
+        fontSize: "1.4rem",
+      },
     },
     h5custom: {
       fontFamily: 'Barlow',
       fontSize: '1.53rem',
       marginTop: -3,
+      "@media (max-width: 600px)": {
+        fontSize: "1.5rem",
+        letterSpacing: "2px",
+      },
     },
     h6custom: {
       fontFamily: 'Barlow',
       fontSize: '1.25rem',
+      "@media (max-width: 600px)": {
+        fontSize: "1.2rem",
+      },
     },
     body1custom: {
       fontFamily: 'Barlow',
       fontSize: '0.875rem',
+      "@media (max-width: 600px)": {
+        fontSize: "1.1rem",
+      },
     },
     body2custom: {
       fontFamily: 'Barlow',
       fontSize: '0.875rem',
       marginTop: -1,
+      "@media (max-width: 600px)": {
+        fontSize: "1rem",
+      }
     },
     subtitle1custom: {
       fontFamily: 'Barlow',
       fontSize: '1rem',
       marginTop: 1,
+      "@media (max-width: 600px)": {
+        fontSize: "1rem",
+      },
     },
     subtitle2custom: {
       fontFamily: 'Barlow',
       fontSize: '0.875rem',
       marginTop: -1,
+      "@media (max-width: 600px)": {
+        fontSize: "0.8rem",
+      },
     },
     buttoncustom: {
       fontFamily: 'Barlow',
