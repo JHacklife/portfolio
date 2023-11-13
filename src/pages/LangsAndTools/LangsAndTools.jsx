@@ -26,7 +26,7 @@ function LangsAndTools() {
   const startDate = new Date().setDate(endDate.getDate() - 14) // Resta 7 días
 
   const last7Days = filterDatesByRange(dates, startDate, endDate)
-  console.log("FECHAS", last7Days)
+
   return (
     <Grid id="langsAndTools" className="welcome" justifyContent="center" alignItems="center" container sx={{
       px: {

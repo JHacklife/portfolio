@@ -1,0 +1,117 @@
+﻿[
+  {
+    "nombre": "Android",
+    "url": "https://developer.android.com",
+    "icono": "devicon-android-plain colored"
+  },
+  {
+    "nombre": "Arduino",
+    "url": "https://www.arduino.cc/",
+    "icono": "devicon-raspberrypi-line colored"
+  },
+  {
+    "nombre": "CodePen",
+    "url": "https://codepen.io/JonathanHacklife",
+    "icono": "devicon-codepen-plain"
+  },
+  {
+    "nombre": "C++",
+    "url": "https://www.w3schools.com/cpp/",
+    "icono": "devicon-cplusplus-plain colored"
+  },
+  {
+    "nombre": "CSS",
+    "url": "https://www.w3schools.com/css/",
+    "icono": "devicon-css3-plain colored"
+  },
+  {
+    "nombre": "Dart",
+    "url": "https://dart.dev",
+    "icono": "devicon-dart-plain colored"
+  },
+  {
+    "nombre": "Figma",
+    "url": "https://www.figma.com/",
+    "icono": "devicon-figma-plain colored"
+  },
+  {
+    "nombre": "Firebase",
+    "url": "https://firebase.google.com/",
+    "icono": "devicon-firebase-plain colored"
+  },
+  {
+    "nombre": "Flutter",
+    "url": "https://flutter.dev",
+    "icono": "devicon-flutter-plain colored"
+  },
+  {
+    "nombre": "Git",
+    "url": "https://git-scm.com/",
+    "icono": "devicon-git-plain colored"
+  },
+  {
+    "nombre": "HTML5",
+    "url": "https://www.w3.org/html/",
+    "icono": "devicon-html5-plain colored"
+  },
+  {
+    "nombre": "Illustrator",
+    "url": "https://www.adobe.com/in/products/illustrator.html",
+    "icono": "devicon-illustrator-line colored"
+  },
+  {
+    "nombre": "Java",
+    "url": "https://www.java.com",
+    "icono": "devicon-java-plain colored"
+  },
+  {
+    "nombre": "JavaScript",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+    "icono": "devicon-javascript-plain colored"
+  },
+  {
+    "nombre": "Material-UI",
+    "url": "https://material-ui.com/",
+    "icono": "devicon-materialui-plain colored"
+  },
+  {
+    "nombre": "Photoshop",
+    "url": "https://www.photoshop.com/en",
+    "icono": "devicon-photoshop-line colored"
+  },
+  {
+    "nombre": "Python",
+    "url": "https://www.python.org",
+    "icono": "devicon-python-plain colored"
+  },
+  {
+    "nombre": "Raspberry Pi",
+    "url": "https://www.raspberrypi.org/",
+    "icono": "devicon-raspberrypi-line colored"
+  },
+  {
+    "nombre": "React",
+    "url": "https://es.reactjs.org/",
+    "icono": "devicon-react-original colored"
+  },
+  {
+    "nombre": "Trello",
+    "url": "https://trello.com/es",
+    "icono": "devicon-trello-plain colored"
+  },
+  {
+    "nombre": "Selenium",
+    "url": "https://www.selenium.dev",
+    "icono": "devicon-vscode-plain colored"
+  },
+  {
+    "nombre": "Windows",
+    "url": "https://www.microsoft.com/es-ar/windows",
+    "icono": "devicon-windows8-original colored"
+  },
+  {
+    "nombre": "Adobe XD",
+    "url": "https://www.adobe.com/products/xd.html",
+    "icono": "devicon-xd-line colored"
+  }
+]

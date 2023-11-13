@@ -1,0 +1,192 @@
+﻿[
+  {
+    "Nombre": "BEPA",
+    "Tags": [
+      "Flutter",
+      "Dart"
+    ],
+    "Tipo": "Mobile",
+    "Subtitulo": "Bitácora Electrónica de Pesca Argentina",
+    "Descripcion": "BEPA es un sistema gratuito y de código abierto que permite a los capitanes y/o pescadores utilizar sus dispositivos móviles para registrar y transmitir electrónicamente datos de las capturas y el esfuerzo pesquero, y facilita a los armadores y quienes tengan acceso, a realizar un seguimiento eficaz de la pesca a través de un sitio web.",
+    "Link": "https://play.google.com/store/apps/details?id=com.wwf.bep_app",
+    "Imagen": "https://i.ibb.co/s14mC9s/66ab08e09b8da90e84c8af0c665e540f.png"
+  },
+  {
+    "Nombre": "B3 Gestión",
+    "Tags": [
+      "Flutter",
+      "Dart"
+    ],
+    "Tipo": "Mobile",
+    "Subtitulo": "Herramienta para gestionar proyectos de arquitectura.",
+    "Descripcion": "B3Gestión es una herramienta diseñada específicamente para ayudar a los arquitectos a gestionar y organizar proyectos relacionados con el diseño y construcción de hogares. Esta aplicación proporciona funcionalidades como la creación de listas de tareas, seguimiento de presupuestos, gestión de recursos y colaboración entre miembros del equipo. Con el gestor de hogares, los arquitectos pueden tener un control más efectivo sobre sus proyectos, optimizando la eficiencia y garantizando la entrega exitosa de los hogares diseñados.",
+    "Link": "https://b3gestion.netlify.app/",
+    "Imagen": "https://i.ibb.co/TK5Ldsd/b3gestion-netlify-app-hogar-madariaga-2.png"
+  },
+  {
+    "Nombre": "Ley de Bosques",
+    "Tags": [
+      "React",
+      "Node",
+      "Firebase"
+    ],
+    "Tipo": "Hardware",
+    "Subtitulo": "Arbusta's Keyoard, Alternative, Simple, Helpful and Innovative",
+    "Descripcion": "Ergonómico teclado portátil diseñado y programado para Mercadolibre. Capaz de agilizar, facilitar y unificar las tareas de sus proyectos.",
+    "Link": "https://leydebosques.vidasilvestre.org.ar/",
+    "Imagen": "https://i.ibb.co/ZxgGJVc/2023-11-13-02-31-20-Clipboard.png"
+  },
+  {
+    "Nombre": "A.K.A.S.H.I",
+    "Tags": [
+      "Arduino",
+      "C++"
+    ],
+    "Tipo": "Hardware",
+    "Subtitulo": "Arbusta's Keyoard, Alternative, Simple, Helpful and Innovative",
+    "Descripcion": "Ergonómico teclado portátil diseñado y programado para Mercadolibre. Capaz de agilizar, facilitar y unificar las tareas de sus proyectos.",
+    "Link": "https://gitlab.com/jonathanhacklife/akashi",
+    "Imagen": "https://i.ibb.co/gT5WwXH/b6772edf09d07da18b11f2f5c98b8a17.jpg"
+  },
+  {
+    "Nombre": "Velocidrone Stats",
+    "Tags": [
+      "HTML5",
+      "JavaScript",
+      "CSS"
+    ],
+    "Tipo": "Web",
+    "Subtitulo": "Métricas en tiempo real para Velocidrone.",
+    "Descripcion": "",
+    "Link": "",
+    "Imagen": "https://i.ibb.co/DQwqMvQ/6a504fde154a5adb0d7d4aa9079e56a0.png"
+  },
+  {
+    "Nombre": "Pulse",
+    "Tags": [
+      "Java",
+      "XML",
+      "Arduino"
+    ],
+    "Tipo": "Mobile",
+    "Subtitulo": "Pulsera antisecuestro con botón de alertas.",
+    "Descripcion": "Una pulsera antisecuestro diseñada para alertar al 911, ambulancia o bomberos de forma fácil y rápida. En un accidente, un incendio o robo se puede pedir ayuda con solo pulsar el botón indicado.",
+    "Link": "http://culturageek.com.ar/argentino-creo-una-pulsera-anti-secuestro/",
+    "Imagen": "https://i.ibb.co/7JScM5W/3516fab340219ded1258291df099a9bb.png"
+  },
+  {
+    "Nombre": "ALT - Innovación social",
+    "Tags": [
+      "HTML5",
+      "CSS",
+      "JavaScript"
+    ],
+    "Tipo": "Web",
+    "Subtitulo": "Programa de desarrollo de habilidades sociales.",
+    "Descripcion": "Un programa de formación profesional basado en la experiencia. Durante dos meses entrenamos nuestras habilidades para responder a las necesidades del futuro.",
+    "Link": "https://www.alt-innovacionsocial.com/",
+    "Imagen": "https://www.alt-innovacionsocial.com/wp-content/uploads/2020/09/Alt_200x200-05.png"
+  },
+  {
+    "Nombre": "Cal Construcciones",
+    "Tags": [
+      "HTML5",
+      "CSS",
+      "JavaScript"
+    ],
+    "Tipo": "Web",
+    "Subtitulo": "Web de construcción y remodelación de espacios.",
+    "Descripcion": "Web para emprendimiento de proyectos de construcción, remodelación y ampliación para viviendas, oficinas y locales comerciales.",
+    "Link": "http://calconstruccion.com/",
+    "Imagen": "https://i.ibb.co/9H21z7G/Cal-Construccio-n.jpg"
+  },
+  {
+    "Nombre": "Codestats App",
+    "Tags": [
+      "Flutter",
+      "Dart"
+    ],
+    "Tipo": "Mobile",
+    "Subtitulo": "Versión mobile de Code::Stats.",
+    "Descripcion": "Versión mobile de Code::Stats. Este es un servicio de estadísticas para programadores. Muestre sus estadísticas a sus amigos o recruiters y compare su progreso con otros.",
+    "Link": "https://gitlab.com/jonathanhacklife/codestats-app",
+    "Imagen": "https://i.ibb.co/fnML1v0/94707568-245358076823207-6697777602181836904-n.jpg"
+  },
+  {
+    "Nombre": "Consecuencia Ventures",
+    "Tags": [
+      "HTML5",
+      "CSS",
+      "JavaScript"
+    ],
+    "Tipo": "Web",
+    "Subtitulo": "Web de inversión social en Latinoamérica.",
+    "Descripcion": "Web para emprendimiento de fondo de inversión social con la mirada puesta en Latinoamérica a través de modelos de negocio escalables y sostenibles en el tiempo.",
+    "Link": "http://consecuenciaventures.com/",
+    "Imagen": "https://i.ibb.co/6WBcjf7/Consecuencia-logo.png"
+  },
+  {
+    "Nombre": "Hackatón Arbusta",
+    "Tags": [
+      "HTML5",
+      "CSS",
+      "JavaScript"
+    ],
+    "Tipo": "Web",
+    "Subtitulo": "Landing Page Hackatón Arbusta 2019.",
+    "Descripcion": "Landing Page desarrollada para presentar la experiencia en la Hackatón de Arbusta en el año 2019.",
+    "Link": "https://hackaton.arbusta.net/",
+    "Imagen": "https://i.ibb.co/5L5g7vB/jonathanhacklife-gitlab-io-hackaton-arbusta.png"
+  },
+  {
+    "Nombre": "InventApp",
+    "Tags": [
+      "HTML5",
+      "CSS",
+      "JavaScript"
+    ],
+    "Tipo": "Web",
+    "Subtitulo": "Generador de ideas basado en recursos.",
+    "Descripcion": "Este generador está desarrollado en base a una lista de recursos que disponemos para luego generar una lluvia de ideas entre todos estos, permitiendonos idear resultados desde su unión.",
+    "Link": "https://jonathanhacklife.gitlab.io/InventApp/",
+    "Imagen": "https://images.unsplash.com/photo-1588856122867-363b0aa7f598"
+  },
+  {
+    "Nombre": "Latin Business Today",
+    "Tags": [
+      "HTML5",
+      "CSS",
+      "JavaScript"
+    ],
+    "Tipo": "Web",
+    "Subtitulo": "Blog de asesoría empresarial para empresas y start-ups.",
+    "Descripcion": "Blog de una red de asesores que atienden a todo 'tipo' de empresas, incluidas las start-ups, pequeñas empresas y ejecutivas.",
+    "Link": "https://www.latinbusinesstoday.com/",
+    "Imagen": "https://www.latinbusinesstoday.com/wp-content/uploads/2021/01/LBT-main-logo.png"
+  },
+  {
+    "Nombre": "Mail Template",
+    "Tags": [
+      "HTML5",
+      "CSS",
+      "JavaScript"
+    ],
+    "Tipo": "Web",
+    "Subtitulo": "Template minimalista para firmas electrónicas de correo.",
+    "Descripcion": "Un template minimalista el cual permite crear firmas electrónicas para correo electrónico. Originalmente hecho para uso personal. ¡Pero usted puede utilizarla si quiere!",
+    "Link": "https://jonathanhacklife.gitlab.io/mail-template/",
+    "Imagen": "https://images.unsplash.com/photo-1683117927786-f146451082fb?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  {
+    "Nombre": "VCount",
+    "Tags": [
+      "Flutter",
+      "Dart"
+    ],
+    "Tipo": "Mobile",
+    "Subtitulo": "Aplicación de conteo vehicular para YPF.",
+    "Descripcion": "Aplicación de conteo vehicular diseñado para Arbusta LABS e YPF. Esta aplicación es una herramienta usada para hacer un recuento vehicular en zonas específicas.",
+    "Link": "https://gitlab.com/jonathanhacklife/vcount",
+    "Imagen": "https://i.ibb.co/jJq9zRm/VCount-Logo.png"
+  }
+]
