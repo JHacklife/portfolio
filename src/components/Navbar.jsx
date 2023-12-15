@@ -1,13 +1,16 @@
 ﻿import React, { useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 // UI COMPONENTS
 import MenuIcon from '@mui/icons-material/Menu'
-import { AppBar, Slide, Box, Button, IconButton, Stack, Toolbar, Tooltip, Typography, useScrollTrigger } from '@mui/material'
+import { AppBar, Slide, Box, Button, IconButton, Stack, Toolbar, Tooltip, Link, Typography, useScrollTrigger } from '@mui/material'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import Logo from './Logo'
 import logoLabs from '../assets/Logo-1.svg'
+import useScrollToSection from '../../hooks/useScrollToSection'
+
+
 
 // ICONS
 import { ListAlt, Logout } from '@mui/icons-material/'
@@ -22,6 +25,9 @@ import { ListAlt, Logout } from '@mui/icons-material/'
 const Navbar = () => {
   const navigateTo = useNavigate()
 
+
+
+
   const pages = [
     { path: '/', label: 'Home', show: true },
     { path: '#about', label: 'About', show: true },
@@ -30,9 +36,10 @@ const Navbar = () => {
     { path: '#certificates', label: 'Certificates', show: true },
     { path: '#contact', label: 'Contact', show: true },
   ]
+  const { currentSection, sectionRefs } = useScrollToSection(pages.map(page => page.label))
 
   const settings = [
-    { label: 'Perfil', icon: <ListAlt />, action: () => navigateTo("/caja") },
+    { label: 'Perfil', icon: <ListAlt />, action: () => navigateTo("/perfil") },
     { label: 'Cerrar sesión', icon: <Logout />, action: () => console.log("Cerrando sesión") }
   ]
 
@@ -89,7 +96,9 @@ const Navbar = () => {
                 sx={{ display: { xs: 'block', md: 'none' } }}>
                 {pages?.filter(page => page?.show).map((page) => (
                   <MenuItem key={page.label} onClick={() => navigateTo(page.path)}>
-                    <Typography textAlign="center">{page.label}</Typography>
+                    <Link href={page.path}>
+                      <Typography textAlign="center">{page.label}</Typography>
+                    </Link>
                   </MenuItem>
                 ))}
               </Menu>

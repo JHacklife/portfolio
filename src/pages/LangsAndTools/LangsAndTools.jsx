@@ -4,6 +4,7 @@
 import { Box, Button, Grid, Link, Stack, Typography } from '@mui/material'
 import Square from '../../components/Adornos'
 import Visible from '../../components/Visible'
+import CustomLink from '../../components/CustomLink'
 
 // ICONS
 
@@ -40,13 +41,17 @@ function LangsAndTools() {
     }}>
 
       <Grid item md flexWrap="wrap">
-        <Stack direction="row" spacing={1} justifyContent="space-between">
+        <Stack direction="row" spacing={1} justifyContent="space-between" mb={1}>
           <Typography variant="h3" bgcolor="tertiary.main" color="black.main" align="left" px={1}>Top 5 Lenguajes</Typography>
           <Square color="grey" />
         </Stack>
 
-        <Typography variant="subtitle1custom" color="tertiary.main" align="left" mt={0} width="100%">Experiencia en lenguajes proporcionada por <Link href="https://codestats.net/users/jwildemer" target="_blank">Code:Stats</Link>
-          <br></br>Todos los datos se actualizan en tiempo real mientras trabajo.
+        <Typography variant="subtitle1custom" color="tertiary.main" align="left" mt={0} width="100%">
+          Experiencia en lenguajes proporcionada por <CustomLink fuente="https://codestats.net/users/jwildemer">Code:Stats</CustomLink>
+        </Typography>
+
+        <Typography variant="subtitle1custom" color="tertiary.main" align="left" mt={0} width="100%">
+          Todos los datos se actualizan en tiempo real mientras desarrollo mis actividades.
         </Typography>
 
 
@@ -57,10 +62,13 @@ function LangsAndTools() {
           </Grid>)}
         </Grid>
 
-        <Stack direction="row" justifyContent="space-between" mt={4}>
+        <Stack direction="row" justifyContent="center" spacing={2} my={4}>
+          {/* ACTIVIDAD TOTAL */}
           <Typography className="scale" variant="h5" bgcolor="tertiary.main" color="black.main" align="left" px={1} width="fit-content">
             Actividad total <Visible condition={total_xp != 0}>[{abbreviateNumber(total_xp)}]</Visible>
           </Typography>
+
+          {/* ACTIVIDAD ACTUAL */}
           <Typography className="scale" variant="h5" bgcolor="black.main" color="primary.main" align="left" px={1} width="fit-content">
             Actividad de hoy <Visible condition={new_xp != 0}>[+{abbreviateNumber(new_xp)}]</Visible>
           </Typography>
@@ -77,7 +85,7 @@ function LangsAndTools() {
           valueX={last7Days?.map(date => date?.name)}
           valueY={last7Days?.map(date => date?.value)}
           datasets={[{
-            label: `Actividad`,
+            label: `Actividad (xp)`,
             data: last7Days?.map(date => date?.value),
             borderWidth: 2,
             pointRadius: 8,

@@ -52,6 +52,7 @@
 
 
 html, body {
+  scroll-behavior: smooth;
   margin: 0;
   display: flex;
   place-items: center;

@@ -42,7 +42,7 @@ function About() {
         <Grid item md flexWrap="wrap">
           {/* NOMBRE Y APELLIDO */}
           <Stack direction="row" spacing={1} justifyContent="space-between">
-            <Typography variant="h3" bgcolor="tertiary.main" color="black.main" align="left" px={1} width="fit-content">Jonathan C. Wildemer</Typography>
+            <Typography variant="h3" bgcolor="tertiary.main" color="black.main" align="left" px={1}>Jonathan C. Wildemer</Typography>
             <Square color="grey" />
           </Stack>
 

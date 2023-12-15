@@ -27,7 +27,7 @@ export default function Contact() {
     },
   ]
   return (
-    <Stack className="welcome" id="langsAndTools" justifyContent="center" alignItems="center" spacing={5} px={2}>
+    <Stack className="welcome" id="langsAndTools" justifyContent="center" alignItems="center" spacing={10} px={2}>
       <Typography variant="h2" gutterBottom>Contacto</Typography>
       <Grid container>
         {contactsSites.map((contact, index) => <Grid item md className="scale">
