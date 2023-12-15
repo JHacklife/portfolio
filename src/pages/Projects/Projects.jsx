@@ -5,9 +5,19 @@ import projects from './projects.json'
 
 function Projects() {
   return (
-    <Grid id="langsAndTools" className="welcome" justifyContent="center" alignItems="center" container spacing={1} px={2}>
+    <Grid id="langsAndTools" className="welcome" justifyContent="center" alignItems="center" container spacing={1} sx={{
+      py: 10,
+      mt: 0,
+      px: {
+        xs: 10, // Tamaño de fuente para dispositivos móviles
+        sm: '1.2rem', // Tamaño de fuente para dispositivos pequeños
+        md: 4, // Tamaño de fuente para dispositivos medianos
+        lg: 2, // Tamaño de fuente para dispositivos grandes
+        xl: '20rem', // Tamaño de fuente para dispositivos extra grandes
+      }
+    }}>
       {projects.filter((py) => !["Cal Construcciones", "Consecuencia Ventures", "Latin Business Today"].includes(py.Nombre)).map((project, index) => (
-        <Grid item md={3} key={index}>
+        <Grid item md={4} lg={3} key={index}>
           <Project
             title={project.Nombre}
             type={project.Tipo}

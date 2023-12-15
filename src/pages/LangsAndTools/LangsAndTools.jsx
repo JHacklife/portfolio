@@ -30,77 +30,79 @@ function LangsAndTools() {
   const last7Days = filterDatesByRange(dates, startDate, endDate)
 
   return (
-    <Grid id="langsAndTools" className="welcome" justifyContent="center" alignItems="center" container sx={{
-      px: {
-        xs: '2rem', // Tamaño de fuente para dispositivos móviles
-        sm: '1.2rem', // Tamaño de fuente para dispositivos pequeños
-        md: '3rem', // Tamaño de fuente para dispositivos medianos
-        lg: '5rem', // Tamaño de fuente para dispositivos grandes
-        xl: '20rem', // Tamaño de fuente para dispositivos extra grandes
-      },
-    }}>
+    <Stack>
+      <Grid id="langsAndTools" className="welcome" justifyContent="center" alignItems="center" container sx={{
+        py: 10,
+        px: {
+          xs: '2rem', // Tamaño de fuente para dispositivos móviles
+          sm: '1.2rem', // Tamaño de fuente para dispositivos pequeños
+          md: '3rem', // Tamaño de fuente para dispositivos medianos
+          lg: '5rem', // Tamaño de fuente para dispositivos grandes
+          xl: '20rem', // Tamaño de fuente para dispositivos extra grandes
+        },
+      }}>
 
-      <Grid item md flexWrap="wrap">
-        <Stack direction="row" spacing={1} justifyContent="space-between" mb={1}>
-          <Typography variant="h3" bgcolor="tertiary.main" color="black.main" align="left" px={1}>Top 5 Lenguajes</Typography>
-          <Square color="grey" />
-        </Stack>
+        <Grid item md flexWrap="wrap">
+          <Stack direction="row" spacing={1} justifyContent="space-between" mb={1}>
+            <Typography variant="h3" bgcolor="tertiary.main" color="black.main" align="left" px={1}>Top 5 Lenguajes</Typography>
+            <Square color="grey" />
+          </Stack>
 
-        <Typography variant="subtitle1custom" color="tertiary.main" align="left" mt={0} width="100%">
-          Experiencia en lenguajes proporcionada por <CustomLink fuente="https://codestats.net/users/jwildemer">Code:Stats</CustomLink>
-        </Typography>
+          <Typography variant="subtitle1custom" color="primary.main" align="left" mt={0} width="100%">
+            Experiencia en lenguajes proporcionada por <CustomLink fuente="https://codestats.net/users/jwildemer" color="tertiary">Code:Stats</CustomLink>
+          </Typography>
 
-        <Typography variant="subtitle1custom" color="tertiary.main" align="left" mt={0} width="100%">
-          Todos los datos se actualizan en tiempo real mientras desarrollo mis actividades.
-        </Typography>
+          <Typography variant="subtitle1custom" color="primary.main" align="left" mt={0} width="100%">
+            Todos los datos se actualizan en tiempo real mientras desarrollo mis actividades.
+          </Typography>
 
 
-        <Grid container justifyContent="space-between">
+          <Grid container justifyContent="space-between">
+            {languages?.slice(0, 5).map((lang, index) => <Grid key={index} item xs={6} md={2}>
+              <LangExp lang={lang?.name} exp={lang?.value?.xps} newExp={lang?.value?.new_xps} />
+            </Grid>)}
+          </Grid>
 
-          {languages?.slice(0, 5).map((lang, index) => <Grid key={index} item xs={6} md={2}>
-            <LangExp lang={lang?.name} exp={lang?.value?.xps} newExp={lang?.value?.new_xps} />
-          </Grid>)}
+          <Stack direction="row" justifyContent="center" spacing={2} my={4}>
+            {/* ACTIVIDAD TOTAL */}
+            <Typography className="scale" variant="h5" bgcolor="tertiary.main" color="black.main" align="left" px={1} width="fit-content">
+              Actividad total <Visible condition={total_xp != 0}>[{abbreviateNumber(total_xp)}]</Visible>
+            </Typography>
+
+            {/* ACTIVIDAD ACTUAL */}
+            <Typography className="scale" variant="h5" bgcolor="black.main" color="primary.main" align="left" px={1} width="fit-content">
+              Actividad de hoy <Visible condition={new_xp != 0}>[+{abbreviateNumber(new_xp)}]</Visible>
+            </Typography>
+          </Stack>
+
+          <Stack direction="row" justifyContent="center" spacing={2}>
+            <Button variant="outlined" onClick={() => setDayRangeState(7)}>Semanal</Button>
+            <Button variant="outlined" onClick={() => setDayRangeState(14)}>Quincenal</Button>
+            <Button variant="outlined" onClick={() => setDayRangeState(30)}>Mensual</Button>
+            <Button variant="outlined" onClick={() => setDayRangeState(365)}>Anual</Button>
+          </Stack>
+
+          <LineChart label="Actividad" responsive
+            valueX={last7Days?.map(date => date?.name)}
+            valueY={last7Days?.map(date => date?.value)}
+            datasets={[{
+              label: `Actividad (xp)`,
+              data: last7Days?.map(date => date?.value),
+              borderWidth: 2,
+              pointRadius: 8,
+              pointStyle: 'rectRot',
+            }, {
+              label: `Promedio`,
+              data: Array(last7Days?.length).fill(calcularPromedioMinMax(last7Days?.map(date => date?.value))),
+              borderWidth: 2,
+              pointRadius: 8,
+              pointStyle: 'cross',
+            }]}
+
+          />
         </Grid>
-
-        <Stack direction="row" justifyContent="center" spacing={2} my={4}>
-          {/* ACTIVIDAD TOTAL */}
-          <Typography className="scale" variant="h5" bgcolor="tertiary.main" color="black.main" align="left" px={1} width="fit-content">
-            Actividad total <Visible condition={total_xp != 0}>[{abbreviateNumber(total_xp)}]</Visible>
-          </Typography>
-
-          {/* ACTIVIDAD ACTUAL */}
-          <Typography className="scale" variant="h5" bgcolor="black.main" color="primary.main" align="left" px={1} width="fit-content">
-            Actividad de hoy <Visible condition={new_xp != 0}>[+{abbreviateNumber(new_xp)}]</Visible>
-          </Typography>
-        </Stack>
-
-        <Stack direction="row" justifyContent="center" spacing={2}>
-          <Button variant="contained" onClick={() => setDayRangeState(7)}>Semanal</Button>
-          <Button variant="contained" onClick={() => setDayRangeState(14)}>Quincenal</Button>
-          <Button variant="contained" onClick={() => setDayRangeState(30)}>Mensual</Button>
-          <Button variant="contained" onClick={() => setDayRangeState(365)}>Anual</Button>
-        </Stack>
-
-        <LineChart label="Actividad" responsive
-          valueX={last7Days?.map(date => date?.name)}
-          valueY={last7Days?.map(date => date?.value)}
-          datasets={[{
-            label: `Actividad (xp)`,
-            data: last7Days?.map(date => date?.value),
-            borderWidth: 2,
-            pointRadius: 8,
-            pointStyle: 'rectRot',
-          }, {
-            label: `Promedio`,
-            data: Array(last7Days?.length).fill(calcularPromedioMinMax(last7Days?.map(date => date?.value))),
-            borderWidth: 2,
-            pointRadius: 8,
-            pointStyle: 'cross',
-          }]}
-
-        />
       </Grid>
-    </Grid>
+    </Stack>
   )
 }
 

@@ -50,7 +50,7 @@ function About() {
           <Typography variant="h4custom" color="tertiary.main" align="left" mt={0} width="100%">FULLSTACK DEVELOPER</Typography>
 
           {/* DESCRIPCIÓN */}
-          <Typography color="info.dark" align="justify" my={2}>
+          <Typography color="primary.main" align="justify" my={2}>
             Desarrollador de software experimentado y apasionado, orientado a proyectos que demandan un pensamiento analítico y conceptual.<br /><br />Mi condición de estudiante me impulsa a mantenerme actualizado con las últimas tecnologías, metodologías de trabajo y tendencias, buscando constantemente oportunidades para aplicar estos conocimientos y mejorar de manera continua.
           </Typography>
 
@@ -58,54 +58,61 @@ function About() {
           <Grid container spacing={2}>
             <Grid item xs={6} md={4}>
               <CustomData title="Most Valued Project" custom={
-                <Typography variant="caption" color="tertiary.main" align="left" mt={0.5} lineHeight={1.2}>
-                  Pulsera electrónica antisecuestro <Link href="https://culturageek.com.ar/argentino-creo-una-pulsera-anti-secuestro/" target="_blank">'PULSE'</Link>,
+                <Typography variant="caption" color="primary.main" align="left" mt={0.5} lineHeight={1.2}>
+                  Pulsera electrónica antisecuestro <Link href="https://culturageek.com.ar/argentino-creo-una-pulsera-anti-secuestro/" target="_blank" color="tertiary.main">'PULSE'</Link>,
                 </Typography>
               } />
             </Grid>
 
             <Grid item xs={6} md={4}>
               <CustomData title="Premios y menciones" custom={
-                <Typography variant="caption" color="tertiary.main" align="left" mt={0.5} lineHeight={1.2}>
-                  Primer premio y mención a la innovación en <Link href="https://www.argentina.gob.ar/noticias/primera-hackaton-nacional-para-ayudar-frenar-la-violencia-contra-las-mujeres-0/" target="_blank">'#HALV'</Link> y <Link href="https://buenosaires.gob.ar/noticias/programa-tu-futuro-cerro-el-ano-con-el-ultimo-interclubes/" target="_blank">'PTF'</Link>
+                <Typography variant="caption" color="primary.main" align="left" mt={0.5} lineHeight={1.2}>
+                  Primer premio y mención a la innovación en <Link href="https://www.argentina.gob.ar/noticias/primera-hackaton-nacional-para-ayudar-frenar-la-violencia-contra-las-mujeres-0/" target="_blank" color="tertiary.main">'#HALV'</Link> y <Link href="https://buenosaires.gob.ar/noticias/programa-tu-futuro-cerro-el-ano-con-el-ultimo-interclubes/" target="_blank" color="tertiary.main">'PTF'</Link>
                 </Typography>
               } />
             </Grid>
 
             <Grid item xs={6} md={4}>
               <CustomData title="Speaker" custom={
-                <Typography variant="caption" color="tertiary.main" align="left" mt={0.5} lineHeight={1.2}><Link href="https://www.fits.ong/argentina/oradores.php/" target="_blank">FITS</Link> (Festival de Innovación y Tecnología Social) en Konex</Typography>
+                <Typography variant="caption" color="primary.main" align="left" mt={0.5} lineHeight={1.2}><Link href="https://www.fits.ong/argentina/oradores.php/" target="_blank" color="tertiary.main">FITS</Link> (Festival de Innovación y Tecnología Social) en Konex</Typography>
               } />
             </Grid>
             <Grid item xs={6} md={4}>
               <CustomData title="Experiencias" custom={
-                <Typography variant="caption" color="tertiary.main" align="left" mt={0.5} lineHeight={1.2}>Conozca mis experiencias en <Link href="https://www.linkedin.com/in/jonathanhacklife/" target="_blank">LinkedIn</Link></Typography>
+                <Typography variant="caption" color="primary.main" align="left" mt={0.5} lineHeight={1.2}>Conozca mis experiencias en <Link href="https://www.linkedin.com/in/jonathanhacklife/" target="_blank" color="tertiary.main">LinkedIn</Link></Typography>
               } />
             </Grid>
 
             <Grid item xs={6} md={4}>
               <CustomData title="Proyectos" custom={
-                <Typography variant="caption" color="tertiary.main" align="left" mt={0.5} lineHeight={1.2}>
-                  Todos mis proyectos están disponibles <Link href="https://gitlab.com/users/jonathanhacklife/projects/" target="_blank">aquí</Link></Typography>
+                <Typography variant="caption" color="primary.main" align="left" mt={0.5} lineHeight={1.2}>
+                  Todos mis proyectos están disponibles <Link href="https://gitlab.com/users/jonathanhacklife/projects/" target="_blank" color="tertiary.main">aquí</Link></Typography>
               } />
             </Grid>
 
             <Grid item xs={6} md={4}>
-              <CustomData title="Estudiando" description="React, Node, Flutter, Dart, Automation & UX/UI Design" />
+              <CustomData title="Estudiando" description={<Typography variant="caption" color="primary.main" align="left" mt={0.5} lineHeight={1.2}>
+                React, Node, Flutter, Dart, Automation & UX/UI Design
+              </Typography>} />
             </Grid>
             <Grid item xs={6} md={4}>
               <CustomData title="Voluntariado" custom={
-                <Typography variant="caption" color="tertiary.main" align="left" mt={0.5} lineHeight={1.2}><Link href="https://frontend.cafe/equipo/" target="_blank">FrontEnd Café</Link> - <Link href="https://discord.com/invite/QeHShEYb8G/" target="_blank">Hack|LAB</Link> & <Link href="https://discord.gg/9Gj8yV9uBP" target="_blank">La Lasîrela (Solresol Network)</Link></Typography>
+                <Typography variant="caption" color="primary.main" align="left" mt={0.5} lineHeight={1.2}>
+                  <Link href="https://frontend.cafe/equipo/" target="_blank" color="tertiary.main">FrontEnd Café</Link> - <Link href="https://discord.com/invite/QeHShEYb8G/" target="_blank" color="tertiary.main">Hack|LAB</Link> & <Link href="https://discord.gg/9Gj8yV9uBP" target="_blank" color="tertiary.main">La Lasîrela (Solresol Network)
+                  </Link>
+                </Typography>
               } />
             </Grid>
 
             <Grid item xs={6} md={4}>
-              <CustomData title="Fun Fact" description="Soy piloto de Drone Racing" />
+              <CustomData title="Fun Fact" description={<Typography variant="caption" color="primary.main" align="left" mt={0.5} lineHeight={1.2}>
+                Soy piloto de Drone Racing
+              </Typography>} />
             </Grid>
 
             <Grid item xs={12} md={4}>
               <CustomData title="Reunión" custom={
-                <Typography variant="caption" color="tertiary.main" align="left" mt={0.5} lineHeight={1.2}>Agende una <Link href="https://calendly.com/jonathanhacklife/1to1/" target="_blank" color="#ffff00">reunión conmigo</Link></Typography>
+                <Typography variant="caption" color="primary.main" align="left" mt={0.5} lineHeight={1.2}>Agende una <Link href="https://calendly.com/jonathanhacklife/1to1/" target="_blank" color="#ffff00">reunión conmigo</Link></Typography>
               } />
             </Grid>
           </Grid>

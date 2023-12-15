@@ -6,7 +6,7 @@ import { getLevel } from "../../../api/codestats";
 export default function LangExp({ lang, exp, newExp }) {
   return (
     <Stack spacing={1}>
-      <Typography className="scale" variant="h2" component="span" fontSize={"4.66rem"} color="tertiary.main" align="left">{abbreviateNumber(exp)}</Typography>
+      <Typography className="scale" variant="h2" component="span" fontSize={"4.66rem"} color="primary.main" align="left">{abbreviateNumber(exp)}</Typography>
       <Box className="scale">
         <Stack direction="row">
           <Typography variant="body1" bgcolor="tertiary.main" color="black.main" align="left" px={1} width="100%"><b>{lang}</b></Typography>
