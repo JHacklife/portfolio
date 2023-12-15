@@ -179,7 +179,7 @@ const theme = createTheme({
       main: '#0D0D0D',
     },
     tertiary: {
-      main: '#56CCF2',
+      main: '#FFFFFF',
     },
     background: {
       default: '#000',
@@ -201,6 +201,7 @@ const theme = createTheme({
     },
     info: {
       main: '#0DCAF0',
+      dark: "#FFF"
     },
     success: {
       main: '#219653',

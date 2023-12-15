@@ -8,8 +8,6 @@ import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import Logo from './Logo'
 import logoLabs from '../assets/Logo-1.svg'
-import useScrollToSection from '../../hooks/useScrollToSection'
-
 
 
 // ICONS
@@ -25,9 +23,6 @@ import { ListAlt, Logout } from '@mui/icons-material/'
 const Navbar = () => {
   const navigateTo = useNavigate()
 
-
-
-
   const pages = [
     { path: '/', label: 'Home', show: true },
     { path: '#about', label: 'About', show: true },
@@ -36,7 +31,6 @@ const Navbar = () => {
     { path: '#certificates', label: 'Certificates', show: true },
     { path: '#contact', label: 'Contact', show: true },
   ]
-  const { currentSection, sectionRefs } = useScrollToSection(pages.map(page => page.label))
 
   const settings = [
     { label: 'Perfil', icon: <ListAlt />, action: () => navigateTo("/perfil") },
