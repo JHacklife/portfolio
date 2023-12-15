@@ -97,6 +97,10 @@ html, body {
   transition: scale 0.25s !important;
 }
 
+.textShadow {
+  text-shadow: 1px 1px 2em black, 0 0 1em black, 0 0 1em black
+}
+
 /* MEDIAQUERYS */
 
 @media (prefers-reduced-motion: no-preference) {

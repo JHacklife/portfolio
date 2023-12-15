@@ -25,8 +25,9 @@ const Navbar = () => {
   const pages = [
     { path: '/', label: 'Home', show: true },
     { path: '#about', label: 'About', show: true },
-    { path: '#tools', label: 'Lang&Tools', show: true },
+    { path: '#tools', label: 'Lang & Tools', show: true },
     { path: '#projects', label: 'Projects', show: true },
+    { path: '#certificates', label: 'Certificates', show: true },
     { path: '#contact', label: 'Contact', show: true },
   ]
 
@@ -99,9 +100,11 @@ const Navbar = () => {
           {/* LOGO */}
 
           <Logo imgUrl={logoLabs} alt="logo" sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }} />
-          <Stack direction="row" justifyContent="space-between" spacing={1} sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Stack direction="row" justifyContent="start" spacing={1} sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages?.filter(page => page?.show).map((page, index) => (
-              <Button key={index} onClick={() => navigateTo(page.path)}><Typography variant="h6">{page.label}</Typography></Button>
+              <Button key={index}
+                className="scale"
+                onClick={() => navigateTo(page.path)}><Typography variant="body1">{page.label}</Typography></Button>
             ))}
           </Stack>
 

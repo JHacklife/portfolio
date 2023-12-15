@@ -95,6 +95,11 @@
     "icono": "devicon-react-original colored"
   },
   {
+    "nombre": "PHP",
+    "url": "https://www.php.net/",
+    "icono": "devicon-php-plain"
+  },
+  {
     "nombre": "Trello",
     "url": "https://trello.com/es",
     "icono": "devicon-trello-plain colored"
@@ -108,6 +113,11 @@
     "nombre": "Windows",
     "url": "https://www.microsoft.com/es-ar/windows",
     "icono": "devicon-windows8-original colored"
+  },
+  {
+    "nombre": "Wordpress",
+    "url": "https://es-ar.wordpress.org/",
+    "icono": "devicon-wordpress-plain"
   },
   {
     "nombre": "Adobe XD",

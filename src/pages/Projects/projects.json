@@ -3,7 +3,8 @@
     "Nombre": "BEPA",
     "Tags": [
       "Flutter",
-      "Dart"
+      "Dart",
+      "Adobe XD"
     ],
     "Tipo": "Mobile",
     "Subtitulo": "Bitácora Electrónica de Pesca Argentina",
@@ -14,8 +15,8 @@
   {
     "Nombre": "B3 Gestión",
     "Tags": [
-      "Flutter",
-      "Dart"
+      "PHP",
+      "React"
     ],
     "Tipo": "Mobile",
     "Subtitulo": "Herramienta para gestionar proyectos de arquitectura.",
@@ -35,6 +36,17 @@
     "Descripcion": "Ergonómico teclado portátil diseñado y programado para Mercadolibre. Capaz de agilizar, facilitar y unificar las tareas de sus proyectos.",
     "Link": "https://leydebosques.vidasilvestre.org.ar/",
     "Imagen": "https://i.ibb.co/ZxgGJVc/2023-11-13-02-31-20-Clipboard.png"
+  },
+  {
+    "Nombre": "Talent House",
+    "Tags": [
+      "Wordpress"
+    ],
+    "Tipo": "Web",
+    "Subtitulo": "Desarrollo de talento y consultoría en recursos humanos.",
+    "Descripcion": "Desarrollo de talento y consultoría en recursos humanos, adaptado a empresas de diferentes tamaños e industrias, con enfoque en neurociencias y perspectiva holística.",
+    "Link": "https://talenthouse.com.ar/",
+    "Imagen": "https://i.ibb.co/swpFCjF/talenthouse-com-ar.png"
   },
   {
     "Nombre": "A.K.A.S.H.I",
@@ -95,7 +107,7 @@
       "JavaScript"
     ],
     "Tipo": "Web",
-    "Subtitulo": "Explora seguridad usando CaesarCypher online.",
+    "Subtitulo": "Explora seguridad usando Caesar Cypher online.",
     "Descripcion": "Una poderosa herramienta para fortalecer la seguridad de tus datos web. Esta solución fácil y eficaz te brinda la capacidad de proteger información sensible de manera innovadora.",
     "Link": "https://caesarcipherv1.netlify.app/",
     "Imagen": "https://i.ibb.co/hczYMwJ/2023-11-14-11-26-17-Window.png"

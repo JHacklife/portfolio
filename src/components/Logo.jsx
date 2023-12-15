@@ -22,7 +22,7 @@ function Logo({ imgUrl, alt = "logo", link = "/", sx = {
   textDecoration: 'none',
 } }) {
   return (
-    <Link href={link} sx={sx}>
+    <Link href={link} sx={sx} className="scale">
       <img src={imgUrl} alt={alt} height="30" />
     </Link>
   )

@@ -1,7 +1,7 @@
 ﻿import React, { useState } from 'react'
 
 // UI COMPONENTS
-import { Box, Grid, Link, Stack, Typography } from '@mui/material'
+import { Box, Button, Grid, Link, Stack, Typography } from '@mui/material'
 import Square from '../../components/Adornos'
 import Visible from '../../components/Visible'
 
@@ -19,11 +19,12 @@ import { LineChart } from '../../components/Graphs'
 import { calcularPromedioMinMax, filterDatesByRange } from './helpers'
 
 function LangsAndTools() {
+  const [dayRangeState, setDayRangeState] = useState(14);
 
   const { data: { dates, languages, new_xp, total_xp } = {} } = useData("jwildemer") ?? {};
 
   const endDate = new Date() // Fecha actual
-  const startDate = new Date().setDate(endDate.getDate() - 14) // Resta 7 días
+  const startDate = new Date().setDate(endDate.getDate() - dayRangeState) // Resta 7 días
 
   const last7Days = filterDatesByRange(dates, startDate, endDate)
 
@@ -63,6 +64,13 @@ function LangsAndTools() {
           <Typography className="scale" variant="h5" bgcolor="black.main" color="primary.main" align="left" px={1} width="fit-content">
             Actividad de hoy <Visible condition={new_xp != 0}>[+{abbreviateNumber(new_xp)}]</Visible>
           </Typography>
+        </Stack>
+
+        <Stack direction="row" justifyContent="center" spacing={2}>
+          <Button variant="contained" onClick={() => setDayRangeState(7)}>Semanal</Button>
+          <Button variant="contained" onClick={() => setDayRangeState(14)}>Quincenal</Button>
+          <Button variant="contained" onClick={() => setDayRangeState(30)}>Mensual</Button>
+          <Button variant="contained" onClick={() => setDayRangeState(365)}>Anual</Button>
         </Stack>
 
         <LineChart label="Actividad" responsive

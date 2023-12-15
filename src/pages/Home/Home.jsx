@@ -29,7 +29,7 @@ function Home() {
           },
         }}>Soy un desarrollador de software especializado en construir (y ocasionalmente diseñar) experiencias digitales excepcionales. Actualmente, estoy centrado en la construcción de productos digitales y aplicaciones móviles a medida.</Typography> */}
 
-        <Typography variant="body2">Más info: <Link href={mailTo} target="_blank">{config?.to}</Link></Typography>
+        <Typography variant="h6custom">Más info: <Link href={mailTo} target="_blank">{config?.to}</Link></Typography>
       </Stack>
     </Stack>
   )
