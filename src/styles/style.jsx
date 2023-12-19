@@ -2,7 +2,7 @@
 
 const theme = createTheme({
   typography: {
-    fontFamily: 'Arame, Barlow, MoonGlossDisplayThick, Arial, sans-serif',
+    fontFamily: 'Arame, Blender Pro, Arial, sans-serif',
     h1: {
       "@media (max-width: 600px)": {
         fontSize: "4rem", // Tamaño de fuente para dispositivos pequeños
@@ -24,9 +24,9 @@ const theme = createTheme({
       },
     },
     h5: {
+      letterSpacing: "2px",
       "@media (max-width: 600px)": {
         fontSize: "1.5rem",
-        letterSpacing: "2px",
       },
     },
     h6: {
@@ -54,42 +54,55 @@ const theme = createTheme({
         fontSize: "0.8rem",
       },
     },
+    button: {
+    },
+    caption: {
+      /* fontFamily: 'BlenderPro-Medium',
+      textTransform: 'uppercase', */
+    },
+    overline: {
+    },
     h1custom: {
-      fontFamily: 'Barlow',
+      fontFamily: 'BlenderPro-Medium',
       fontSize: '6rem',
+      fontWeight: "300",
       "@media (max-width: 600px)": {
         fontSize: "4rem", // Tamaño de fuente para dispositivos pequeños
       },
       marginTop: 3,
     },
     h2custom: {
-      fontFamily: 'Barlow',
+      fontFamily: 'BlenderPro-Medium',
       fontSize: '3.75rem',
+      fontWeight: "300",
       marginTop: 3,
       "@media (max-width: 600px)": {
         fontSize: "3rem",
       }
     },
     h3custom: {
-      fontFamily: 'Barlow',
+      fontFamily: 'BlenderPro-Medium',
       fontSize: '3rem',
+      fontWeight: "500",
       marginTop: -10,
       "@media (max-width: 600px)": {
         fontSize: "1.7rem",
       }
     },
     h4custom: {
-      fontFamily: 'MoonGlossDisplayThick',
-      fontSize: '2.125rem',
-      letterSpacing: "4.56px",
+      fontFamily: 'BlenderPro-Medium',
+      fontSize: '2.25rem',
+      fontWeight: "500",
+      letterSpacing: "6px",
       marginTop: -6,
       "@media (max-width: 600px)": {
         fontSize: "1.4rem",
       },
     },
     h5custom: {
-      fontFamily: 'Barlow',
-      fontSize: '1.53rem',
+      fontFamily: 'BlenderPro-Medium',
+      fontWeight: "500",
+      fontSize: '1.5625rem',
       marginTop: -3,
       "@media (max-width: 600px)": {
         fontSize: "1.5rem",
@@ -97,55 +110,60 @@ const theme = createTheme({
       },
     },
     h6custom: {
-      fontFamily: 'Barlow',
-      fontSize: '1.25rem',
+      fontFamily: 'BlenderPro-Medium',
+      fontWeight: "700",
+      fontSize: '1.3125rem',
       "@media (max-width: 600px)": {
         fontSize: "1.2rem",
       },
     },
     body1custom: {
-      fontFamily: 'Barlow',
-      fontSize: '0.875rem',
+      fontFamily: 'BlenderPro-Medium',
+      textTransform: 'uppercase',
       "@media (max-width: 600px)": {
         fontSize: "1.1rem",
       },
     },
     body2custom: {
-      fontFamily: 'Barlow',
+      fontFamily: 'BlenderPro-Medium',
       fontSize: '0.875rem',
-      marginTop: -1,
+      fontWeight: "500",
       "@media (max-width: 600px)": {
         fontSize: "1rem",
       }
     },
     subtitle1custom: {
-      fontFamily: 'MoonGlossDisplayThick',
-      fontSize: '1rem',
-      marginTop: 1,
+      fontFamily: 'BlenderPro-Medium',
+      fontSize: '1.0625rem',
+      fontWeight: "500",
       "@media (max-width: 600px)": {
         fontSize: "1rem",
       },
     },
     subtitle2custom: {
-      fontFamily: 'Barlow',
-      fontSize: '0.875rem',
-      marginTop: -1,
+      fontFamily: 'BlenderPro-Medium',
+      fontSize: '0.9375rem',
+      fontWeight: "700",
       "@media (max-width: 600px)": {
         fontSize: "0.8rem",
       },
     },
     buttoncustom: {
-      fontFamily: 'Barlow',
+      fontFamily: 'BlenderPro-Medium',
       fontSize: '0.875rem',
-      marginTop: 1,
+      textTransform: 'uppercase',
+      fontWeight: "700",
     },
     captioncustom: {
-      fontFamily: 'Barlow',
+      fontFamily: 'BlenderPro-Medium',
       fontSize: '0.75rem',
+      fontWeight: "500",
     },
     overlinecustom: {
-      fontFamily: 'Barlow',
+      fontFamily: 'BlenderPro-Medium',
       fontSize: '0.75rem',
+      textTransform: 'uppercase',
+      fontWeight: "500",
       marginTop: 5,
     },
   },

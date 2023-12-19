@@ -1,5 +1,5 @@
 ﻿export const config = {
-  to: `info@infinitelabs.com.ar`,
+  to: `jonathanhacklife@gmail.com`,
   cc: `jwildemer@infinitelabs.com.ar`,
   subject: "Meeting",
   body: `¿Que tal? Vi el anuncio y me gustaría saber más sobre ustedes.\n

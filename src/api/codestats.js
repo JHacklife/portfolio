@@ -44,19 +44,26 @@ function compareDates(date1, date2) {
 
 export const getData = async (filtro = "") => {
   try {
-    const response = await axios.get(`https://codestats.net/api/users/${filtro}`)
-    // Retornar los datos de la respuesta
-    console.log("Obteniendo data (API)", response?.data)
-    response.data.dates = quickSort(converToArray(response?.data?.dates), compareDates)
-    response.data.languages = replaceLang(converToArray(response?.data?.languages), {
+    const response = await axios.get(`https://codestats.net/api/users/${filtro}`);
+
+    const replacedLanguages = {
       "JavaScript (JSX)": "ReactJS"
-    })?.sort((a, b) => b.value.xps - a.value.xps)
-    response.data.machines = converToArray(response?.data?.machines)
-    return response?.data
+    }
+
+    const sortedDates = quickSort(converToArray(response?.data?.dates), compareDates);
+    const sortedLanguages = replaceLang(converToArray(response?.data?.languages), replacedLanguages).sort((a, b) => b.value.xps - a.value.xps);
+    const machines = converToArray(response?.data?.machines);
+
+    response.data.dates = sortedDates;
+    response.data.languages = sortedLanguages;
+    response.data.machines = machines;
+
+    console.log("Obteniendo data (API)", response?.data);
+
+    return response?.data;
   } catch (error) {
-    // En caso de error, manejarlo adecuadamente
-    console.error('Error al obtener la data:', error)
-    throw error
+    console.error('Error al obtener la data:', error);
+    throw error;
   }
 }
 

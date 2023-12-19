@@ -4,8 +4,9 @@ import Project from './components/Project'
 import projects from './projects.json'
 
 function Projects() {
+  const projectsNotIncludes = ["Cal Construcciones", "Consecuencia Ventures", "Latin Business Today"]
   return (
-    <Grid id="langsAndTools" className="welcome" justifyContent="center" alignItems="center" container spacing={1} sx={{
+    <Grid id="langsAndTools" className="section gridBackground" justifyContent="center" alignItems="center" container spacing={1} sx={{
       py: 10,
       mt: 0,
       px: {
@@ -16,7 +17,7 @@ function Projects() {
         xl: '20rem', // Tamaño de fuente para dispositivos extra grandes
       }
     }}>
-      {projects.filter((py) => !["Cal Construcciones", "Consecuencia Ventures", "Latin Business Today"].includes(py.Nombre)).map((project, index) => (
+      {projects.filter((py) => !projectsNotIncludes.includes(py.Nombre)).map((project, index) => (
         <Grid item md={4} lg={3} key={index}>
           <Project
             title={project.Nombre}

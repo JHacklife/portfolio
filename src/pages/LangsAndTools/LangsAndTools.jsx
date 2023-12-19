@@ -9,7 +9,7 @@ import CustomLink from '../../components/CustomLink'
 // ICONS
 
 // APIS
-import { sortLanguages, useData, getLevel } from '../../api/codestats'
+import { useData } from '../../api/codestats'
 
 // PROVIDERS
 
@@ -20,9 +20,9 @@ import { LineChart } from '../../components/Graphs'
 import { calcularPromedioMinMax, filterDatesByRange } from './helpers'
 
 function LangsAndTools() {
-  const [dayRangeState, setDayRangeState] = useState(14);
+  const [dayRangeState, setDayRangeState] = useState(14)
 
-  const { data: { dates, languages, new_xp, total_xp } = {} } = useData("jwildemer") ?? {};
+  const { data: { dates, languages, new_xp, total_xp } = {} } = useData("jwildemer") ?? {}
 
   const endDate = new Date() // Fecha actual
   const startDate = new Date().setDate(endDate.getDate() - dayRangeState) // Resta 7 días
@@ -31,7 +31,7 @@ function LangsAndTools() {
 
   return (
     <Stack>
-      <Grid id="langsAndTools" className="welcome" justifyContent="center" alignItems="center" container sx={{
+      <Grid id="langsAndTools" className="section gridBackground" justifyContent="center" alignItems="center" container sx={{
         py: 10,
         px: {
           xs: '2rem', // Tamaño de fuente para dispositivos móviles

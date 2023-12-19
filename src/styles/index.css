@@ -1,22 +1,76 @@
+/* ARAME */
+@font-face {
+  font-family: "Arame";
+  src: local("Arame"),
+    url("../assets/fonts/Arame.ttf");
+}
+
+@font-face {
+  font-family: "Arame Mono";
+  src: local("Arame Mono"),
+    url("../assets/fonts/ArameMono.ttf");
+}
+
+@font-face {
+  font-family: "ArameBold";
+  src: local("ArameBold"),
+    url("../assets/fonts/ArameBold.ttf");
+}
+
+@font-face {
+  font-family: "ArameThin";
+  src: local("ArameThin"),
+    url("../assets/fonts/ArameThin.ttf");
+}
+
+/* MOONGLOSS DISPLAY */
 @font-face {
   font-family: "MoonGlossDisplayMedium";
-  /*Can be any text*/
   src: local("MoonGlossDisplayMedium"),
-    url("./fonts/MoonGlossDisplayMedium.ttf");
+    url("../assets/fonts/MoonGlossDisplayMedium.otf");
 }
 
 @font-face {
   font-family: "MoonGlossDisplayThin";
-  /*Can be any text*/
   src: local("MoonGlossDisplayThin"),
-    url("./fonts/MoonGlossDisplayThin.ttf");
+    url("../assets/fonts/MoonGlossDisplayThin.otf");
 }
 
 @font-face {
   font-family: "MoonGlossDisplayThick";
-  /*Can be any text*/
   src: local("MoonGlossDisplayThick"),
-    url("./fonts/MoonGlossDisplayThick.ttf");
+    url("../assets/fonts/MoonGlossDisplayThick.otf");
+}
+
+/* BLENDER PRO */
+@font-face {
+  font-family: "BlenderPro-Thin";
+  src: local("BlenderPro-Thin"),
+    url("../assets/fonts/BlenderPro-Thin.ttf");
+}
+
+@font-face {
+  font-family: "BlenderPro-Book";
+  src: local("BlenderPro-Book"),
+    url("../assets/fonts/BlenderPro-Book.ttf");
+}
+
+@font-face {
+  font-family: "BlenderPro-Medium";
+  src: local("BlenderPro-Medium"),
+    url("../assets/fonts/BlenderPro-Medium.ttf");
+}
+
+@font-face {
+  font-family: "BlenderPro-Bold";
+  src: local("BlenderPro-Bold"),
+    url("../assets/fonts/BlenderPro-Bold.ttf");
+}
+
+@font-face {
+  font-family: "BlenderPro-Heavy";
+  src: local("BlenderPro-Heavy"),
+    url("../assets/fonts/BlenderPro-Heavy.ttf");
 }
 
 
@@ -77,15 +131,24 @@ html, body {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-.welcome {
+.section {
   min-height: 100vh;
   height: 100%;
   width: 100%;
+  transition: all .5s ease-in-out;
+  animation: slide 10s cubic-bezier(.68, -0.55, .27, 1.55) infinite;
+}
+
+.gridBackground {
   background-image: url("../assets/graphy-dark.png");
   background-position: center;
   background-size: auto;
-  transition: all .5s ease-in-out;
-  animation: slide 10s cubic-bezier(.68, -0.55, .27, 1.55) infinite;
+}
+
+.particleBackground {
+  background-image: url("../assets/Particles.svg");
+  background-position: center;
+  background-size: auto;
 }
 
 .scale {
@@ -100,6 +163,11 @@ html, body {
 
 .textShadow {
   text-shadow: 1px 1px 2em black, 0 0 1em black, 0 0 1em black
+}
+
+.verticalText {
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
 }
 
 /* MEDIAQUERYS */

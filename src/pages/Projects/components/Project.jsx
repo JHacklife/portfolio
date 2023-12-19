@@ -2,17 +2,17 @@
 import { Link, Stack, Typography } from "@mui/material"
 import toolsData from "../../../pages/Projects/tools.json"
 import Atropos from 'atropos/react';
+import Gradient from "../../../components/Gradient";
 
 const Project = ({ img, title = "Proyecto", description = "Descripción del proyecto", type, tools = [], url }) => {
 
   const herramientas = toolsData.filter((tool, index) => tools.includes(tool.nombre))
-  console.log(title, herramientas)
+
   return (
-    <Atropos activeOffset={40} shadowScale={1.05} shadow highlight >
+    <Atropos activeOffset={50} shadowScale={1.05} shadow highlight >
       <Link href={url} target="_blank" sx={{ textDecoration: "none" }}>
         <Stack alignItems="center"
           height="60vh"
-          /* FONDO */
           sx={{
             position: "relative",
             /* border: "1px solid white", */
@@ -22,18 +22,9 @@ const Project = ({ img, title = "Proyecto", description = "Descripción del proy
             bgcolor: "info.main"
           }}>
 
-          {/* GRADIANTE */}
-          <div style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            zIndex: 1,
-            backgroundImage: "linear-gradient(to top, #0c0c0c, transparent)",
-          }} />
-
           <img src={img} alt={title} style={{ width: "100%", height: "100%", objectFit: "cover", position: "absolute" }} />
+          <Gradient />
+
 
           <Stack id="data" p={3} justifyContent="end" alignItems="center" height="100%" sx={{ zIndex: 2 }}
             data-atropos-offset="5">
@@ -48,6 +39,8 @@ const Project = ({ img, title = "Proyecto", description = "Descripción del proy
             <Typography
               variant="subtitle2"
               color="white.main"
+              data-atropos-opacity="0;1"
+
               className="textShadow">
               {type}
             </Typography>

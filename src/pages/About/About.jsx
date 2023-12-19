@@ -17,7 +17,7 @@ import Atropos from 'atropos/react';
 
 function About() {
   return (
-    <Stack id="about" className="welcome" justifyContent="center" alignItems="center">
+    <Stack id="about" className="section gridBackground" justifyContent="center" alignItems="center">
 
       <Grid container spacing={2} sx={{
         px: {
@@ -41,6 +41,8 @@ function About() {
 
         <Grid item md flexWrap="wrap">
           {/* NOMBRE Y APELLIDO */}
+          {/* FEATURE: Aplicar CutOut:
+          https://www.w3schools.com/howto/howto_css_cutout_text.asp */}
           <Stack direction="row" spacing={1} justifyContent="space-between">
             <Typography variant="h3" bgcolor="tertiary.main" color="black.main" align="left" px={1}>Jonathan C. Wildemer</Typography>
             <Square color="grey" />
@@ -50,8 +52,10 @@ function About() {
           <Typography variant="h4custom" color="tertiary.main" align="left" mt={0} width="100%">FULLSTACK DEVELOPER</Typography>
 
           {/* DESCRIPCIÓN */}
-          <Typography color="primary.main" align="justify" my={2}>
-            Desarrollador de software experimentado y apasionado, orientado a proyectos que demandan un pensamiento analítico y conceptual.<br /><br />Mi condición de estudiante me impulsa a mantenerme actualizado con las últimas tecnologías, metodologías de trabajo y tendencias, buscando constantemente oportunidades para aplicar estos conocimientos y mejorar de manera continua.
+          <Typography variant="body1custom" color="primary.main" align="justify" my={2} sx={{ backdropFilter: "blur(2px)" }}>
+            Desarrollador web y mobile con experiencia y pasión por el diseño y la construcción de soluciones tecnológicas innovadoras.
+            <br />
+            Mi enfoque se centra en la creatividad y la ideación de proyectos innovadores, fusionando diseño y desarrollo para ofrecer soluciones web y móviles excepcionales.
           </Typography>
 
           {/* OTROS DATOS */}

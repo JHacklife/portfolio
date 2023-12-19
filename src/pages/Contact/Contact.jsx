@@ -2,35 +2,15 @@
 import { Grid, Typography, Stack, Link } from '@mui/material'
 import mailTo from '../../utils/mail'
 import { Email } from '@mui/icons-material'
+import contactIcons from './ContactIcons'
 
 export default function Contact() {
-  const contactsSites = [
-    {
-      name: "Mail",
-      icon: <Email sx={{ fontSize: "70px", mt: "-10px"}} />,
-      url: mailTo
-    },
-    {
-      name: "LinkedIn",
-      icon: <i style={{ fontSize: "50px"}} className="devicon-linkedin-plain"></i>,
-      url: "https://www.linkedin.com/in/jonathanhacklife/"
-    },
-    {
-      name: "GitLab",
-      icon: <i style={{ fontSize: "50px"}} className="devicon-gitlab-plain"></i>,
-      url: "https://gitlab.com/jonathanhacklife"
-    },
-    {
-      name: "Github",
-      icon: <i style={{ fontSize: "50px"}} className="devicon-github-original"></i>,
-      url: "https://github.com/JHacklife"
-    },
-  ]
+  const contacts = contactIcons({ size: "50" })
   return (
-    <Stack className="welcome" id="langsAndTools" justifyContent="center" alignItems="center" spacing={10} px={2}>
+    <Stack className="section gridBackground" id="langsAndTools" justifyContent="center" alignItems="center" spacing={10} px={2}>
       <Typography variant="h2" gutterBottom>Contacto</Typography>
       <Grid container>
-        {contactsSites.map((contact, index) => <Grid item md className="scale">
+        {contacts.map((contact, index) => <Grid key={index} item md className="scale">
           <Link href={contact?.url} target="_blank" sx={{ textDecoration: "none" }}>
             {contact?.icon}
           </Link>
