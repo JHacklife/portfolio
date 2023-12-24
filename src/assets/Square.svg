@@ -1,0 +1,29 @@
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_833_1276)">
+<path d="M78 0H81V3" stroke="#707070"/>
+<path d="M3 0H0V3" stroke="#707070"/>
+<path d="M3 81H0V78" stroke="#707070"/>
+<line y1="-0.25" x2="80" y2="-0.25" transform="matrix(1.31134e-07 1 1 -1.31134e-07 9.88892 0)" stroke="white" stroke-opacity="0.02" stroke-width="0.5"/>
+<line y1="-0.25" x2="80" y2="-0.25" transform="matrix(1.31134e-07 1 1 -1.31134e-07 18.7778 0)" stroke="white" stroke-opacity="0.02" stroke-width="0.5"/>
+<line y1="-0.25" x2="80" y2="-0.25" transform="matrix(1.31134e-07 1 1 -1.31134e-07 27.6666 0)" stroke="white" stroke-opacity="0.02" stroke-width="0.5"/>
+<line y1="-0.25" x2="80" y2="-0.25" transform="matrix(1.31134e-07 1 1 -1.31134e-07 36.5555 0)" stroke="white" stroke-opacity="0.02" stroke-width="0.5"/>
+<line y1="-0.25" x2="80" y2="-0.25" transform="matrix(1.31134e-07 1 1 -1.31134e-07 45.4445 0)" stroke="white" stroke-opacity="0.02" stroke-width="0.5"/>
+<line y1="-0.25" x2="80" y2="-0.25" transform="matrix(1.31134e-07 1 1 -1.31134e-07 54.3334 0)" stroke="white" stroke-opacity="0.02" stroke-width="0.5"/>
+<line y1="-0.25" x2="80" y2="-0.25" transform="matrix(1.31134e-07 1 1 -1.31134e-07 63.2222 0)" stroke="white" stroke-opacity="0.02" stroke-width="0.5"/>
+<line y1="-0.25" x2="80" y2="-0.25" transform="matrix(2.2304e-07 1 1 -8.633e-08 72.1111 0)" stroke="white" stroke-opacity="0.02" stroke-width="0.5"/>
+<line y1="-0.25" x2="80" y2="-0.25" transform="matrix(1 -1.74846e-07 -1.74846e-07 -1 0 71.1111)" stroke="white" stroke-opacity="0.02" stroke-width="0.5"/>
+<line y1="-0.25" x2="80" y2="-0.25" transform="matrix(1 -1.74846e-07 -1.74846e-07 -1 0 62.2222)" stroke="white" stroke-opacity="0.02" stroke-width="0.5"/>
+<line y1="-0.25" x2="80" y2="-0.25" transform="matrix(1 -1.74846e-07 -1.74846e-07 -1 0 53.3334)" stroke="white" stroke-opacity="0.02" stroke-width="0.5"/>
+<line y1="-0.25" x2="80" y2="-0.25" transform="matrix(1 -1.74846e-07 -1.74846e-07 -1 0 44.4445)" stroke="white" stroke-opacity="0.02" stroke-width="0.5"/>
+<line y1="-0.25" x2="80" y2="-0.25" transform="matrix(1 -1.74846e-07 -1.74846e-07 -1 0 35.5555)" stroke="white" stroke-opacity="0.02" stroke-width="0.5"/>
+<line y1="-0.25" x2="80" y2="-0.25" transform="matrix(1 -1.74846e-07 -1.74846e-07 -1 0 26.6666)" stroke="white" stroke-opacity="0.02" stroke-width="0.5"/>
+<line y1="-0.25" x2="80" y2="-0.25" transform="matrix(1 -1.74846e-07 -1.74846e-07 -1 0 17.7778)" stroke="white" stroke-opacity="0.02" stroke-width="0.5"/>
+<line y1="-0.25" x2="80" y2="-0.25" transform="matrix(1 -2.66751e-07 -1.30041e-07 -1 0 8.88892)" stroke="white" stroke-opacity="0.02" stroke-width="0.5"/>
+</g>
+<path d="M0 0H-0.5V-0.5H0V0ZM80 0.5H0V-0.5H80V0.5ZM0.5 0V80H-0.5V0H0.5Z" fill="white" fill-opacity="0.04" mask="url(#path-1-inside-1_833_1276)"/>
+<defs>
+<clipPath id="clip0_833_1276">
+<path d="M80 0H0V80H80V0Z" fill="white"/>
+</clipPath>
+</defs>
+</svg>
