@@ -4,7 +4,7 @@ import certificatesJSON from './Certificates.json'
 
 export default function Certificates() {
   return (
-    <Stack className="section gridBackground" id="langsAndTools" justifyContent="center" alignItems="center" spacing={5} px={2}>
+    <Stack className="section gridBackground" id="certificates" justifyContent="center" alignItems="center" spacing={5} px={2}>
       <Typography variant="h2" gutterBottom>Certificaciones</Typography>
       <Grid container rowSpacing={5} justifyContent="center">
         {certificatesJSON.map((certificate, index) => (

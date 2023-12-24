@@ -6,7 +6,7 @@ import projects from './projects.json'
 function Projects() {
   const projectsNotIncludes = ["Cal Construcciones", "Consecuencia Ventures", "Latin Business Today"]
   return (
-    <Grid id="langsAndTools" className="section gridBackground" justifyContent="center" alignItems="center" container spacing={1} sx={{
+    <Grid id="projects" className="section gridBackground" justifyContent="center" alignItems="center" container spacing={1} sx={{
       py: 10,
       mt: 0,
       px: {

@@ -24,9 +24,9 @@ const Navbar = () => {
   const navigateTo = useNavigate()
 
   const pages = [
-    { path: '/', label: 'Home', show: true },
+    { path: '#', label: 'Home', show: true },
     { path: '#about', label: 'About', show: true },
-    { path: '#tools', label: 'Lang & Tools', show: true },
+    { path: '#langsAndTools', label: 'Lang & Tools', show: true },
     { path: '#projects', label: 'Projects', show: true },
     { path: '#certificates', label: 'Certificates', show: true },
     { path: '#contact', label: 'Contact', show: true },
@@ -64,54 +64,54 @@ const Navbar = () => {
   }
 
   return (
-    <HideOnScroll>
-      <AppBar position="fixed" id="navbar" >
-        <Toolbar variant="dense">
-          {/* MOBILE */}
-          {/* LOGO */}
-          <Stack direction="row" justifyContent="space-between" spacing={1} sx={{ flexGrow: 1, display: { md: 'none' } }}>
-            <Logo imgUrl={logoLabs} alt="logo" sx={{ mr: 2 }} />
-            <Box>
-              <IconButton onClick={handleOpenNavMenu}
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                color="inherit">
-                <MenuIcon />
-              </IconButton>
-              <Menu id="menu-appbar"
-                anchorEl={anchorElNav}
-                anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
-                keepMounted
-                transformOrigin={{ vertical: 'top', horizontal: 'left' }}
-                open={Boolean(anchorElNav)}
-                onClose={handleCloseNavMenu}
-                sx={{ display: { xs: 'block', md: 'none' } }}>
-                {pages?.filter(page => page?.show).map((page) => (
-                  <MenuItem key={page.label} onClick={() => navigateTo(page.path)}>
-                    <Link href={page.path}>
-                      <Typography textAlign="center">{page.label}</Typography>
-                    </Link>
+    /* <HideOnScroll> */
+    <AppBar position="fixed" id="navbar" >
+      <Toolbar variant="dense">
+        {/* MOBILE */}
+        {/* LOGO */}
+        <Stack direction="row" justifyContent="space-between" spacing={1} sx={{ flexGrow: 1, display: { md: 'none' } }}>
+          <Logo imgUrl={logoLabs} alt="logo" sx={{ mr: 2 }} />
+          <Box>
+            <IconButton onClick={handleOpenNavMenu}
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              color="inherit">
+              <MenuIcon />
+            </IconButton>
+            <Menu id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+              keepMounted
+              transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              sx={{ display: { xs: 'block', md: 'none' } }}>
+              {pages?.filter(page => page?.show).map((page) => (
+                <Link key={page.label} href={page.path} sx={{ textDecoration: 'none' }}>
+                  <MenuItem sx={{ justifyContent: 'right' }}>
+                    <Typography>{page.label}</Typography>
                   </MenuItem>
-                ))}
-              </Menu>
-            </Box>
-          </Stack>
+                </Link>
+              ))}
+            </Menu>
+          </Box>
+        </Stack>
 
-          {/* DESKTOP */}
-          {/* LOGO */}
+        {/* DESKTOP */}
+        {/* LOGO */}
 
-          <Logo imgUrl={logoLabs} alt="logo" sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }} />
-          <Stack direction="row" justifyContent="start" spacing={1} sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages?.filter(page => page?.show).map((page, index) => (
-              <Button key={index}
-                className="scale"
-                onClick={() => navigateTo(page.path)}><Typography variant="body1">{page.label}</Typography></Button>
-            ))}
-          </Stack>
+        <Logo imgUrl={logoLabs} alt="logo" sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }} />
+        <Stack direction="row" justifyContent="start" spacing={1} sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          {pages?.filter(page => page?.show).map((page, index) => (
+            <Button key={index} className="scale" href={page.path}>
+              <Typography variant="body1">{page.label}</Typography>
+            </Button>
+          ))}
+        </Stack>
 
-          {/* <Box sx={{ flexGrow: 0 }}>
+        {/* <Box sx={{ flexGrow: 0 }}>
           <Tooltip title="Abrir ajustes">
             <Button aria-controls="menu-appbar" aria-haspopup="true" variant="contained" onClick={handleOpenUserMenu}>
               <Stack direction="row" alignItems="center" spacing={1}>
@@ -137,9 +137,9 @@ const Navbar = () => {
           </Menu>
         </Box> */}
 
-        </Toolbar>
-      </AppBar>
-    </HideOnScroll>
+      </Toolbar>
+    </AppBar >
+    /* </HideOnScroll> */
   )
 }
 
