@@ -52,7 +52,7 @@ function About() {
           <Typography variant="h4custom" color="tertiary.main" align="left" mt={0} width="100%">FULLSTACK DEVELOPER</Typography>
 
           {/* DESCRIPCIÓN */}
-          <Typography variant="body1custom" color="primary.main" align="justify" my={2} sx={{ backdropFilter: "blur(2px)" }}>
+          <Typography variant="body1custom" color="primary.main" align="justify" my={2} sx={{ backdropFilter: "blur(3px)" }}>
             Desarrollador web y mobile con experiencia y pasión por el diseño y la construcción de soluciones tecnológicas innovadoras.
             <br />
             Mi enfoque se centra en la creatividad y la ideación de proyectos innovadores, fusionando diseño y desarrollo para ofrecer soluciones web y móviles excepcionales.
