@@ -68,6 +68,7 @@ const Navbar = () => {
     <AppBar position="fixed" id="navbar" >
       <Toolbar variant="dense">
         {/* MOBILE */}
+
         {/* LOGO */}
         <Stack direction="row" justifyContent="space-between" spacing={1} sx={{ flexGrow: 1, display: { md: 'none' } }}>
           <Logo imgUrl={logoLabs} alt="logo" sx={{ mr: 2 }} />
@@ -100,13 +101,15 @@ const Navbar = () => {
         </Stack>
 
         {/* DESKTOP */}
-        {/* LOGO */}
 
+        {/* LOGO */}
         <Logo imgUrl={logoLabs} alt="logo" sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }} />
+
+        {/* MENU */}
         <Stack direction="row" justifyContent="start" spacing={1} sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
           {pages?.filter(page => page?.show).map((page, index) => (
             <Button key={index} className="scale" href={page.path}>
-              <Typography variant="body1">{page.label}</Typography>
+              <Typography variant="body1" color="text.primary">{page.label}</Typography>
             </Button>
           ))}
         </Stack>

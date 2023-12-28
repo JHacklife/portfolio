@@ -246,9 +246,9 @@ const theme = createTheme({
       dark: '#000'
     },
     grey: {
-      light: '#999999',
-      main: '#707070',
-      dark: '#444444'
+      light: '#2e2e2e',
+      main: '#171717',
+      dark: '#0d0d0d'
     }
   },
 })
