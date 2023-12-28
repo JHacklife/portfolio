@@ -18,7 +18,7 @@
       "PHP",
       "React"
     ],
-    "Tipo": "Mobile",
+    "Tipo": "Web",
     "Subtitulo": "Herramienta para gestionar proyectos de arquitectura.",
     "Descripcion": "B3Gestión es una herramienta diseñada específicamente para ayudar a los arquitectos a gestionar y organizar proyectos relacionados con el diseño y construcción de hogares. Esta aplicación proporciona funcionalidades como la creación de listas de tareas, seguimiento de presupuestos, gestión de recursos y colaboración entre miembros del equipo. Con el gestor de hogares, los arquitectos pueden tener un control más efectivo sobre sus proyectos, optimizando la eficiencia y garantizando la entrega exitosa de los hogares diseñados.",
     "Link": "https://b3gestion.netlify.app/",
@@ -31,9 +31,9 @@
       "Node",
       "Firebase"
     ],
-    "Tipo": "Hardware",
-    "Subtitulo": "Arbusta's Keyoard, Alternative, Simple, Helpful and Innovative",
-    "Descripcion": "Ergonómico teclado portátil diseñado y programado para Mercadolibre. Capaz de agilizar, facilitar y unificar las tareas de sus proyectos.",
+    "Tipo": "Web",
+    "Subtitulo": "Ley de Bosques Nativos en Argentina y su protección",
+    "Descripcion": "Desde Fundación Vida Silvestre Argentina trabajan apoyando y monitoreando la Ley de Bosques Nativos desde su diseño, hasta su implementación, así como también evaluando su funcionamiento y propiciando propuestas de mejora.",
     "Link": "https://leydebosques.vidasilvestre.org.ar/",
     "Imagen": "https://i.ibb.co/ZxgGJVc/2023-11-13-02-31-20-Clipboard.png"
   },
@@ -55,7 +55,7 @@
       "C++"
     ],
     "Tipo": "Hardware",
-    "Subtitulo": "Arbusta's Keyoard, Alternative, Simple, Helpful and Innovative",
+    "Subtitulo": "Arbusta + Mercado Libre = Custom Keyboard",
     "Descripcion": "Ergonómico teclado portátil diseñado y programado para Mercadolibre. Capaz de agilizar, facilitar y unificar las tareas de sus proyectos.",
     "Link": "https://gitlab.com/jonathanhacklife/akashi",
     "Imagen": "https://i.ibb.co/gT5WwXH/b6772edf09d07da18b11f2f5c98b8a17.jpg"

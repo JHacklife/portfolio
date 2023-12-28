@@ -73,7 +73,6 @@
     url("../assets/fonts/BlenderPro-Heavy.ttf");
 }
 
-
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -104,10 +103,10 @@
   text-align: center;
 }
 
-
 html, body {
   scroll-behavior: smooth;
   margin: 0;
+  font-size: 100%;
   display: flex;
   place-items: center;
   width: 100%;
@@ -139,6 +138,7 @@ html, body {
   animation: slide 10s cubic-bezier(.68, -0.55, .27, 1.55) infinite;
 }
 
+/* BACKGROUNDS */
 .gridBackground {
   background-image: url("../assets/Square.svg");
   background-position: center;
@@ -151,18 +151,18 @@ html, body {
   background-size: auto;
 }
 
-.scale {
-  scale: 1;
-  transition: scale 0.25s !important;
-}
-
 .scale:hover {
   scale: 1.1;
   transition: scale 0.25s !important;
 }
 
+/* EFFECTS */
 .textShadow {
   text-shadow: 1px 1px 2em black, 0 0 1em black, 0 0 1em black
+}
+
+.blur {
+  backdrop-filter: blur(3px);
 }
 
 .verticalText {
@@ -170,23 +170,12 @@ html, body {
   transform: rotate(180deg);
 }
 
-/* MEDIAQUERYS */
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-}
-
-
 /* ANIMACIONES */
+.scale {
+  scale: 1;
+  transition: scale 0.25s !important;
+}
+
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -292,5 +281,19 @@ html, body {
 
   to {
     background-position: -400px -400px;
+  }
+}
+
+/* MEDIAQUERYS */
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
   }
 }

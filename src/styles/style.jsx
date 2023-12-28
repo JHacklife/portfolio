@@ -4,26 +4,31 @@ const theme = createTheme({
   typography: {
     fontFamily: 'Arame, Blender Pro, Arial, sans-serif',
     h1: {
+      fontSize: "4.210rem",
       "@media (max-width: 600px)": {
-        fontSize: "4rem", // Tamaño de fuente para dispositivos pequeños
+        fontSize: "4rem", // Tamaño para dispositivos pequeños
       },
     },
     h2: {
+      fontSize: "3.158rem",
       "@media (max-width: 600px)": {
         fontSize: "3rem",
       }
     },
     h3: {
+      fontSize: "2.369rem",
       "@media (max-width: 600px)": {
         fontSize: "2rem",
       }
     },
     h4: {
+      fontSize: "1.777rem",
       "@media (max-width: 600px)": {
         fontSize: "1.4rem",
       },
     },
     h5: {
+      fontSize: "1.333rem",
       letterSpacing: "2px",
       "@media (max-width: 600px)": {
         fontSize: "1.5rem",
@@ -57,6 +62,7 @@ const theme = createTheme({
     button: {
     },
     caption: {
+      fontSize: "0.750rem",
       /* fontFamily: 'BlenderPro-Medium',
       textTransform: 'uppercase', */
     },
@@ -67,7 +73,7 @@ const theme = createTheme({
       fontSize: '6rem',
       fontWeight: "300",
       "@media (max-width: 600px)": {
-        fontSize: "4rem", // Tamaño de fuente para dispositivos pequeños
+        fontSize: "4rem", // Tamaño para dispositivos pequeños
       },
       marginTop: 3,
     },
@@ -191,13 +197,16 @@ const theme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: '#FFFFFF',
+      main: '#103F7E',
+      dark: '#E6E6E6',
     },
     secondary: {
-      main: '#0D0D0D',
+      main: '#E6E6E6',
+      dark: '#000',
     },
     tertiary: {
-      main: '#56CCF2',
+      main: '#FDA312',
+      dark: '#000',
     },
     background: {
       default: '#000',
@@ -226,14 +235,15 @@ const theme = createTheme({
     warning: {
       main: '#F2994A',
     },
-    black: {
-      main: '#000000',
-    },
     white: {
       main: '#FFFFFF',
     },
     dark: {
       main: '#0D0D0D'
+    },
+    text: {
+      main: '#FFF',
+      dark: '#000'
     },
     grey: {
       light: '#999999',
