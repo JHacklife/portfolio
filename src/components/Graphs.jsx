@@ -136,6 +136,7 @@ export const DoughnutChart = (props) => {
   )
 }
 
+
 /**
  * Renderiza un gráfico de línea.
  * @param {Array} valueX - Los valores del eje x.
@@ -154,6 +155,8 @@ export const DoughnutChart = (props) => {
 export const LineChart = ({
   valueX,
   valueY,
+  labelX,
+  labelY,
   responsive,
   legend,
   maxHeight,
@@ -162,6 +165,7 @@ export const LineChart = ({
   aspectRatio,
   height,
   viewGrid,
+  scaleGuide,
   datasets = [{
     label: 'Random Data',
     data: valueY,
@@ -176,6 +180,13 @@ export const LineChart = ({
   }
 
   const options = {
+    tooltips: {
+      position: 'nearest',
+    },
+    interaction: {
+      intersect: false,
+      mode: 'index',
+    },
     plugins: {
       legend: legend
     },
@@ -189,15 +200,34 @@ export const LineChart = ({
       x: {
         stacked: true,
         display: true,
+        title: {
+          display: labelX,
+          text: labelX
+        },
         grid: {
           display: viewGrid,
         }
       },
       y: {
         display: true,
+        title: {
+          display: labelY,
+          text: labelY
+        },
         grid: {
           display: viewGrid,
-        }
+        },
+        ticks: {
+          display: true,
+          callback: function (value, index, values) {
+            const item = scaleGuide?.find(item => item.value == value)
+            if (item) {
+              return item.name
+            }
+            return value
+          }
+        },
+
       },
     },
   }

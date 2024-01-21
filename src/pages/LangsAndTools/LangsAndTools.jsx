@@ -17,7 +17,7 @@ import { useData } from '../../api/codestats'
 import { LineChart } from '../../components/Graphs'
 import abbreviateNumber from '../../utils/abbreviateNumber'
 import LangExp from './components/LangExp'
-import { calcularPromedioMinMax, filterDatesByRange } from './helpers'
+import { calcularMedia, calcularPromedioMinMax, filterDatesByRange } from './helpers'
 
 function LangsAndTools() {
   const theme = useTheme();
@@ -30,7 +30,7 @@ function LangsAndTools() {
   const endDate = new Date() // Fecha actual
   const startDate = new Date().setDate(endDate.getDate() - dayRangeState) // Resta 7 días
 
-  const last7Days = filterDatesByRange(dates, startDate, endDate)
+  const lastNDays = filterDatesByRange(dates, startDate, endDate)
 
   return (
     <Stack id="langsAndTools" className="section gridBackground" spacing={5} sx={{
@@ -110,37 +110,61 @@ function LangsAndTools() {
               <Button variant="outlined" color="secondary" onClick={() => setDayRangeState(30)}>Mensual</Button>
             </Grid>
             <Grid item>
+              <Button variant="outlined" color="secondary" onClick={() => setDayRangeState(90)}>Trimestral</Button>
+            </Grid>
+            <Grid item>
               <Button variant="outlined" color="secondary" onClick={() => setDayRangeState(365)}>Anual</Button>
             </Grid>
           </Grid>
         </Grid>
 
         {/* ACTIVIDAD ACTUAL */}
-        <Grid item>
-          <Typography className="scale" variant="h5" bgcolor="primary.main" color="primary.dark" align="left" px={1} width="fit-content">
-            Actividad de hoy <Visible condition={new_xp != 0}>[+{abbreviateNumber(new_xp)}]</Visible>
-          </Typography>
-        </Grid>
+        <Visible condition={new_xp != 0}>
+          <Grid item>
+            <Typography className="scale" variant="h5" bgcolor="primary.main" color="primary.dark" align="left" px={1} width="fit-content">
+              Actividad de hoy [+{abbreviateNumber(new_xp)}]
+            </Typography>
+          </Grid>
+        </Visible>
       </Grid>
 
       <LineChart label="Actividad" responsive
-        height={!isMobile ? "70px" : "300px"}
+        height={!isMobile ? "100px" : "300px"}
         mantainAspectRatio={false}
-        valueX={last7Days?.map(date => date?.name)}
-        valueY={last7Days?.map(date => date?.value)}
+        valueX={lastNDays?.map(date => date?.name)}
+        valueY={lastNDays?.map(date => date?.value)}
         datasets={[{
           label: `Actividad (xp)`,
-          data: last7Days?.map(date => date?.value),
+          data: lastNDays?.map(date => date?.value),
+          borderWidth: 2,
+          pointHoverRadius: dayRangeState >= 90 ? 10 : 15,
+          pointRadius: dayRangeState >= 90 ? 2 : 8,
+          pointStyle: dayRangeState >= 90 ? 'circle' : 'rectRot',
+          tension: 0.1
+        },
+        /* {
+          label: `Logarítmica`,
+          data: lastNDays?.map(date => Math.log(date?.value) * 1000), // applying logarithmic scale to the data and converting to thousands
           borderWidth: 2,
           pointRadius: 8,
-          pointStyle: 'rectRot',
-        }, {
+          pointStyle: false,
+          tension: 0.5
+        }, */
+        /* {
           label: `Promedio`,
-          data: Array(last7Days?.length).fill(calcularPromedioMinMax(last7Days?.map(date => date?.value))),
+          data: Array(lastNDays?.length).fill(calcularPromedioMinMax(lastNDays?.map(date => date?.value))),
           borderWidth: 2,
           pointRadius: 8,
-          pointStyle: 'cross',
-        }]}
+          pointStyle: false,
+        }, */
+        {
+          label: `Media`,
+          data: Array(lastNDays?.length).fill(calcularMedia(lastNDays?.map(date => date?.value))),
+          borderWidth: 2,
+          pointRadius: 8,
+          pointStyle: false,
+        }
+        ]}
       />
     </Stack>
   )

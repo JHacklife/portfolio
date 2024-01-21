@@ -115,7 +115,7 @@ function About() {
 
             <Grid item xs={12} md={4}>
               <CustomData title="Reunión" custom={
-                <Typography variant="caption" color="text.main" align="left" mt={0.5} lineHeight={1.2}>Agendar una <Link href="https://calendly.com/jonathanhacklife/1to1/" target="_blank" color="tertiary.main">reunión conmigo</Link></Typography>
+                <Typography variant="caption" color="text.main" align="left" mt={0.5} lineHeight={1.2}>Agenda una <Link href="https://calendly.com/jonathanhacklife/1to1/" target="_blank" color="tertiary.main">reunión conmigo</Link></Typography>
               } />
             </Grid>
           </Grid>
