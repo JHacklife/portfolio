@@ -12,7 +12,7 @@ export default function Contact() {
       <Typography variant="h2" gutterBottom>Contáctame por:</Typography>
       <img src={qrcode} height="200px" />
       <Grid container>
-        {contacts.map((contact, index) => <Grid key={index} item md className="scale">
+        {contacts.map((contact, index) => <Grid key={index} item xs sm md lg xl className="scale">
           <Link href={contact?.url} target="_blank" color="secondary.main" sx={{ textDecoration: "none" }}>
             {contact?.icon}
           </Link>

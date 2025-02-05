@@ -13,6 +13,7 @@ const Project = ({ img, title = "Proyecto", description = "Descripción del proy
       <Link href={url} target="_blank" sx={{ textDecoration: "none" }}>
         <Stack alignItems="center"
           height="60vh"
+          
           sx={{
             position: "relative",
             /* border: "1px solid white", */
@@ -56,7 +57,7 @@ const Project = ({ img, title = "Proyecto", description = "Descripción del proy
               justifyContent="center"
               spacing={1}
               border="1px solid cyan"
-              sx={{ backdropFilter: "blur(2px)", borderRadius: "10px", p: 1 }}>
+              sx={{ backdropFilter: "blur(2px)", borderRadius: "10px", m: 2, p: 1 }}>
               {herramientas.map((tool, index) => <Link key={index} href={tool.url} target="_blank" sx={{ textDecoration: "none" }} className="scale">
                 <i className={`${tool.icono}`} style={{ fontSize: "2rem" }}></i>
               </Link>)}

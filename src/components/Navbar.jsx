@@ -106,7 +106,7 @@ const Navbar = () => {
         <Logo imgUrl={logoLabs} alt="logo" sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }} />
 
         {/* MENU */}
-        <Stack direction="row" justifyContent="start" spacing={1} sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+        <Stack direction="row" justifyContent="end" spacing={1} sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
           {pages?.filter(page => page?.show).map((page, index) => (
             <Button key={index} className="scale" href={page.path}>
               <Typography variant="body1" color="text.primary">{page.label}</Typography>

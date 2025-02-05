@@ -21,7 +21,7 @@ function Projects() {
         sm: '1.2rem', // Tamaño para dispositivos pequeños
         md: 3, // Tamaño para dispositivos medianos
         lg: 10, // Tamaño para dispositivos grandes
-        xl: '20rem', // Tamaño para dispositivos extra grandes
+        xl: '15rem', // Tamaño para dispositivos extra grandes
       },
     }}>
 
@@ -34,11 +34,11 @@ function Projects() {
       </Stack>
 
       {/* PROYECTOS */}
-      <Grid justifyContent="center" alignItems="center" container spacing={1}>
+      <Grid container justifyContent="center" alignItems="center" spacing={1}>
         {projects
           .filter(({ Nombre }) => !projectsNotIncludes.includes(Nombre))
           .map(({ Nombre, Tipo, Tags, Link, Subtitulo, Imagen }, index) => (
-            <Grid item md={4} lg={3} key={index}>
+            <Grid item xs={12} sm={6} md={6} lg={4} xl={3} key={index}>
               <Project
                 title={Nombre}
                 type={Tipo}

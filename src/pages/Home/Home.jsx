@@ -35,7 +35,7 @@ function Home() {
           </Stack>
 
           <Stack alignItems="center" spacing={1} height="auto">
-            {contacts.map((contact, index) => <Grid key={index} item md className="scale">
+            {contacts.map((contact, index) => <Grid key={index} item xs sm md lg xl className="scale">
               <Link href={contact?.url} target="_blank" color="secondary.main" sx={{ textDecoration: "none" }}>
                 {contact?.icon}
               </Link>

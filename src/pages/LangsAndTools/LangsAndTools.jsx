@@ -17,11 +17,11 @@ import { useData } from '../../api/codestats'
 import { LineChart } from '../../components/Graphs'
 import abbreviateNumber from '../../utils/abbreviateNumber'
 import LangExp from './components/LangExp'
-import { calcularMedia, calcularPromedioMinMax, filterDatesByRange } from './helpers'
+import { calcularMedia as calcularPromedio, calcularPromedioMinMax as calcularMediaMinMax, filterDatesByRange } from './helpers'
 
 function LangsAndTools() {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('lg'));
 
   const [dayRangeState, setDayRangeState] = useState(14)
 
@@ -40,7 +40,7 @@ function LangsAndTools() {
         sm: '1.2rem', // Tamaño para dispositivos pequeños
         md: '3rem', // Tamaño para dispositivos medianos
         lg: '5rem', // Tamaño para dispositivos grandes
-        xl: '20rem', // Tamaño para dispositivos extra grandes
+        xl: '15rem', // Tamaño para dispositivos extra grandes
       },
     }}>
 
@@ -77,7 +77,7 @@ function LangsAndTools() {
 
       {/* LENGUAJES */}
       <Grid container justifyContent="space-between" spacing={1}>
-        {languages?.slice(0, !isMobile ? 5 : 6).map((lang, index) => <Grid key={index} item xs={6} sm={6} md={2}>
+        {languages?.slice(0, !isMobile ? 5 : 6).map((lang, index) => <Grid key={index} item xs={6} sm={6} md={4} lg xl>
           <LangExp lang={lang?.name} exp={lang?.value?.xps} newExp={lang?.value?.new_xps} />
         </Grid>)}
       </Grid>
@@ -91,37 +91,37 @@ function LangsAndTools() {
       }} alignItems="center">
 
         {/* ACTIVIDAD TOTAL */}
-        <Grid item>
-          <Typography className="scale" variant="h5" bgcolor="background.default" color="primary.main" align="left" px={1} width="fit-content">
+        <Grid item xs sm md lg xl>
+          <Typography className="scale" variant="h5" color="primary.main" px={1} width="fit-content">
             Actividad total <Visible condition={total_xp != 0}>[{abbreviateNumber(total_xp)}]</Visible>
           </Typography>
         </Grid>
 
         {/* BOTONERA */}
-        <Grid item>
+        <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
           <Grid container gap={1}>
-            <Grid item>
-              <Button variant="outlined" color="secondary" onClick={() => setDayRangeState(7)}>Semanal</Button>
+            <Grid item xs sm md lg xl>
+              <Button variant="outlined" fullWidth color="secondary" onClick={() => setDayRangeState(7)}>Semanal</Button>
             </Grid>
-            <Grid item>
-              <Button variant="outlined" color="secondary" onClick={() => setDayRangeState(14)}>Quincenal</Button>
+            <Grid item xs sm md lg xl>
+              <Button variant="outlined" fullWidth color="secondary" onClick={() => setDayRangeState(14)}>Quincenal</Button>
             </Grid>
-            <Grid item>
-              <Button variant="outlined" color="secondary" onClick={() => setDayRangeState(30)}>Mensual</Button>
+            <Grid item xs sm md lg xl>
+              <Button variant="outlined" fullWidth color="secondary" onClick={() => setDayRangeState(30)}>Mensual</Button>
             </Grid>
-            <Grid item>
-              <Button variant="outlined" color="secondary" onClick={() => setDayRangeState(90)}>Trimestral</Button>
+            <Grid item xs sm md lg xl>
+              <Button variant="outlined" fullWidth color="secondary" onClick={() => setDayRangeState(90)}>Trimestral</Button>
             </Grid>
-            <Grid item>
-              <Button variant="outlined" color="secondary" onClick={() => setDayRangeState(365)}>Anual</Button>
+            <Grid item xs sm md lg xl>
+              <Button variant="outlined" fullWidth color="secondary" onClick={() => setDayRangeState(365)}>Anual</Button>
             </Grid>
           </Grid>
         </Grid>
 
         {/* ACTIVIDAD ACTUAL */}
         <Visible condition={new_xp != 0}>
-          <Grid item>
-            <Typography className="scale" variant="h5" bgcolor="primary.main" color="primary.dark" align="left" px={1} width="fit-content">
+          <Grid item xs sm md lg xl>
+            <Typography className="scale" variant="h5" bgcolor="primary.main" color="primary.dark" px={1} width="fit-content">
               Actividad de hoy [+{abbreviateNumber(new_xp)}]
             </Typography>
           </Grid>
@@ -129,8 +129,10 @@ function LangsAndTools() {
       </Grid>
 
       <LineChart label="Actividad" responsive
-        height={!isMobile ? "100px" : "300px"}
+        height={!isMobile ? "120px" : "300px"}
         mantainAspectRatio={false}
+        labelX="Días"
+        labelY="Actividad (xp)"
         valueX={lastNDays?.map(date => date?.name)}
         valueY={lastNDays?.map(date => date?.value)}
         datasets={[{
@@ -151,15 +153,15 @@ function LangsAndTools() {
           tension: 0.5
         }, */
         /* {
-          label: `Promedio`,
-          data: Array(lastNDays?.length).fill(calcularPromedioMinMax(lastNDays?.map(date => date?.value))),
+          label: `Media`,
+          data: Array(lastNDays?.length).fill(calcularMediaMinMax(lastNDays?.map(date => date?.value))),
           borderWidth: 2,
           pointRadius: 8,
           pointStyle: false,
         }, */
         {
-          label: `Media`,
-          data: Array(lastNDays?.length).fill(calcularMedia(lastNDays?.map(date => date?.value))),
+          label: `Promedio`,
+          data: Array(lastNDays?.length).fill(calcularPromedio(lastNDays?.map(date => date?.value))),
           borderWidth: 2,
           pointRadius: 8,
           pointStyle: false,

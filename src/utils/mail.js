@@ -1,9 +1,8 @@
 ﻿export const config = {
   to: `jonathanhacklife@gmail.com`,
-  cc: `jwildemer@infinitelabs.com.ar`,
   subject: "Meeting",
-  body: `¿Que tal? Vi el anuncio y me gustaría saber más sobre ustedes.\n
-  Tengo interés en conocer sus propuestas y organizar una reunión esta semana para llevar a cabo un proyecto juntos.
+  body: `¿Que tal? Vi tu portfolio y me gustaría saber más sobre vos.\n
+  Tengo interés en conocerte y organizar una reunión esta semana para llevar a cabo un proyecto juntos.
   \n\n¡Saludos!`,
 }
 

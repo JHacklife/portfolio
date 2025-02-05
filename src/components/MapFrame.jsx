@@ -39,14 +39,14 @@ export default function MapFrame({ location, height = "400", width = "100%", map
 	return <>
 		<Grid container>
 			{/* MAPA */}
-			{map && <Grid item sm xs={12} md>
+			{map && <Grid item xs={12} sm md lg xl>
 				<iframe width={width} height={height} frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0"
 					src={`https://www.google.com/maps?q=${location || address ? encodeURIComponent(location || address) : ""}&output=embed`}>
 				</iframe>
 			</Grid>}
 
 			{/* BOTH */}
-			{map && streetView && latitude && longitude && <Grid item sm xs={12} md>
+			{map && streetView && latitude && longitude && <Grid item xs={12} sm md lg xl>
 				<iframe
 					title="Google Street View"
 					width={width}
@@ -61,7 +61,7 @@ export default function MapFrame({ location, height = "400", width = "100%", map
 			{/* STREETVIEW */}
 			{(streetView && !map)
 				? latitude && longitude ?
-					<Grid item sm xs={12} md>
+					<Grid item xs={12} sm md lg xl>
 						<iframe
 							title="Google Street View"
 							width={width}
@@ -72,7 +72,7 @@ export default function MapFrame({ location, height = "400", width = "100%", map
 							allowFullScreen
 						></iframe>
 					</Grid>
-					: <Grid item sm xs={12} md>
+					: <Grid item xs={12} sm md lg xl>
 						<iframe width={width} height={height} frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0"
 							src={`https://www.google.com/maps?q=${encodeURIComponent(address || location)}&output=embed`}>
 						</iframe>

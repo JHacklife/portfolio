@@ -1,6 +1,6 @@
 ﻿import { Stack } from "@mui/material";
 import useScrollToSection from "../hook/useScrollToSection";
-import About from "./About/About";
+import About from "./About/AboutMe";
 import Certificates from "./Certificates/Certificates";
 import Contact from "./Contact/Contact";
 import Home from "./Home/Home";
