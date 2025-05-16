@@ -26,7 +26,7 @@ export default function RouterManager() {
             <KeyboardArrowUp />
           </Fab>
         </ScrollTop>
-        {/* <Copyright name="Infinite Labs" url="https://www.infinitelabs.com.ar" /> */}
+        {/* <Copyright name="Infinite Labs" url="https://www.infinitelabs.tech" /> */}
       </ThemeProvider>
     </QueryClientProvider>
   )

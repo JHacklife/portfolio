@@ -50,7 +50,7 @@ function About() {
           </Stack>
 
           {/* CARGO */}
-          <Typography variant="h4custom" color="secondary.main" align="left" mt={0} width="100%">FULLSTACK DEVELOPER en <CustomLink fuente="http://infinitelabs.com.ar/" target="_blank"><Typography variant="h4" component="span">INFINITE LABS</Typography></CustomLink></Typography>
+          <Typography variant="h4custom" color="secondary.main" align="left" mt={0} width="100%">FULLSTACK DEVELOPER en <CustomLink fuente="http://infinitelabs.tech/" target="_blank"><Typography variant="h4" component="span">INFINITE LABS</Typography></CustomLink></Typography>
 
           {/* DESCRIPCIÓN */}
           <Grid item xs={12} sm={12} md={12} lg={12} xl>
