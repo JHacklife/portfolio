@@ -1,7 +1,7 @@
 ﻿import React from 'react'
 
 // UI COMPONENTS
-import { Grid, Link, Stack, Typography } from '@mui/material'
+import { Button, Grid, Link, Stack, Typography } from '@mui/material'
 import profileIMG from '../../assets/profile.jpg'
 import Square from '../../components/Adornos'
 import CustomData from './components/CustomData'
@@ -55,8 +55,12 @@ function About() {
           {/* DESCRIPCIÓN */}
           <Grid item xs={12} sm={12} md={12} lg={12} xl>
             <Typography variant="body1custom" className="blur" color="text.main" align="justify" my={2}>
-              Desarrollador web y mobile con experiencia y pasión por el diseño y la construcción de soluciones tecnológicas innovadoras.
-              Mi enfoque se centra en la creatividad y la ideación de proyectos innovadores, fusionando diseño y desarrollo para ofrecer soluciones web y móviles excepcionales.
+              Desarrollador web y líder técnico con experiencia en coordinación y
+              ejecución de proyectos digitales. También, emprendedor creativo
+              especializado en el desarrollo de aplicaciones web y móviles, con interés
+              en tecnología wearable e innovación. Capacitado para planificar, estimar
+              y supervisar tareas complejas, aportando soluciones ágiles y liderando
+              equipos hacia la entrega exitosa de productos de alta calidad.
             </Typography>
           </Grid>
 
@@ -118,9 +122,12 @@ function About() {
               </Grid>
             </Grid>
           </Grid>
+          <Grid item xs={12} sm={12} md={12} lg={12} xl={12} mt={2} align="left">
+            <CustomLink fuente="https://self.so/jonathan-wildemer" target="_blank" color="tertiary" dense={false}>Descargar CV</CustomLink>
+          </Grid>
         </Grid>
-
       </Grid>
+
     </Stack>
   )
 }
