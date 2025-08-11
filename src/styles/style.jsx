@@ -127,7 +127,7 @@ const theme = createTheme({
     },
     body1custom: {
       fontFamily: 'BlenderPro-Medium',
-      textTransform: 'uppercase',
+      //textTransform: 'uppercase',
       "@media (max-width: 600px)": {
         fontSize: "1.1rem",
       },

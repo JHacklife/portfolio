@@ -30,8 +30,8 @@ function Home() {
 
         <Stack direction="row" justifyContent="space-between" width="100%" px={5} sx={{ position: "absolute", bottom: "0px" }}>
           <Stack alignItems="center" spacing={1} height="auto">
-            <Link href={mailTo} target="_blank" variant="body1custom" className="verticalText" color="secondary.main" sx={{ textDecoration: "none" }}>{config?.to}</Link>
-            <Divider orientation="vertical" color="white" sx={{ borderWidth: "1px" }} />
+            <Link href={mailTo} target="_blank" variant="body1" className="verticalText" color="secondary.main" sx={{ textDecoration: "none" }}>{config?.to}</Link>
+            <Divider orientation="vertical" color="white" sx={{ height: "100px", borderWidth: "1px" }} />
           </Stack>
 
           <Stack alignItems="center" spacing={1} height="auto">
@@ -41,7 +41,7 @@ function Home() {
               </Link>
             </Grid>)}
 
-            <Divider orientation="vertical" color="white" sx={{ borderWidth: "1px" }} />
+            <Divider orientation="vertical" color="white" sx={{ height: "100px", borderWidth: "1px" }} />
           </Stack>
         </Stack>
       </Stack>

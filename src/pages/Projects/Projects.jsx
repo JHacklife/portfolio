@@ -6,12 +6,11 @@ import Square from '../../components/Adornos'
 
 function Projects() {
   const projectsNotIncludes = [
-    "Cal Construcciones",
     "Consecuencia Ventures",
-    "Latin Business Today",
-    "Mail Template",
+    //"Latin Business Today",
+    //"Mail Template",
     "InventApp",
-    "Codestats App"
+    //"Codestats App"
   ]
   return (
     <Stack id="projects" className="section gridBackground" gap={5} sx={{

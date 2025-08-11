@@ -54,7 +54,7 @@ function About() {
 
           {/* DESCRIPCIÓN */}
           <Grid item xs={12} sm={12} md={12} lg={12} xl>
-            <Typography variant="body1custom" className="blur" color="text.main" align="justify" my={2}>
+            <Typography variant="h6custom" className="blur" color="text.main" align="justify" my={2}>
               Desarrollador web y líder técnico con experiencia en coordinación y
               ejecución de proyectos digitales. También, emprendedor creativo
               especializado en el desarrollo de aplicaciones web y móviles, con interés
@@ -122,9 +122,9 @@ function About() {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs={12} sm={12} md={12} lg={12} xl={12} mt={2} align="left">
+          {/* <Grid item xs={12} sm={12} md={12} lg={12} xl={12} mt={2} align="left">
             <CustomLink fuente="https://self.so/jonathan-wildemer" target="_blank" color="tertiary" dense={false}>Descargar CV</CustomLink>
-          </Grid>
+          </Grid> */}
         </Grid>
       </Grid>
 

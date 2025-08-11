@@ -16,7 +16,7 @@ export default function Page() {
       <About ref={sectionRefs.current.about} />
       <LangsAndTools ref={sectionRefs.current.langsAndTools} />
       <Projects ref={sectionRefs.current.projects} />
-      <Certificates ref={sectionRefs.current.certificates} />
+      {/* <Certificates ref={sectionRefs.current.certificates} /> */}
       <Contact ref={sectionRefs.current.contact} />
     </Stack>
   )
