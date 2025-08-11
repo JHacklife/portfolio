@@ -2,72 +2,124 @@
 
 const theme = createTheme({
   typography: {
-    fontFamily: 'Arame, Blender Pro, Arial, sans-serif',
+    fontFamily: 'BlenderPro-Medium, Arame, monospace, Arial, sans-serif',
     h1: {
-      fontSize: "4.210rem",
+      fontSize: "4.5rem",
+      fontWeight: "700",
+      fontFamily: 'BlenderPro-Heavy',
+      textTransform: 'uppercase',
+      letterSpacing: '0.1em',
+      lineHeight: 1.1,
+      textShadow: '0 0 20px #00d4ff, 0 0 40px #00d4ff',
       "@media (max-width: 600px)": {
-        fontSize: "4rem", // Tamaño para dispositivos pequeños
+        fontSize: "3rem",
       },
     },
     h2: {
-      fontSize: "3.158rem",
+      fontSize: "3.5rem",
+      fontWeight: "600",
+      fontFamily: 'BlenderPro-Bold',
+      textTransform: 'uppercase',
+      letterSpacing: '0.08em',
+      textShadow: '0 0 15px #00d4ff',
       "@media (max-width: 600px)": {
-        fontSize: "3rem",
+        fontSize: "2.5rem",
       }
     },
     h3: {
-      fontSize: "2.369rem",
-      lineHeight: "1.5",
+      fontSize: "2.8rem",
+      fontWeight: "500",
+      fontFamily: 'BlenderPro-Medium',
+      textTransform: 'uppercase',
+      letterSpacing: '0.06em',
+      lineHeight: "1.2",
+      textShadow: '0 0 10px #00d4ff',
       "@media (max-width: 600px)": {
         fontSize: "2rem",
       }
     },
     h4: {
-      fontSize: "1.777rem",
+      fontSize: "2.2rem",
+      fontWeight: "500",
+      fontFamily: 'BlenderPro-Medium',
+      letterSpacing: '0.05em',
+      textShadow: '0 0 8px #00d4ff',
       "@media (max-width: 600px)": {
-        fontSize: "1.4rem",
+        fontSize: "1.6rem",
       },
     },
     h5: {
-      fontSize: "1.333rem",
-      letterSpacing: "2px",
+      fontSize: "1.8rem",
+      fontWeight: "400",
+      fontFamily: 'BlenderPro-Book',
+      letterSpacing: "3px",
+      textTransform: 'uppercase',
       "@media (max-width: 600px)": {
-        fontSize: "1.5rem",
+        fontSize: "1.4rem",
+        letterSpacing: "2px",
       },
     },
     h6: {
+      fontSize: "1.4rem",
+      fontWeight: "500",
+      fontFamily: 'BlenderPro-Medium',
       "@media (max-width: 600px)": {
         fontSize: "1.2rem",
       },
     },
     body1: {
+      fontSize: "1.1rem",
+      fontFamily: 'BlenderPro-Book',
+      lineHeight: 1.6,
       "@media (max-width: 600px)": {
-        fontSize: "1.1rem",
+        fontSize: "1rem",
       },
     },
     body2: {
+      fontSize: "0.95rem",
+      fontFamily: 'BlenderPro-Book',
+      opacity: 0.9,
       "@media (max-width: 600px)": {
-        fontSize: "1rem",
+        fontSize: "0.9rem",
       }
     },
     subtitle1: {
+      fontSize: "1.15rem",
+      fontFamily: 'BlenderPro-Medium',
+      letterSpacing: '0.02em',
       "@media (max-width: 600px)": {
         fontSize: "1rem",
       },
     },
     subtitle2: {
+      fontSize: "0.9rem",
+      fontFamily: 'Arame',
+      textTransform: 'uppercase',
+      letterSpacing: '0.1em',
       "@media (max-width: 600px)": {
         fontSize: "0.8rem",
       },
     },
     button: {
+      fontFamily: 'BlenderPro-Medium',
+      fontSize: '0.95rem',
+      textTransform: 'uppercase',
+      fontWeight: "600",
+      letterSpacing: '0.1em',
     },
     caption: {
-      fontSize: "0.750rem",
-      /* fontFamily: 'BlenderPro-Medium',
-      textTransform: 'uppercase', */
+      fontSize: "0.8rem",
+      fontFamily: 'Arame',
+      textTransform: 'uppercase',
+      letterSpacing: '0.05em',
+      opacity: 0.8,
     },
     overline: {
+      fontSize: "0.75rem",
+      fontFamily: 'Arame',
+      textTransform: 'uppercase',
+      letterSpacing: '0.15em',
+      fontWeight: "500",
     },
     h1custom: {
       fontFamily: 'BlenderPro-Medium',
@@ -195,62 +247,96 @@ const theme = createTheme({
         },
       },
     },
-  },
-  palette: {
+  }, palette: {
     mode: 'dark',
     primary: {
-      main: '#8dbaf5',
-      dark: '#000',
+      main: '#00d4ff',
+      dark: '#0088cc',
+      light: '#66e6ff',
+      contrastText: '#000000',
     },
     secondary: {
-      main: '#E6E6E6',
-      dark: '#000',
+      main: '#ffffff',
+      dark: '#cccccc',
+      light: '#ffffff',
+      contrastText: '#000000',
     },
     tertiary: {
-      main: '#FDA312',
-      dark: '#000',
+      main: '#ff0066',
+      dark: '#cc0052',
+      light: '#ff3385',
+      contrastText: '#ffffff',
     },
     background: {
-      default: '#000',
+      default: '#000000',
+      paper: 'rgba(0, 0, 0, 0.8)',
     },
+    // Cyber color palette
+    cyber: {
+      blue: '#00d4ff',
+      cyan: '#00ffff',
+      red: '#ff0066',
+      purple: '#8a2be2',
+      green: '#00ff88',
+    },
+    // Enhanced color system
     alfa: {
-      main: '#741C8C',
+      main: '#8a2be2',
     },
     electric: {
-      main: '#5327F2',
+      main: '#00d4ff',
     },
     opac: {
-      main: '#4D1BBA',
+      main: 'rgba(0, 212, 255, 0.3)',
     },
     strong: {
-      main: '#2E1A7C',
+      main: '#ffffff',
     },
     danger: {
-      main: '#EB5757',
+      main: '#ff0066',
     },
     info: {
-      main: '#0DCAF0',
+      main: '#00d4ff',
     },
     success: {
-      main: '#219653',
+      main: '#00ff88',
     },
     warning: {
-      main: '#F2994A',
+      main: '#ffaa00',
     },
     white: {
-      main: '#FFFFFF',
+      main: '#ffffff',
     },
     dark: {
-      main: '#0D0D0D'
+      main: '#000000'
     },
     text: {
-      main: '#FFF',
-      dark: '#000'
+      primary: '#ffffff',
+      secondary: 'rgba(255, 255, 255, 0.8)',
+      disabled: 'rgba(255, 255, 255, 0.5)',
     },
     grey: {
-      light: '#2e2e2e',
-      main: '#171717',
-      dark: '#0d0d0d'
+      50: '#fafafa',
+      100: '#f5f5f5',
+      200: '#eeeeee',
+      300: '#e0e0e0',
+      400: '#bdbdbd',
+      500: '#9e9e9e',
+      600: '#757575',
+      700: '#616161',
+      800: '#424242',
+      900: '#212121',
+      A100: '#f5f5f5',
+      A200: '#eeeeee',
+      A400: '#bdbdbd',
+      A700: '#616161',
+    },
+    // Custom cyber theme colors
+    divider: 'rgba(0, 212, 255, 0.2)',
+    action: {
+      hover: 'rgba(0, 212, 255, 0.1)',
+      selected: 'rgba(0, 212, 255, 0.2)',
+      disabled: 'rgba(255, 255, 255, 0.3)',
     }
   },
 })

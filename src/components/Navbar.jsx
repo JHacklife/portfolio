@@ -8,16 +8,80 @@ import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import Logo from './Logo'
 import logoLabs from '../assets/Logo-1.svg'
-
+import { styled } from '@mui/material/styles'
 
 // ICONS
 import { ListAlt, Logout } from '@mui/icons-material/'
 
-// APIS
+const CyberAppBar = styled(AppBar)(({ theme }) => ({
+  background: 'rgba(0, 0, 0, 0.9)',
+  backdropFilter: 'blur(20px)',
+  borderBottom: '1px solid rgba(0, 212, 255, 0.3)',
+  boxShadow: '0 4px 20px rgba(0, 212, 255, 0.1)',
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    height: '2px',
+    background: 'linear-gradient(90deg, transparent 0%, #00d4ff 50%, transparent 100%)',
+    opacity: 0.8
+  }
+}))
 
-// PROVIDERS
+const CyberButton = styled(Button)(({ theme }) => ({
+  color: '#ffffff',
+  fontSize: '0.9rem',
+  fontFamily: 'BlenderPro-Medium',
+  textTransform: 'uppercase',
+  letterSpacing: '0.1em',
+  padding: theme.spacing(1, 2),
+  position: 'relative',
+  border: '1px solid transparent',
+  transition: 'all 0.3s ease',
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    background: 'linear-gradient(45deg, #00d4ff, #ff0066)',
+    opacity: 0,
+    transition: 'opacity 0.3s ease',
+    zIndex: -1
+  },
+  '&:hover': {
+    color: '#00d4ff',
+    border: '1px solid rgba(0, 212, 255, 0.5)',
+    textShadow: '0 0 10px #00d4ff',
+    transform: 'translateY(-2px)',
+    '&::before': {
+      opacity: 0.1
+    }
+  }
+}))
 
-// UTILS
+const CyberMenu = styled(Menu)(({ theme }) => ({
+  '& .MuiPaper-root': {
+    background: 'rgba(0, 0, 0, 0.95)',
+    backdropFilter: 'blur(20px)',
+    border: '1px solid rgba(0, 212, 255, 0.3)',
+    boxShadow: '0 8px 32px rgba(0, 212, 255, 0.2)',
+    borderRadius: '8px'
+  },
+  '& .MuiMenuItem-root': {
+    color: '#ffffff',
+    fontFamily: 'BlenderPro-Medium',
+    textTransform: 'uppercase',
+    letterSpacing: '0.05em',
+    '&:hover': {
+      background: 'rgba(0, 212, 255, 0.1)',
+      color: '#00d4ff'
+    }
+  }
+}))
 
 
 const Navbar = () => {
@@ -62,87 +126,75 @@ const Navbar = () => {
     const trigger = useScrollTrigger({ target: window ? window() : undefined })
     return <Slide appear={false} direction="down" in={!trigger}>{children}</Slide>
   }
-
   return (
-    /* <HideOnScroll> */
-    <AppBar position="fixed" id="navbar" >
-      <Toolbar variant="dense">
+    <CyberAppBar position="fixed" id="navbar">
+      <Toolbar variant="dense" sx={{ minHeight: '64px', padding: '0 24px' }}>
         {/* MOBILE */}
+        <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ flexGrow: 1, display: { md: 'none' } }}>
+          <Logo imgUrl={logoLabs} alt="logo" sx={{
+            filter: 'drop-shadow(0 0 10px #00d4ff)',
+            transition: 'all 0.3s ease',
+            '&:hover': {
+              filter: 'drop-shadow(0 0 20px #00d4ff) brightness(1.2)'
+            }
+          }} />
 
-        {/* LOGO */}
-        <Stack direction="row" justifyContent="space-between" spacing={1} sx={{ flexGrow: 1, display: { md: 'none' } }}>
-          <Logo imgUrl={logoLabs} alt="logo" sx={{ mr: 2 }} />
-          <Box>
-            <IconButton onClick={handleOpenNavMenu}
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              color="inherit">
-              <MenuIcon />
-            </IconButton>
-            <Menu id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-              keepMounted
-              transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{ display: { xs: 'block', md: 'none' } }}>
-              {pages?.filter(page => page?.show).map((page) => (
-                <Link key={page.label} href={page.path} sx={{ textDecoration: 'none' }}>
-                  <MenuItem sx={{ justifyContent: 'right' }}>
-                    <Typography>{page.label}</Typography>
-                  </MenuItem>
-                </Link>
-              ))}
-            </Menu>
-          </Box>
+          <IconButton
+            onClick={handleOpenNavMenu}
+            size="large"
+            aria-label="menu"
+            sx={{
+              color: '#00d4ff',
+              border: '1px solid rgba(0, 212, 255, 0.3)',
+              '&:hover': {
+                background: 'rgba(0, 212, 255, 0.1)',
+                borderColor: 'rgba(0, 212, 255, 0.5)'
+              }
+            }}
+          >
+            <MenuIcon />
+          </IconButton>
+
+          <CyberMenu
+            id="menu-appbar"
+            anchorEl={anchorElNav}
+            anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+            keepMounted
+            transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+            open={Boolean(anchorElNav)}
+            onClose={handleCloseNavMenu}
+          >
+            {pages?.filter(page => page?.show).map((page) => (
+              <Link key={page.label} href={page.path} sx={{ textDecoration: 'none' }}>
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Typography variant="body2">{page.label}</Typography>
+                </MenuItem>
+              </Link>
+            ))}
+          </CyberMenu>
         </Stack>
 
         {/* DESKTOP */}
+        <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Logo imgUrl={logoLabs} alt="logo" sx={{
+            filter: 'drop-shadow(0 0 10px #00d4ff)',
+            transition: 'all 0.3s ease',
+            '&:hover': {
+              filter: 'drop-shadow(0 0 20px #00d4ff) brightness(1.2)',
+              transform: 'scale(1.05)'
+            }
+          }} />
 
-        {/* LOGO */}
-        <Logo imgUrl={logoLabs} alt="logo" sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }} />
-
-        {/* MENU */}
-        <Stack direction="row" justifyContent="end" spacing={1} sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-          {pages?.filter(page => page?.show).map((page, index) => (
-            <Button key={index} className="scale" href={page.path}>
-              <Typography variant="body1" color="text.primary">{page.label}</Typography>
-            </Button>
-          ))}
-        </Stack>
-
-        {/* <Box sx={{ flexGrow: 0 }}>
-          <Tooltip title="Abrir ajustes">
-            <Button aria-controls="menu-appbar" aria-haspopup="true" variant="contained" onClick={handleOpenUserMenu}>
-              <Stack direction="row" alignItems="center" spacing={1}>
-                <Typography variant="h6">Usuario</Typography>
-              </Stack>
-            </Button>
-          </Tooltip>
-          <Menu
-            sx={{ mt: '45px' }}
-            id="menu-appbar"
-            anchorEl={anchorElUser}
-            anchorOrigin={{ vertical: 'top', horizontal: 'right', }}
-            keepMounted
-            transformOrigin={{ vertical: 'top', horizontal: 'right', }}
-            open={Boolean(anchorElUser)}
-            onClose={handleCloseUserMenu}>
-            {settings.map((setting, index) => (
-              <MenuItem key={index} onClick={setting?.action}>
-                <Box mr={1}>{setting?.icon}</Box>
-                <Typography textAlign="center">{setting.label}</Typography>
-              </MenuItem>
+          <Stack direction="row" spacing={1}>
+            {pages?.filter(page => page?.show).map((page, index) => (
+              <CyberButton key={index} href={page.path} className="scale">
+                {page.label}
+              </CyberButton>
             ))}
-          </Menu>
-        </Box> */}
-
+          </Stack>
+        </Stack>
       </Toolbar>
-    </AppBar >
-    /* </HideOnScroll> */
+    </CyberAppBar>
   )
 }
 
