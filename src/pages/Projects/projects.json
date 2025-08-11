@@ -2,12 +2,15 @@
   {
     "Nombre": "Arbusta",
     "Tags": [
+      "HTML5",
+      "CSS",
+      "JavaScript",
       "Wordpress"
     ],
     "Tipo": "Web",
     "Subtitulo": "Landing Page de Arbusta.",
     "Descripcion": "Arbusta es una empresa latinoamericana que fomenta la inclusión social a través de servicios tecnológicos y calidad de software.",
-    "Link": "http://3.131.41.6/",
+    "Link": "https://arbusta.net/",
     "Imagen": "https://i.ibb.co/hxGmGGWM/Arbusta.png"
   },
   {
@@ -15,24 +18,30 @@
     "Tags": [
       "Flutter",
       "Dart",
+      "PHP",
       "Adobe XD"
     ],
     "Tipo": "Mobile",
     "Subtitulo": "Bitácora Electrónica de Pesca Argentina",
     "Descripcion": "BEPA es un sistema gratuito y de código abierto que permite a los capitanes y/o pescadores utilizar sus dispositivos móviles para registrar y transmitir electrónicamente datos de las capturas y el esfuerzo pesquero, y facilita a los armadores y quienes tengan acceso, a realizar un seguimiento eficaz de la pesca a través de un sitio web.",
-    "Link": "https://play.google.com/store/apps/details?id=com.wwf.bep_app",
+    "Link": "https://bepa.vidasilvestre.org.ar/",
     "Imagen": "https://i.ibb.co/s14mC9s/66ab08e09b8da90e84c8af0c665e540f.png"
   },
   {
     "Nombre": "B3 Gestión",
     "Tags": [
       "PHP",
-      "React"
+      "React",
+      "Node",
+      "JavaScript",
+      "HTML5",
+      "CSS",
+      "Figma"
     ],
     "Tipo": "Web",
     "Subtitulo": "Herramienta para gestionar proyectos de arquitectura.",
     "Descripcion": "B3Gestión es una herramienta diseñada específicamente para ayudar a los arquitectos a gestionar y organizar proyectos relacionados con el diseño y construcción de hogares. Esta aplicación proporciona funcionalidades como la creación de listas de tareas, seguimiento de presupuestos, gestión de recursos y colaboración entre miembros del equipo. Con el gestor de hogares, los arquitectos pueden tener un control más efectivo sobre sus proyectos, optimizando la eficiencia y garantizando la entrega exitosa de los hogares diseñados.",
-    "Link": "https://b3gestion.netlify.app/",
+    "Link": "https://b3gestion.infinitelabs.tech/",
     "Imagen": "https://i.ibb.co/TK5Ldsd/b3gestion-netlify-app-hogar-madariaga-2.png"
   },
   {
@@ -40,6 +49,10 @@
     "Tags": [
       "React",
       "Node",
+      "JavaScript",
+      "HTML5",
+      "CSS",
+      "Figma",
       "Firebase"
     ],
     "Tipo": "Web",
@@ -51,6 +64,9 @@
   {
     "Nombre": "Talent House",
     "Tags": [
+      "HTML5",
+      "CSS",
+      "JavaScript",
       "Wordpress"
     ],
     "Tipo": "Web",
@@ -63,7 +79,9 @@
     "Nombre": "A.K.A.S.H.I",
     "Tags": [
       "Arduino",
-      "C++"
+      "C++",
+      "XML",
+      "Figma"
     ],
     "Tipo": "Hardware",
     "Subtitulo": "Arbusta + Mercado Libre = Custom Keyboard",
@@ -74,14 +92,17 @@
   {
     "Nombre": "Velocidrone Stats",
     "Tags": [
+      "React",
+      "Node",
       "HTML5",
       "JavaScript",
-      "CSS"
+      "CSS",
+      "Figma"
     ],
     "Tipo": "Web",
     "Subtitulo": "Métricas en tiempo real para Velocidrone.",
     "Descripcion": "",
-    "Link": "https://jonathanhacklife.gitlab.io/velocidrone-stats/hangar.html?XB%20-%20DarKex",
+    "Link": "https://jonathanhacklife.gitlab.io/velocidrone-stats/index.html",
     "Imagen": "https://i.ibb.co/DQwqMvQ/6a504fde154a5adb0d7d4aa9079e56a0.png"
   },
   {
@@ -89,7 +110,9 @@
     "Tags": [
       "Java",
       "XML",
-      "Arduino"
+      "Arduino",
+      "C++",
+      "Figma"
     ],
     "Tipo": "Mobile",
     "Subtitulo": "Pulsera antisecuestro con botón de alertas.",
@@ -102,7 +125,8 @@
     "Tags": [
       "HTML5",
       "CSS",
-      "JavaScript"
+      "JavaScript",
+      "Wordpress"
     ],
     "Tipo": "Web",
     "Subtitulo": "Programa de desarrollo de habilidades sociales.",
@@ -113,6 +137,8 @@
   {
     "Nombre": "Caesar Cypher",
     "Tags": [
+      "React",
+      "Node",
       "HTML5",
       "CSS",
       "JavaScript"
@@ -120,21 +146,22 @@
     "Tipo": "Web",
     "Subtitulo": "Explora seguridad usando Caesar Cypher online.",
     "Descripcion": "Una poderosa herramienta para fortalecer la seguridad de tus datos web. Esta solución fácil y eficaz te brinda la capacidad de proteger información sensible de manera innovadora.",
-    "Link": "https://caesarcipherv1.netlify.app/",
+    "Link": "https://cipher.infinitelabs.tech/",
     "Imagen": "https://i.ibb.co/hczYMwJ/2023-11-14-11-26-17-Window.png"
   },
   {
     "Nombre": "Project SRS",
     "Tags": [
+      "React",
+      "Node",
       "HTML5",
       "CSS",
-      "JavaScript",
-      "React"
+      "JavaScript"
     ],
     "Tipo": "Web",
     "Subtitulo": "Un traductor de Solresol a español/inglés.",
     "Descripcion": "Desarrollé un proyecto de investigación centrado en la creación de un traductor de Solresol a español/inglés. Este enfoque práctico y centrado en la experiencia del usuario garantiza la utilidad y aceptación del traductor en la comunidad digital.",
-    "Link": "https://projectsrs.netlify.app/",
+    "Link": "https://projectsrs.infinitelabs.tech/",
     "Imagen": "https://i.ibb.co/gzWRbHn/2023-11-14-12-18-03-Window.png"
   },
   {
@@ -154,7 +181,8 @@
     "Tags": [
       "HTML5",
       "CSS",
-      "JavaScript"
+      "JavaScript",
+      "Wordpress"
     ],
     "Tipo": "Web",
     "Subtitulo": "Web de inversión social en Latinoamérica.",
@@ -205,13 +233,29 @@
     "Tags": [
       "HTML5",
       "CSS",
-      "JavaScript"
+      "JavaScript",
+      "Wordpress"
     ],
     "Tipo": "Web",
     "Subtitulo": "Blog de asesoría empresarial para empresas y start-ups.",
     "Descripcion": "Blog de una red de asesores que atienden a todo 'tipo' de empresas, incluidas las start-ups, pequeñas empresas y ejecutivas.",
     "Link": "https://www.latinbusinesstoday.com/",
-    "Imagen": "https://www.latinbusinesstoday.com/wp-content/uploads/2021/01/LBT-main-logo.png"
+    "Imagen": "https://i.ibb.co/7dfTcsXN/Latin-Business.png"
+  },
+  {
+    "Nombre": "Nomade Pomodoro",
+    "Tags": [
+      "React",
+      "Node",
+      "HTML5",
+      "CSS",
+      "JavaScript"
+    ],
+    "Tipo": "Web",
+    "Subtitulo": "Recreación del pomodoro del teclado Nomad[E] de Worklouder.cc",
+    "Descripcion": "Recreación del pomodoro del teclado Nomad[E] de Worklouder.cc. Esta herramienta permite gestionar el tiempo de trabajo y descanso de manera eficiente, siguiendo la técnica Pomodoro.",
+    "Link": "https://nomadepomodoro.infinitelabs.tech/",
+    "Imagen": "https://cdn.shopify.com/s/files/1/0540/6339/9083/files/Purple-US.png?v=1745505602"
   },
   {
     "Nombre": "Mail Template",
