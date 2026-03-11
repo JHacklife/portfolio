@@ -1,20 +1,40 @@
-import { Box, Divider, Grid, Link, Stack, Typography } from '@mui/material'
+import { Box, Divider, Link, Stack, Typography } from '@mui/material'
 import React from 'react'
 import Navbar from '../../components/Navbar'
 import TechBackground from '../../components/TechBackground'
-import { SectionContainer, GlowText, InfoPanel } from '../../components/CyberComponents'
+import { 
+  SectionContainer, 
+  GlowText, 
+  GradientText,
+  InfoPanel, 
+  StatusIndicator,
+  CyberDivider,
+  FadeInUp 
+} from '../../components/CyberComponents'
 import mailTo, { config } from '../../utils/mail'
 import contactIcons from '../Contact/ContactIcons'
 
+/**
+ * Home Page - Professional Cyberpunk Hero Section
+ * 
+ * Design features:
+ * - Clean, readable typography with subtle glow
+ * - Professional status indicators
+ * - Elegant fade-in animations
+ * - Consistent spacing and layout
+ */
+
 function Home() {
-  const contacts = contactIcons({ size: "28" })
+  const contacts = contactIcons({ size: "24" })
 
   return (
-    <Stack>
+    <Stack sx={{ minHeight: '100vh' }}>
+      <TechBackground />
       <Navbar />
       <Box id="top"></Box>
 
-      <SectionContainer className="section gridBackground"
+      <SectionContainer 
+        className="section"
         sx={{
           display: 'flex',
           justifyContent: 'center',
@@ -24,202 +44,272 @@ function Home() {
         }}
       >
         {/* Main Content */}
-        <Stack spacing={4} alignItems="center" sx={{ zIndex: 10 }}>
-
+        <Stack 
+          spacing={4} 
+          alignItems="center" 
+          sx={{ zIndex: 10, maxWidth: '900px', px: 2 }}
+        >
           {/* Hero Title */}
-          <Stack spacing={2} alignItems="center">
-            <Stack direction="row" spacing={3} justifyContent="center" flexWrap="wrap">
-              <GlowText variant="h1" className="scale slide-in-top cyber-glow">
-                JONATHAN
-              </GlowText>
-              <GlowText variant="h1" className="scale slide-in-top cyber-glow"
-                sx={{
-                  fontWeight: 900,
-                  color: '#ff0066',
-                  textShadow: '0 0 20px #ff0066, 0 0 40px #ff0066'
-                }}
+          <FadeInUp delay={0}>
+            <Stack spacing={2} alignItems="center">
+              <Stack 
+                direction={{ xs: 'column', sm: 'row' }} 
+                spacing={{ xs: 1, sm: 3 }} 
+                justifyContent="center" 
+                alignItems="center"
               >
-                WILDEMER
-              </GlowText>
+                <GlowText 
+                  variant="h1" 
+                  className="fade-in-up"
+                  sx={{ fontWeight: 700 }}
+                >
+                  JONATHAN
+                </GlowText>
+                <GradientText 
+                  variant="h1"
+                  className="fade-in-up delay-100"
+                  sx={{ fontWeight: 900 }}
+                >
+                  WILDEMER
+                </GradientText>
+              </Stack>
+
+              <FadeInUp delay={0.2}>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    color: '#8DBAF5',
+                    fontFamily: 'BlenderPro-Medium',
+                    letterSpacing: '0.15em',
+                    textTransform: 'uppercase',
+                    mt: 2,
+                    textAlign: 'center',
+                  }}
+                >
+                  Fullstack Web & Mobile Developer
+                </Typography>
+              </FadeInUp>
+
+              {/* Decorative line */}
+              <FadeInUp delay={0.3}>
+                <Box
+                  sx={{
+                    width: '200px',
+                    height: '1px',
+                    background: 'linear-gradient(90deg, transparent 0%, #8DBAF5 50%, transparent 100%)',
+                    mt: 3,
+                    opacity: 0.5,
+                  }}
+                />
+              </FadeInUp>
             </Stack>
-
-            <Typography
-              variant="h4"
-              className="scale slide-in-bottom text-glow"
-              sx={{
-                color: '#00ffff',
-                fontFamily: 'BlenderPro-Medium',
-                letterSpacing: '0.2em',
-                textTransform: 'uppercase',
-                marginTop: 2,
-                textShadow: '0 0 15px #00ffff'
-              }}
-            >
-              Fullstack Web & Mobile Developer
-            </Typography>
-
-            {/* Cyber decorative line */}
-            <Box
-              sx={{
-                width: '300px',
-                height: '2px',
-                background: 'linear-gradient(90deg, transparent 0%, #00d4ff 50%, transparent 100%)',
-                marginTop: 3,
-                animation: 'cyberPulse 2s infinite'
-              }}
-            />
-          </Stack>
+          </FadeInUp>
 
           {/* Status indicators */}
-          <Stack direction="row" spacing={4} alignItems="center" sx={{ marginTop: 4 }}>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-              <Box
-                sx={{
-                  width: 8,
-                  height: 8,
-                  borderRadius: '50%',
-                  backgroundColor: '#00ff88',
-                  boxShadow: '0 0 10px #00ff88',
-                  animation: 'cyberPulse 1.5s infinite'
-                }}
-              />
-              <Typography variant="caption" sx={{ color: '#00ff88', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-                ONLINE
-              </Typography>
-            </Box>
+          <FadeInUp delay={0.4}>
+            <Stack 
+              direction="row" 
+              spacing={4} 
+              alignItems="center" 
+              sx={{ mt: 4 }}
+              flexWrap="wrap"
+              justifyContent="center"
+            >
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                <StatusIndicator active={true} />
+                <Typography 
+                  variant="caption" 
+                  sx={{ 
+                    color: '#4ade80', 
+                    textTransform: 'uppercase', 
+                    letterSpacing: '0.1em',
+                    fontFamily: 'BlenderPro-Medium',
+                  }}
+                >
+                  ONLINE
+                </Typography>
+              </Box>
 
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-              <Box
-                sx={{
-                  width: 8,
-                  height: 8,
-                  borderRadius: '50%',
-                  backgroundColor: '#00d4ff',
-                  boxShadow: '0 0 10px #00d4ff',
-                  animation: 'cyberPulse 2s infinite'
-                }}
-              />
-              <Typography variant="caption" sx={{ color: '#00d4ff', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-                AVAILABLE FOR HIRE
-              </Typography>
-            </Box>
-          </Stack>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                <StatusIndicator active={true} />
+                <Typography 
+                  variant="caption" 
+                  sx={{ 
+                    color: '#8DBAF5', 
+                    textTransform: 'uppercase', 
+                    letterSpacing: '0.1em',
+                    fontFamily: 'BlenderPro-Medium',
+                  }}
+                >
+                  AVAILABLE FOR HIRE
+                </Typography>
+              </Box>
+            </Stack>
+          </FadeInUp>
         </Stack>
 
-        {/* Side panels */}
+        {/* Side panels - Desktop only */}
         <Stack
           direction="row"
           justifyContent="space-between"
           sx={{
             position: "absolute",
-            bottom: "40px",
-            left: "40px",
-            right: "40px",
-            zIndex: 5
+            bottom: "60px",
+            left: { xs: "20px", md: "40px" },
+            right: { xs: "20px", md: "40px" },
+            zIndex: 5,
+            display: { xs: 'none', md: 'flex' }
           }}
         >
           {/* Left panel - Email */}
-          <Stack alignItems="center" spacing={2}>
-            <Link
-              href={mailTo}
-              target="_blank"
-              className="verticalText scale"
-              sx={{
-                textDecoration: "none",
-                color: '#00ffff',
-                fontSize: '0.9rem',
-                fontFamily: 'BlenderPro-Medium',
-                '&:hover': {
-                  color: '#ffffff',
-                  textShadow: '0 0 10px #00ffff'
-                }
-              }}
-            >
-              {config?.to}
-            </Link>
-            <Divider
-              orientation="vertical"
-              sx={{
-                height: "80px",
-                borderColor: '#00d4ff',
-                borderWidth: "1px",
-                boxShadow: '0 0 5px #00d4ff'
-              }}
-            />
-          </Stack>
+          <FadeInUp delay={0.5}>
+            <Stack alignItems="center" spacing={2}>
+              <Link
+                href={mailTo}
+                target="_blank"
+                className="verticalText"
+                sx={{
+                  textDecoration: "none",
+                  color: '#8DBAF5',
+                  fontSize: '0.8rem',
+                  fontFamily: 'BlenderPro-Medium',
+                  opacity: 0.7,
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    color: '#B5D4FF',
+                    opacity: 1,
+                  }
+                }}
+              >
+                {config?.to}
+              </Link>
+              <Divider
+                orientation="vertical"
+                sx={{
+                  height: "60px",
+                  borderColor: 'rgba(141, 186, 245, 0.2)',
+                  borderWidth: "1px",
+                }}
+              />
+            </Stack>
+          </FadeInUp>
 
           {/* Right panel - Social links */}
-          <Stack alignItems="center" spacing={2}>
-            <Stack spacing={2}>
-              {contacts.map((contact, index) => (
-                <Grid key={index} item className="scale">
+          <FadeInUp delay={0.6}>
+            <Stack alignItems="center" spacing={2}>
+              <Stack spacing={1.5}>
+                {contacts.map((contact, index) => (
                   <Link
+                    key={index}
                     href={contact?.url}
                     target="_blank"
+                    aria-label={contact?.label || 'Social link'}
                     sx={{
                       textDecoration: "none",
-                      color: '#00d4ff',
+                      color: '#8DBAF5',
+                      opacity: 0.7,
                       transition: 'all 0.3s ease',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
                       '&:hover': {
-                        color: '#ffffff',
-                        filter: 'drop-shadow(0 0 10px #00d4ff)'
+                        color: '#B5D4FF',
+                        opacity: 1,
+                        transform: 'translateY(-2px)',
                       }
                     }}
                   >
                     {contact?.icon}
                   </Link>
-                </Grid>
-              ))}
-            </Stack>
+                ))}
+              </Stack>
 
-            <Divider
-              orientation="vertical"
-              sx={{
-                height: "80px",
-                borderColor: '#00d4ff',
-                borderWidth: "1px",
-                boxShadow: '0 0 5px #00d4ff'
-              }}
-            />
-          </Stack>
+              <Divider
+                orientation="vertical"
+                sx={{
+                  height: "60px",
+                  borderColor: 'rgba(141, 186, 245, 0.2)',
+                  borderWidth: "1px",
+                }}
+              />
+            </Stack>
+          </FadeInUp>
         </Stack>
 
         {/* Info Panel - Desktop only */}
         <InfoPanel sx={{ display: { xs: 'none', lg: 'block' } }}>
-          <Stack spacing={2}>
-            <Typography variant="overline" sx={{ color: '#00d4ff', fontWeight: 600 }}>
-              SYSTEM STATUS
-            </Typography>
-            <Stack spacing={1}>
-              <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Typography variant="caption">CPU:</Typography>
-                <Typography variant="caption" sx={{ color: '#00ff88' }}>OPTIMAL</Typography>
-              </Box>
-              <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Typography variant="caption">MEMORY:</Typography>
-                <Typography variant="caption" sx={{ color: '#00ff88' }}>85%</Typography>
-              </Box>
-              <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Typography variant="caption">NETWORK:</Typography>
-                <Typography variant="caption" sx={{ color: '#00ff88' }}>CONNECTED</Typography>
-              </Box>
-            </Stack>
+          <Stack spacing={2.5}>
+            <Box>
+              <Typography 
+                variant="overline" 
+                sx={{ 
+                  color: '#8DBAF5', 
+                  fontWeight: 600,
+                  fontSize: '0.65rem',
+                  letterSpacing: '0.1em',
+                }}
+              >
+                SYSTEM STATUS
+              </Typography>
+              <Stack spacing={1} sx={{ mt: 1 }}>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <Typography variant="caption" sx={{ color: '#808898' }}>CPU:</Typography>
+                  <Typography variant="caption" sx={{ color: '#4ade80' }}>OPTIMAL</Typography>
+                </Box>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <Typography variant="caption" sx={{ color: '#808898' }}>MEMORY:</Typography>
+                  <Typography variant="caption" sx={{ color: '#4ade80' }}>85%</Typography>
+                </Box>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <Typography variant="caption" sx={{ color: '#808898' }}>NETWORK:</Typography>
+                  <Typography variant="caption" sx={{ color: '#4ade80' }}>CONNECTED</Typography>
+                </Box>
+              </Stack>
+            </Box>
 
-            <Divider sx={{ borderColor: 'rgba(0, 212, 255, 0.3)' }} />
+            <CyberDivider sx={{ my: 1.5 }} />
 
-            <Typography variant="overline" sx={{ color: '#00d4ff', fontWeight: 600 }}>
-              LOCATION
-            </Typography>
-            <Typography variant="caption">
-              Buenos Aires, ARG
-            </Typography>
+            <Box>
+              <Typography 
+                variant="overline" 
+                sx={{ 
+                  color: '#8DBAF5', 
+                  fontWeight: 600,
+                  fontSize: '0.65rem',
+                  letterSpacing: '0.1em',
+                }}
+              >
+                LOCATION
+              </Typography>
+              <Typography variant="caption" sx={{ display: 'block', mt: 0.5, color: '#c8d4e0' }}>
+                Buenos Aires, ARG
+              </Typography>
+            </Box>
 
-            <Typography variant="overline" sx={{ color: '#00d4ff', fontWeight: 600 }}>
-              LOCAL TIME
-            </Typography>
-            <Typography variant="caption">
-              {new Date().toLocaleTimeString()}
-            </Typography>
+            <Box>
+              <Typography 
+                variant="overline" 
+                sx={{ 
+                  color: '#8DBAF5', 
+                  fontWeight: 600,
+                  fontSize: '0.65rem',
+                  letterSpacing: '0.1em',
+                }}
+              >
+                LOCAL TIME
+              </Typography>
+              <Typography 
+                variant="caption" 
+                sx={{ 
+                  display: 'block', 
+                  mt: 0.5, 
+                  color: '#c8d4e0',
+                  fontFamily: 'monospace',
+                }}
+              >
+                {new Date().toLocaleTimeString()}
+              </Typography>
+            </Box>
           </Stack>
         </InfoPanel>
       </SectionContainer>

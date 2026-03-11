@@ -1,6 +1,18 @@
-﻿import React from "react";
+import React from "react";
 
-function Gradient({ to = "top", color = "#0c0c0c", color2 = "transparent" }) {
+/**
+ * Gradient Overlay Component
+ * 
+ * Professional gradient overlay for images and cards.
+ * Uses the new color palette for consistency.
+ */
+
+function Gradient({ 
+  to = "top", 
+  color = "#0a0a0f",  // Updated to match new dark background
+  color2 = "transparent",
+  opacity = 1 
+}) {
   return (
     <div
       style={{
@@ -10,7 +22,10 @@ function Gradient({ to = "top", color = "#0c0c0c", color2 = "transparent" }) {
         width: "100%",
         height: "100%",
         backgroundImage: `linear-gradient(to ${to}, ${color}, ${color2})`,
+        opacity: opacity,
+        pointerEvents: "none",
       }}
+      aria-hidden="true"
     />
   );
 }

@@ -1,88 +1,112 @@
-﻿import React, { useState } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 // UI COMPONENTS
 import MenuIcon from '@mui/icons-material/Menu'
-import { AppBar, Slide, Box, Button, IconButton, Stack, Toolbar, Tooltip, Link, Typography, useScrollTrigger } from '@mui/material'
+import CloseIcon from '@mui/icons-material/Close'
+import { AppBar, Box, IconButton, Stack, Toolbar, Link, Typography } from '@mui/material'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import Logo from './Logo'
 import logoLabs from '../assets/Logo-1.svg'
 import { styled } from '@mui/material/styles'
 
-// ICONS
-import { ListAlt, Logout } from '@mui/icons-material/'
+/**
+ * Professional Cyberpunk Navbar
+ * 
+ * Features:
+ * - Glass effect with subtle blur
+ * - Elegant border with gradient accent
+ * - Smooth transitions on all interactions
+ * - Professional hover states
+ */
 
 const CyberAppBar = styled(AppBar)(({ theme }) => ({
-  background: 'rgba(0, 0, 0, 0.9)',
-  backdropFilter: 'blur(20px)',
-  borderBottom: '1px solid rgba(0, 212, 255, 0.3)',
-  boxShadow: '0 4px 20px rgba(0, 212, 255, 0.1)',
+  background: 'rgba(10, 10, 15, 0.85)',
+  backdropFilter: 'blur(16px)',
+  borderBottom: '1px solid rgba(141, 186, 245, 0.15)',
+  boxShadow: '0 4px 24px rgba(0, 0, 0, 0.3)',
+  // Subtle top accent line
   '&::before': {
     content: '""',
     position: 'absolute',
     top: 0,
     left: 0,
     right: 0,
-    height: '2px',
-    background: 'linear-gradient(90deg, transparent 0%, #00d4ff 50%, transparent 100%)',
-    opacity: 0.8
+    height: '1px',
+    background: 'linear-gradient(90deg, transparent 0%, rgba(141, 186, 245, 0.4) 50%, transparent 100%)',
+    opacity: 0.6
   }
 }))
 
-const CyberButton = styled(Button)(({ theme }) => ({
-  color: '#ffffff',
-  fontSize: '0.9rem',
+const NavButton = styled(Link)(({ theme }) => ({
+  color: '#c8d4e0',
+  fontSize: '0.85rem',
   fontFamily: 'BlenderPro-Medium',
   textTransform: 'uppercase',
-  letterSpacing: '0.1em',
+  letterSpacing: '0.08em',
   padding: theme.spacing(1, 2),
   position: 'relative',
-  border: '1px solid transparent',
+  textDecoration: 'none',
   transition: 'all 0.3s ease',
-  '&::before': {
+  borderRadius: '4px',
+  // Underline animation
+  '&::after': {
     content: '""',
     position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    background: 'linear-gradient(45deg, #00d4ff, #ff0066)',
-    opacity: 0,
-    transition: 'opacity 0.3s ease',
-    zIndex: -1
+    bottom: 4,
+    left: '50%',
+    transform: 'translateX(-50%)',
+    width: 0,
+    height: '1px',
+    backgroundColor: '#8DBAF5',
+    transition: 'width 0.3s ease',
   },
   '&:hover': {
-    color: '#00d4ff',
-    border: '1px solid rgba(0, 212, 255, 0.5)',
-    textShadow: '0 0 10px #00d4ff',
-    transform: 'translateY(-2px)',
-    '&::before': {
-      opacity: 0.1
+    color: '#8DBAF5',
+    backgroundColor: 'rgba(141, 186, 245, 0.06)',
+    '&::after': {
+      width: '60%',
     }
   }
 }))
 
 const CyberMenu = styled(Menu)(({ theme }) => ({
   '& .MuiPaper-root': {
-    background: 'rgba(0, 0, 0, 0.95)',
-    backdropFilter: 'blur(20px)',
-    border: '1px solid rgba(0, 212, 255, 0.3)',
-    boxShadow: '0 8px 32px rgba(0, 212, 255, 0.2)',
-    borderRadius: '8px'
+    background: 'rgba(10, 10, 15, 0.95)',
+    backdropFilter: 'blur(16px)',
+    border: '1px solid rgba(141, 186, 245, 0.2)',
+    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)',
+    borderRadius: '8px',
+    marginTop: theme.spacing(1),
+    minWidth: '200px',
   },
   '& .MuiMenuItem-root': {
-    color: '#ffffff',
+    color: '#c8d4e0',
     fontFamily: 'BlenderPro-Medium',
     textTransform: 'uppercase',
-    letterSpacing: '0.05em',
+    letterSpacing: '0.06em',
+    fontSize: '0.85rem',
+    padding: theme.spacing(1.5, 2.5),
+    transition: 'all 0.3s ease',
     '&:hover': {
-      background: 'rgba(0, 212, 255, 0.1)',
-      color: '#00d4ff'
+      background: 'rgba(141, 186, 245, 0.08)',
+      color: '#8DBAF5'
     }
   }
 }))
 
+const MenuButton = styled(IconButton)(({ theme }) => ({
+  color: '#8DBAF5',
+  border: '1px solid rgba(141, 186, 245, 0.25)',
+  borderRadius: '6px',
+  padding: theme.spacing(1),
+  transition: 'all 0.3s ease',
+  '&:hover': {
+    background: 'rgba(141, 186, 245, 0.08)',
+    borderColor: 'rgba(141, 186, 245, 0.4)',
+  }
+}))
 
 const Navbar = () => {
   const navigateTo = useNavigate()
@@ -90,106 +114,112 @@ const Navbar = () => {
   const pages = [
     { path: '#', label: 'Home', show: true },
     { path: '#about', label: 'About', show: true },
-    { path: '#langsAndTools', label: 'Lang & Tools', show: true },
+    { path: '#langsAndTools', label: 'Skills', show: true },
     { path: '#projects', label: 'Projects', show: true },
     { path: '#certificates', label: 'Certificates', show: true },
     { path: '#contact', label: 'Contact', show: true },
   ]
 
-  const settings = [
-    { label: 'Perfil', icon: <ListAlt />, action: () => navigateTo("/perfil") },
-    { label: 'Cerrar sesión', icon: <Logout />, action: () => console.log("Cerrando sesión") }
-  ]
-
   const [anchorElNav, setAnchorElNav] = useState(null)
-  const [anchorElUser, setAnchorElUser] = useState(null)
 
-  const handleOpenNavMenu = () => {
+  const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget)
-  }
-  const handleOpenUserMenu = () => {
-    setAnchorElUser(event.currentTarget)
   }
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null)
   }
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null)
-  }
-
-  function HideOnScroll(props) {
-    const { children, window } = props;
-    // Note that you normally won't need to set the window ref as useScrollTrigger
-    // will default to window.
-    const trigger = useScrollTrigger({ target: window ? window() : undefined })
-    return <Slide appear={false} direction="down" in={!trigger}>{children}</Slide>
-  }
   return (
     <CyberAppBar position="fixed" id="navbar">
-      <Toolbar variant="dense" sx={{ minHeight: '64px', padding: '0 24px' }}>
+      <Toolbar 
+        variant="dense" 
+        sx={{ 
+          minHeight: '64px', 
+          padding: { xs: '0 16px', md: '0 32px' },
+          maxWidth: '1400px',
+          margin: '0 auto',
+          width: '100%',
+        }}
+      >
         {/* MOBILE */}
-        <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ flexGrow: 1, display: { md: 'none' } }}>
-          <Logo imgUrl={logoLabs} alt="logo" sx={{
-            filter: 'drop-shadow(0 0 10px #00d4ff)',
-            transition: 'all 0.3s ease',
-            '&:hover': {
-              filter: 'drop-shadow(0 0 20px #00d4ff) brightness(1.2)'
-            }
-          }} />
-
-          <IconButton
-            onClick={handleOpenNavMenu}
-            size="large"
-            aria-label="menu"
+        <Stack 
+          direction="row" 
+          justifyContent="space-between" 
+          alignItems="center" 
+          sx={{ flexGrow: 1, display: { md: 'none' } }}
+        >
+          <Logo 
+            imgUrl={logoLabs} 
+            alt="Jonathan Wildemer Logo" 
             sx={{
-              color: '#00d4ff',
-              border: '1px solid rgba(0, 212, 255, 0.3)',
+              transition: 'all 0.3s ease',
               '&:hover': {
-                background: 'rgba(0, 212, 255, 0.1)',
-                borderColor: 'rgba(0, 212, 255, 0.5)'
+                transform: 'scale(1.05)',
               }
-            }}
+            }} 
+          />
+
+          <MenuButton
+            onClick={handleOpenNavMenu}
+            aria-label="Open navigation menu"
           >
-            <MenuIcon />
-          </IconButton>
+            {anchorElNav ? <CloseIcon /> : <MenuIcon />}
+          </MenuButton>
 
           <CyberMenu
-            id="menu-appbar"
+            id="menu-appbar-mobile"
             anchorEl={anchorElNav}
-            anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+            anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
             keepMounted
             transformOrigin={{ vertical: 'top', horizontal: 'right' }}
             open={Boolean(anchorElNav)}
             onClose={handleCloseNavMenu}
           >
             {pages?.filter(page => page?.show).map((page) => (
-              <Link key={page.label} href={page.path} sx={{ textDecoration: 'none' }}>
-                <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography variant="body2">{page.label}</Typography>
-                </MenuItem>
-              </Link>
+              <MenuItem 
+                key={page.label} 
+                onClick={handleCloseNavMenu}
+                component="a"
+                href={page.path}
+              >
+                {page.label}
+              </MenuItem>
             ))}
           </CyberMenu>
         </Stack>
 
         {/* DESKTOP */}
-        <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-          <Logo imgUrl={logoLabs} alt="logo" sx={{
-            filter: 'drop-shadow(0 0 10px #00d4ff)',
-            transition: 'all 0.3s ease',
-            '&:hover': {
-              filter: 'drop-shadow(0 0 20px #00d4ff) brightness(1.2)',
-              transform: 'scale(1.05)'
-            }
-          }} />
+        <Stack 
+          direction="row" 
+          justifyContent="space-between" 
+          alignItems="center" 
+          sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}
+        >
+          <Logo 
+            imgUrl={logoLabs} 
+            alt="Jonathan Wildemer Logo" 
+            sx={{
+              transition: 'all 0.3s ease',
+              '&:hover': {
+                transform: 'scale(1.05)',
+              }
+            }} 
+          />
 
-          <Stack direction="row" spacing={1}>
+          <Stack 
+            component="nav" 
+            direction="row" 
+            spacing={0.5}
+            aria-label="Main navigation"
+          >
             {pages?.filter(page => page?.show).map((page, index) => (
-              <CyberButton key={index} href={page.path} className="scale">
+              <NavButton 
+                key={index} 
+                href={page.path}
+              >
                 {page.label}
-              </CyberButton>
+              </NavButton>
             ))}
           </Stack>
         </Stack>
