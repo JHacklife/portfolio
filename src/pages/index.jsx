@@ -7,14 +7,13 @@ import Home from "./Home/Home";
 import LangsAndTools from "./LangsAndTools/LangsAndTools"
 import Projects from "./Projects/Projects"
 import TechBackground from "../components/TechBackground";
-import CyberStatusBar from "../components/CyberStatusBar";
 import Footer from "../components/Footer";
 
 /**
  * Main Portfolio Page
  * 
- * Orchestrates all sections with professional cyberpunk styling.
- * Features smooth scrolling and animated background.
+ * Vibrant Cyberpunk Design - Clean and immersive layout
+ * No sidebar widgets (System Status removed for cleaner UX)
  */
 
 export default function Page() {
@@ -42,7 +41,6 @@ export default function Page() {
         sx={{ 
           position: 'relative', 
           zIndex: 1,
-          pb: '36px', // Space for status bar
         }}
       >
         <Home ref={sectionRefs.current.home} />
@@ -53,8 +51,6 @@ export default function Page() {
         <Contact ref={sectionRefs.current.contact} />
         <Footer />
       </Stack>
-      
-      <CyberStatusBar />
     </Box>
   )
 }

@@ -1,40 +1,110 @@
 import React from 'react';
 import { Box, Typography, Stack, Divider, Button, Chip } from '@mui/material';
 import { styled, keyframes } from '@mui/material/styles';
+import { motion } from 'framer-motion';
+import Atropos from 'atropos/react';
+import 'atropos/css';
 
 /**
- * Professional Cyberpunk Component System
+ * Vibrant Cyberpunk Component System
  * 
- * Design Principles:
- * - Professional and corporate, not gamey
- * - Readability first - no effect should make reading difficult
- * - Subtle effects: 1px borders (0.2-0.3 opacity), soft glow on hover
- * - Smooth transitions: 0.3s ease for all state changes
- * - Elegant hover states: translateY -2px to -5px max, brightness increase
- * - Entry animations: fade-in-up with 0.4-0.6s duration, only on load
+ * Features:
+ * - Framer Motion animations with glitch effects
+ * - Atropos 3D tilt for image cards
+ * - Neon color palette (#00ff41, #ff003c, #0bc5ea)
+ * - Scanline and flicker effects
  */
 
 // ============================================
-// ANIMATIONS - Subtle and professional
+// COLOR CONSTANTS
 // ============================================
 
-const fadeInUp = keyframes`
-  0% {
-    transform: translateY(20px);
-    opacity: 0;
+const COLORS = {
+  primary: '#0bc5ea',
+  primaryLight: '#4dd8f5',
+  neonGreen: '#00ff41',
+  neonRed: '#ff003c',
+  neonCyan: '#00ffff',
+  dark: '#0a0a0f',
+  darkAccent: '#0d0d14',
+  darkElevated: '#14141f',
+  gray: '#1a1a28',
+  white: '#f0f4f8',
+  whiteMuted: '#a0a8b8',
+};
+
+// ============================================
+// FRAMER MOTION VARIANTS
+// ============================================
+
+export const glitchVariants = {
+  initial: { 
+    textShadow: `0 0 10px ${COLORS.primary}` 
+  },
+  hover: {
+    textShadow: [
+      `0 0 10px ${COLORS.primary}`,
+      `-2px 0 ${COLORS.neonRed}, 2px 0 ${COLORS.neonGreen}`,
+      `2px 0 ${COLORS.neonGreen}, -2px 0 ${COLORS.neonRed}`,
+      `0 0 15px ${COLORS.primary}`,
+    ],
+    transition: { duration: 0.3, times: [0, 0.33, 0.66, 1] }
   }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
+};
+
+export const flickerVariants = {
+  initial: { opacity: 0 },
+  animate: {
+    opacity: [0, 1, 0.2, 1, 0.5, 1],
+    transition: { duration: 0.6, times: [0, 0.1, 0.15, 0.2, 0.25, 0.3] }
   }
-`;
+};
+
+export const scanlineVariants = {
+  initial: { y: '-100%' },
+  animate: { 
+    y: '100vh',
+    transition: { duration: 3, repeat: Infinity, ease: 'linear' }
+  }
+};
+
+export const floatVariants = {
+  animate: {
+    y: [0, 10, 0],
+    transition: { duration: 2, repeat: Infinity, ease: 'easeInOut' }
+  }
+};
+
+export const fadeInUpVariants = {
+  initial: { opacity: 0, y: 30 },
+  animate: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.5, ease: 'easeOut' }
+  }
+};
+
+// ============================================
+// MUI KEYFRAMES
+// ============================================
 
 const subtlePulse = keyframes`
   0%, 100% {
     opacity: 0.7;
+    box-shadow: 0 0 5px currentColor;
   }
   50% {
     opacity: 1;
+    box-shadow: 0 0 15px currentColor, 0 0 25px currentColor;
+  }
+`;
+
+const neonGlow = keyframes`
+  0%, 100% {
+    box-shadow: 0 0 5px ${COLORS.primary}, 0 0 10px ${COLORS.primary};
+  }
+  50% {
+    box-shadow: 0 0 15px ${COLORS.primary}, 0 0 30px ${COLORS.primary}, 0 0 45px ${COLORS.primary};
   }
 `;
 
@@ -43,34 +113,32 @@ const subtlePulse = keyframes`
 // ============================================
 
 /**
- * SectionContainer - Main section wrapper with subtle border decorations
+ * SectionContainer - Main section wrapper with neon border decorations
  */
 const SectionContainer = styled(Box)(({ theme }) => ({
   position: 'relative',
   minHeight: '100vh',
   padding: theme.spacing(4),
   paddingTop: theme.spacing(10),
-  // Subtle top border
   '&::before': {
     content: '""',
     position: 'absolute',
     top: 0,
-    left: '5%',
-    right: '5%',
+    left: '2%',
+    right: '2%',
     height: '1px',
-    background: 'linear-gradient(90deg, transparent 0%, #8DBAF5 50%, transparent 100%)',
-    opacity: 0.2
+    background: `linear-gradient(90deg, transparent 0%, ${COLORS.neonGreen} 25%, ${COLORS.primary} 50%, ${COLORS.neonRed} 75%, transparent 100%)`,
+    opacity: 0.5
   },
-  // Subtle bottom border
   '&::after': {
     content: '""',
     position: 'absolute',
     bottom: 0,
-    left: '5%',
-    right: '5%',
+    left: '2%',
+    right: '2%',
     height: '1px',
-    background: 'linear-gradient(90deg, transparent 0%, #8DBAF5 50%, transparent 100%)',
-    opacity: 0.2
+    background: `linear-gradient(90deg, transparent 0%, ${COLORS.neonRed} 25%, ${COLORS.primary} 50%, ${COLORS.neonGreen} 75%, transparent 100%)`,
+    opacity: 0.5
   },
   [theme.breakpoints.down('md')]: {
     padding: theme.spacing(2),
@@ -79,21 +147,20 @@ const SectionContainer = styled(Box)(({ theme }) => ({
 }));
 
 /**
- * TechFrame - Card container with professional glass effect
+ * TechFrame - Card container with neon glass effect
  */
 const TechFrame = styled(Box)(({ theme }) => ({
   position: 'relative',
-  background: 'rgba(18, 18, 26, 0.8)',
-  border: '1px solid rgba(141, 186, 245, 0.2)',
-  borderRadius: '8px',
+  background: `rgba(13, 13, 20, 0.9)`,
+  border: `1px solid rgba(11, 197, 234, 0.3)`,
+  borderRadius: '4px',
   backdropFilter: 'blur(12px)',
   padding: theme.spacing(3),
   transition: 'all 0.3s ease',
-  // Hover state - subtle elevation and border brightening
   '&:hover': {
-    borderColor: 'rgba(141, 186, 245, 0.4)',
-    transform: 'translateY(-2px)',
-    boxShadow: '0 8px 32px rgba(141, 186, 245, 0.1)'
+    borderColor: `rgba(11, 197, 234, 0.6)`,
+    transform: 'translateY(-4px)',
+    boxShadow: `0 0 30px rgba(11, 197, 234, 0.2), 0 10px 40px rgba(0, 0, 0, 0.4)`
   },
   [theme.breakpoints.down('sm')]: {
     padding: theme.spacing(2),
@@ -101,7 +168,7 @@ const TechFrame = styled(Box)(({ theme }) => ({
 }));
 
 /**
- * TechGrid - Grid layout with subtle dot pattern
+ * TechGrid - Grid layout for cards
  */
 const TechGrid = styled(Box)(({ theme }) => ({
   position: 'relative',
@@ -114,64 +181,35 @@ const TechGrid = styled(Box)(({ theme }) => ({
   }
 }));
 
-/**
- * InfoPanel - Fixed side panel for additional info (desktop only)
- */
-const InfoPanel = styled(Box)(({ theme }) => ({
-  position: 'fixed',
-  right: theme.spacing(3),
-  top: '50%',
-  transform: 'translateY(-50%)',
-  background: 'rgba(10, 10, 15, 0.9)',
-  border: '1px solid rgba(141, 186, 245, 0.2)',
-  borderRadius: '8px',
-  padding: theme.spacing(2.5),
-  backdropFilter: 'blur(12px)',
-  minWidth: '180px',
-  zIndex: 100,
-  // Subtle hover glow
-  transition: 'all 0.3s ease',
-  '&:hover': {
-    borderColor: 'rgba(141, 186, 245, 0.35)',
-    boxShadow: '0 4px 24px rgba(141, 186, 245, 0.08)'
-  },
-  [theme.breakpoints.down('lg')]: {
-    display: 'none'
-  }
-}));
-
 // ============================================
 // TYPOGRAPHY COMPONENTS
 // ============================================
 
 /**
- * GlowText - Typography with subtle text shadow (for headings only)
+ * GlowText - Typography with neon glow (use with motion for glitch)
  */
-const GlowText = styled(Typography)(({ theme, glowcolor = '#8DBAF5' }) => ({
+const GlowText = styled(Typography)(({ glowcolor = COLORS.primary }) => ({
   position: 'relative',
-  color: '#f0f4f8',
-  textShadow: `0 0 8px rgba(141, 186, 245, 0.4)`,
+  color: COLORS.white,
+  textShadow: `0 0 10px ${glowcolor}, 0 0 20px ${glowcolor}`,
   transition: 'text-shadow 0.3s ease',
-  '&:hover': {
-    textShadow: `0 0 12px rgba(141, 186, 245, 0.5)`
-  }
 }));
 
 /**
- * GradientText - Elegant gradient text for special emphasis
+ * GradientText - Neon gradient text
  */
-const GradientText = styled(Typography)(({ theme }) => ({
-  background: 'linear-gradient(135deg, #B5D4FF 0%, #8DBAF5 100%)',
+const GradientText = styled(Typography)(() => ({
+  background: `linear-gradient(135deg, ${COLORS.neonGreen} 0%, ${COLORS.primary} 50%, ${COLORS.neonRed} 100%)`,
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
   backgroundClip: 'text',
 }));
 
 /**
- * AccentText - Primary color text for labels and emphasis
+ * AccentText - Primary neon color text
  */
-const AccentText = styled(Typography)(({ theme }) => ({
-  color: '#8DBAF5',
+const AccentText = styled(Typography)(() => ({
+  color: COLORS.primary,
   letterSpacing: '0.05em',
 }));
 
@@ -180,14 +218,15 @@ const AccentText = styled(Typography)(({ theme }) => ({
 // ============================================
 
 /**
- * CyberDivider - Gradient divider with optional center dot
+ * CyberDivider - Neon gradient divider
  */
 const CyberDivider = styled(Divider)(({ theme, showdot = 'false' }) => ({
-  background: 'linear-gradient(90deg, transparent 0%, rgba(141, 186, 245, 0.4) 50%, transparent 100%)',
+  background: `linear-gradient(90deg, transparent 0%, ${COLORS.neonGreen} 25%, ${COLORS.primary} 50%, ${COLORS.neonRed} 75%, transparent 100%)`,
   height: '1px',
   border: 'none',
   position: 'relative',
   margin: theme.spacing(3, 0),
+  opacity: 0.6,
   ...(showdot === 'true' && {
     '&::before': {
       content: '""',
@@ -195,68 +234,88 @@ const CyberDivider = styled(Divider)(({ theme, showdot = 'false' }) => ({
       top: '50%',
       left: '50%',
       transform: 'translate(-50%, -50%)',
-      width: '6px',
-      height: '6px',
-      background: '#8DBAF5',
+      width: '8px',
+      height: '8px',
+      background: COLORS.primary,
       borderRadius: '50%',
-      boxShadow: '0 0 8px rgba(141, 186, 245, 0.5)'
+      boxShadow: `0 0 10px ${COLORS.primary}, 0 0 20px ${COLORS.primary}`
     }
   })
 }));
 
 /**
- * StatusBar - Top progress/status bar
+ * StatusIndicator - Neon status dot
  */
-const StatusBar = styled(Box)(({ theme }) => ({
-  position: 'fixed',
-  top: 0,
-  left: 0,
-  right: 0,
-  height: '2px',
-  background: 'linear-gradient(90deg, transparent 0%, #8DBAF5 50%, transparent 100%)',
-  zIndex: 1100,
-  opacity: 0.6,
-}));
-
-/**
- * StatusIndicator - Small status dot (online/offline)
- */
-const StatusIndicator = styled(Box)(({ active = true }) => ({
-  width: '6px',
-  height: '6px',
+const StatusIndicator = styled(Box)(({ active = true, color }) => ({
+  width: '8px',
+  height: '8px',
   borderRadius: '50%',
-  backgroundColor: active ? '#4ade80' : '#64748b',
-  boxShadow: active ? '0 0 8px #4ade80' : 'none',
+  backgroundColor: active ? (color || COLORS.neonGreen) : '#64748b',
+  boxShadow: active ? `0 0 10px ${color || COLORS.neonGreen}, 0 0 20px ${color || COLORS.neonGreen}` : 'none',
   animation: active ? `${subtlePulse} 2s ease-in-out infinite` : 'none',
   flexShrink: 0,
 }));
+
+/**
+ * ScanlineOverlay - Animated scanline effect
+ */
+const ScanlineOverlay = () => (
+  <motion.div
+    style={{
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      height: '2px',
+      background: `linear-gradient(90deg, transparent, ${COLORS.primary}, transparent)`,
+      zIndex: 100,
+      pointerEvents: 'none',
+    }}
+    variants={scanlineVariants}
+    initial="initial"
+    animate="animate"
+  />
+);
 
 // ============================================
 // INTERACTIVE COMPONENTS
 // ============================================
 
 /**
- * CyberButton - Professional button with subtle hover effects
+ * CyberButton - High-tech button with neon effects
  */
-const CyberButton = styled(Button)(({ theme, variant = 'outlined' }) => ({
-  color: variant === 'contained' ? '#0a0a0f' : '#8DBAF5',
-  backgroundColor: variant === 'contained' ? '#8DBAF5' : 'transparent',
-  border: variant === 'contained' ? 'none' : '1px solid rgba(141, 186, 245, 0.3)',
-  borderRadius: '6px',
-  padding: theme.spacing(1, 2.5),
-  fontSize: '0.85rem',
-  fontFamily: 'BlenderPro-Medium',
+const CyberButton = styled(Button)(({ theme, variant = 'outlined', neoncolor = COLORS.primary }) => ({
+  color: variant === 'contained' ? COLORS.dark : neoncolor,
+  backgroundColor: variant === 'contained' ? neoncolor : 'transparent',
+  border: variant === 'contained' ? 'none' : `1px solid ${neoncolor}`,
+  borderRadius: '2px',
+  padding: theme.spacing(1.5, 3),
+  fontSize: '0.9rem',
+  fontFamily: 'BlenderPro-Medium, monospace',
   textTransform: 'uppercase',
-  letterSpacing: '0.08em',
+  letterSpacing: '0.1em',
+  position: 'relative',
+  overflow: 'hidden',
   transition: 'all 0.3s ease',
-  // Hover states
+  // Clip-path for high-tech corners
+  clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))',
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    left: '-100%',
+    width: '100%',
+    height: '100%',
+    background: `linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)`,
+    transition: 'left 0.5s ease',
+  },
   '&:hover': {
-    backgroundColor: variant === 'contained' ? '#B5D4FF' : 'rgba(141, 186, 245, 0.08)',
-    borderColor: variant === 'contained' ? 'transparent' : 'rgba(141, 186, 245, 0.5)',
+    backgroundColor: variant === 'contained' ? neoncolor : `rgba(11, 197, 234, 0.1)`,
+    boxShadow: `0 0 20px ${neoncolor}40, 0 0 40px ${neoncolor}20`,
     transform: 'translateY(-2px)',
-    boxShadow: variant === 'contained' 
-      ? '0 4px 16px rgba(141, 186, 245, 0.3)' 
-      : '0 4px 16px rgba(141, 186, 245, 0.1)',
+    '&::before': {
+      left: '100%',
+    }
   },
   '&:active': {
     transform: 'translateY(0)',
@@ -264,101 +323,129 @@ const CyberButton = styled(Button)(({ theme, variant = 'outlined' }) => ({
 }));
 
 /**
- * CyberChip - Professional chip/tag component
+ * CyberChip - Neon chip/tag
  */
-const CyberChip = styled(Chip)(({ theme }) => ({
-  backgroundColor: 'rgba(141, 186, 245, 0.1)',
-  border: '1px solid rgba(141, 186, 245, 0.25)',
-  color: '#8DBAF5',
-  fontFamily: 'BlenderPro-Medium',
+const CyberChip = styled(Chip)(({ neoncolor = COLORS.primary }) => ({
+  backgroundColor: `${neoncolor}15`,
+  border: `1px solid ${neoncolor}40`,
+  color: neoncolor,
+  fontFamily: 'BlenderPro-Medium, monospace',
   fontSize: '0.75rem',
   letterSpacing: '0.04em',
   transition: 'all 0.3s ease',
   '&:hover': {
-    backgroundColor: 'rgba(141, 186, 245, 0.15)',
-    borderColor: 'rgba(141, 186, 245, 0.4)',
+    backgroundColor: `${neoncolor}25`,
+    borderColor: `${neoncolor}70`,
+    boxShadow: `0 0 15px ${neoncolor}30`,
   }
 }));
 
+// ============================================
+// ATROPOS 3D CARD WRAPPER
+// ============================================
+
 /**
- * CyberLink - Interactive link with hover effect
+ * Atropos3DCard - Wrapper for 3D tilt effect on image cards
  */
-const CyberLink = styled('a')(({ theme }) => ({
-  color: '#8DBAF5',
-  textDecoration: 'none',
-  position: 'relative',
-  transition: 'all 0.3s ease',
-  '&::after': {
-    content: '""',
-    position: 'absolute',
-    bottom: -2,
-    left: 0,
-    width: '0%',
-    height: '1px',
-    backgroundColor: '#8DBAF5',
-    transition: 'width 0.3s ease',
-  },
-  '&:hover': {
-    color: '#B5D4FF',
-    '&::after': {
-      width: '100%',
-    }
-  }
-}));
+const Atropos3DCard = ({ children, className, ...props }) => (
+  <Atropos
+    className={className}
+    activeOffset={40}
+    shadow={false}
+    highlight={false}
+    rotateXMax={15}
+    rotateYMax={15}
+    style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+    }}
+    {...props}
+  >
+    <Box
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+        height: '100%',
+      }}
+    >
+      {children}
+    </Box>
+  </Atropos>
+);
 
 // ============================================
 // CARD COMPONENTS
 // ============================================
 
 /**
- * ProjectCard - Card for showcasing projects
+ * ProjectCard - Card for showcasing projects with neon accents
  */
 const ProjectCard = styled(Box)(({ theme }) => ({
   position: 'relative',
-  background: 'linear-gradient(180deg, rgba(141, 186, 245, 0.03) 0%, rgba(10, 10, 15, 0) 100%)',
-  backgroundColor: '#12121a',
-  border: '1px solid rgba(141, 186, 245, 0.15)',
-  borderRadius: '8px',
+  background: `linear-gradient(180deg, rgba(11, 197, 234, 0.08) 0%, ${COLORS.darkAccent} 100%)`,
+  backgroundColor: COLORS.darkAccent,
+  border: `1px solid rgba(11, 197, 234, 0.2)`,
+  borderRadius: '4px',
   padding: theme.spacing(3),
   overflow: 'hidden',
   transition: 'all 0.3s ease',
   '&:hover': {
-    borderColor: 'rgba(141, 186, 245, 0.35)',
-    transform: 'translateY(-4px)',
-    boxShadow: '0 12px 40px rgba(141, 186, 245, 0.12)',
-    // Subtle top highlight on hover
+    borderColor: `rgba(11, 197, 234, 0.5)`,
+    transform: 'translateY(-5px)',
+    boxShadow: `0 0 30px rgba(11, 197, 234, 0.15), 0 15px 50px rgba(0, 0, 0, 0.5)`,
     '&::before': {
       opacity: 1,
+    },
+    '&::after': {
+      opacity: 0.5,
     }
   },
+  // Top neon line
   '&::before': {
     content: '""',
     position: 'absolute',
     top: 0,
     left: '10%',
     right: '10%',
-    height: '1px',
-    background: 'linear-gradient(90deg, transparent 0%, #8DBAF5 50%, transparent 100%)',
+    height: '2px',
+    background: `linear-gradient(90deg, transparent, ${COLORS.primary}, transparent)`,
+    opacity: 0,
+    transition: 'opacity 0.3s ease',
+  },
+  // Corner accents
+  '&::after': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    width: '30px',
+    height: '30px',
+    borderTop: `2px solid ${COLORS.neonGreen}`,
+    borderRight: `2px solid ${COLORS.neonGreen}`,
     opacity: 0,
     transition: 'opacity 0.3s ease',
   }
 }));
 
 /**
- * SkillCard - Card for displaying skills/technologies
+ * SkillCard - Card for displaying skills
  */
 const SkillCard = styled(Box)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   gap: theme.spacing(2),
   padding: theme.spacing(2),
-  background: 'rgba(18, 18, 26, 0.6)',
-  border: '1px solid rgba(141, 186, 245, 0.1)',
-  borderRadius: '6px',
+  background: `rgba(13, 13, 20, 0.8)`,
+  border: `1px solid rgba(11, 197, 234, 0.15)`,
+  borderRadius: '4px',
   transition: 'all 0.3s ease',
   '&:hover': {
-    borderColor: 'rgba(141, 186, 245, 0.3)',
-    background: 'rgba(141, 186, 245, 0.05)',
+    borderColor: `rgba(11, 197, 234, 0.4)`,
+    background: `rgba(11, 197, 234, 0.08)`,
+    boxShadow: `0 0 20px rgba(11, 197, 234, 0.1)`,
   }
 }));
 
@@ -367,38 +454,127 @@ const SkillCard = styled(Box)(({ theme }) => ({
 // ============================================
 
 /**
- * FadeInUp - Wrapper for fade-in-up animation on mount
+ * FadeInUp - Wrapper for fade-in-up animation
  */
-const FadeInUp = styled(Box)(({ delay = 0 }) => ({
-  animation: `${fadeInUp} 0.5s ease-out both`,
-  animationDelay: `${delay}s`,
-}));
+const FadeInUp = ({ children, delay = 0, ...props }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 30 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5, delay, ease: 'easeOut' }}
+    {...props}
+  >
+    {children}
+  </motion.div>
+);
 
 /**
- * AnimatedSection - Section with staggered children animation
+ * GlitchText - Text with glitch effect on hover
  */
-const AnimatedSection = ({ children, staggerDelay = 0.1, ...props }) => {
-  return (
-    <Box {...props}>
-      {React.Children.map(children, (child, index) => (
-        <FadeInUp delay={index * staggerDelay}>
-          {child}
-        </FadeInUp>
-      ))}
-    </Box>
-  );
-};
+const GlitchText = ({ children, variant = 'h1', ...props }) => (
+  <motion.div
+    initial="initial"
+    whileHover="hover"
+    variants={glitchVariants}
+  >
+    <GlowText variant={variant} {...props}>
+      {children}
+    </GlowText>
+  </motion.div>
+);
+
+/**
+ * FlickerIn - Element that flickers in on mount
+ */
+const FlickerIn = ({ children, delay = 0, ...props }) => (
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ 
+      opacity: [0, 1, 0.2, 1, 0.5, 1],
+    }}
+    transition={{ 
+      duration: 0.6, 
+      delay,
+      times: [0, 0.1, 0.15, 0.2, 0.25, 0.3] 
+    }}
+    {...props}
+  >
+    {children}
+  </motion.div>
+);
+
+/**
+ * ScrollIndicator - Floating scroll down indicator
+ */
+const ScrollIndicator = ({ onClick }) => (
+  <motion.div
+    variants={floatVariants}
+    animate="animate"
+    style={{
+      position: 'absolute',
+      bottom: '40px',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      cursor: 'pointer',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      gap: '8px',
+      zIndex: 10,
+    }}
+    onClick={onClick}
+  >
+    <Typography
+      variant="caption"
+      sx={{
+        color: COLORS.primary,
+        fontFamily: 'BlenderPro-Medium, monospace',
+        letterSpacing: '0.2em',
+        textTransform: 'uppercase',
+        fontSize: '0.7rem',
+      }}
+    >
+      Scroll Down
+    </Typography>
+    <Box
+      sx={{
+        width: '24px',
+        height: '40px',
+        border: `2px solid ${COLORS.primary}`,
+        borderRadius: '12px',
+        position: 'relative',
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          top: '8px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          width: '4px',
+          height: '8px',
+          backgroundColor: COLORS.primary,
+          borderRadius: '2px',
+          animation: 'scrollBounce 1.5s infinite',
+        },
+        '@keyframes scrollBounce': {
+          '0%, 100%': { top: '8px', opacity: 1 },
+          '50%': { top: '20px', opacity: 0.5 },
+        }
+      }}
+    />
+  </motion.div>
+);
 
 // ============================================
 // EXPORTS
 // ============================================
 
 export {
+  // Colors
+  COLORS,
+  
   // Layout
   SectionContainer,
   TechFrame,
   TechGrid,
-  InfoPanel,
   
   // Typography
   GlowText,
@@ -407,13 +583,15 @@ export {
   
   // Decorative
   CyberDivider,
-  StatusBar,
   StatusIndicator,
+  ScanlineOverlay,
   
   // Interactive
   CyberButton,
   CyberChip,
-  CyberLink,
+  
+  // 3D Card
+  Atropos3DCard,
   
   // Cards
   ProjectCard,
@@ -421,5 +599,7 @@ export {
   
   // Animation
   FadeInUp,
-  AnimatedSection,
+  GlitchText,
+  FlickerIn,
+  ScrollIndicator,
 };

@@ -82,40 +82,45 @@
   color: #ffffff;
   background-color: #0a0a0f;
 
-  /* Professional Cyberpunk Color Palette - Based on #8DBAF5 */
-  --cyber-primary: #8DBAF5;           /* Main technological blue */
-  --cyber-primary-light: #B5D4FF;     /* Light variant */
-  --cyber-primary-dark: #5A8FD4;      /* Dark variant */
-  --cyber-accent: #6BA3E8;            /* Secondary accent */
+  /* Vibrant Cyberpunk Color Palette */
+  --cyber-primary: #0bc5ea;           /* Cyan/teal - main tech color */
+  --cyber-primary-light: #4dd8f5;     /* Light cyan */
+  --cyber-primary-dark: #0891b2;      /* Dark cyan */
+  --cyber-neon-green: #00ff41;        /* Matrix green for accents */
+  --cyber-neon-red: #ff003c;          /* Hot red/magenta for warnings/accents */
+  --cyber-neon-cyan: #00ffff;         /* Pure cyan for highlights */
+  --cyber-accent: #0bc5ea;            /* Secondary accent */
   
   /* Neutral palette */
   --cyber-dark: #0a0a0f;              /* Deep background */
-  --cyber-dark-accent: #12121a;       /* Card backgrounds */
-  --cyber-dark-elevated: #1a1a24;     /* Elevated surfaces */
-  --cyber-gray: #2a2a36;              /* Borders, dividers */
+  --cyber-dark-accent: #0d0d14;       /* Card backgrounds */
+  --cyber-dark-elevated: #14141f;     /* Elevated surfaces */
+  --cyber-gray: #1a1a28;              /* Borders, dividers */
   --cyber-gray-light: #404050;        /* Secondary text */
   --cyber-white: #f0f4f8;             /* Primary text */
-  --cyber-white-muted: #c8d4e0;       /* Secondary text */
+  --cyber-white-muted: #a0a8b8;       /* Secondary text */
   
-  /* Status colors (professional, muted) */
-  --cyber-success: #4ade80;           /* Green for online/success */
-  --cyber-warning: #fbbf24;           /* Amber for warnings */
-  --cyber-danger: #f87171;            /* Red for errors */
+  /* Neon status colors */
+  --cyber-success: #00ff41;           /* Neon green */
+  --cyber-warning: #fbbf24;           /* Amber */
+  --cyber-danger: #ff003c;            /* Neon red */
 
-  /* Professional Gradients (subtle) */
-  --cyber-gradient-primary: linear-gradient(135deg, rgba(141, 186, 245, 0.1) 0%, rgba(90, 143, 212, 0.05) 100%);
-  --cyber-gradient-accent: linear-gradient(90deg, var(--cyber-primary-dark) 0%, var(--cyber-primary) 100%);
-  --cyber-gradient-bg: radial-gradient(ellipse at 50% 0%, rgba(141, 186, 245, 0.08) 0%, rgba(10, 10, 15, 0) 60%);
-  --cyber-gradient-card: linear-gradient(180deg, rgba(141, 186, 245, 0.03) 0%, rgba(10, 10, 15, 0) 100%);
+  /* Vibrant Gradients */
+  --cyber-gradient-primary: linear-gradient(135deg, rgba(11, 197, 234, 0.15) 0%, rgba(0, 255, 65, 0.05) 100%);
+  --cyber-gradient-accent: linear-gradient(90deg, var(--cyber-neon-green) 0%, var(--cyber-primary) 50%, var(--cyber-neon-red) 100%);
+  --cyber-gradient-bg: radial-gradient(ellipse at 50% 0%, rgba(11, 197, 234, 0.12) 0%, rgba(10, 10, 15, 0) 60%);
+  --cyber-gradient-card: linear-gradient(180deg, rgba(11, 197, 234, 0.05) 0%, rgba(10, 10, 15, 0) 100%);
 
-  /* Professional Shadows and Effects (subtle) */
-  --cyber-glow-subtle: 0 0 15px rgba(141, 186, 245, 0.3);
-  --cyber-text-shadow: 0 0 8px rgba(141, 186, 245, 0.4);
-  --cyber-text-shadow-hover: 0 0 12px rgba(141, 186, 245, 0.5);
-  --cyber-border: 1px solid rgba(141, 186, 245, 0.2);
-  --cyber-border-hover: 1px solid rgba(141, 186, 245, 0.4);
-  --cyber-box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
-  --cyber-box-shadow-hover: 0 8px 32px rgba(141, 186, 245, 0.15);
+  /* Neon Shadows and Effects */
+  --cyber-glow-subtle: 0 0 20px rgba(11, 197, 234, 0.4);
+  --cyber-glow-green: 0 0 20px rgba(0, 255, 65, 0.4);
+  --cyber-glow-red: 0 0 20px rgba(255, 0, 60, 0.4);
+  --cyber-text-shadow: 0 0 10px rgba(11, 197, 234, 0.6);
+  --cyber-text-shadow-hover: 0 0 20px rgba(11, 197, 234, 0.8);
+  --cyber-border: 1px solid rgba(11, 197, 234, 0.25);
+  --cyber-border-hover: 1px solid rgba(11, 197, 234, 0.6);
+  --cyber-box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+  --cyber-box-shadow-hover: 0 8px 40px rgba(11, 197, 234, 0.25);
 
   /* Transition timing */
   --transition-fast: 0.2s ease;
@@ -168,7 +173,7 @@ body::before {
   pointer-events: none;
 }
 
-/* Subtle grid pattern - professional, not distracting */
+/* Cyberpunk grid overlay with neon lines */
 body::after {
   content: "";
   position: fixed;
@@ -177,9 +182,9 @@ body::after {
   width: 100%;
   height: 100%;
   background-image:
-    linear-gradient(rgba(141, 186, 245, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(141, 186, 245, 0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
+    linear-gradient(rgba(11, 197, 234, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(11, 197, 234, 0.06) 1px, transparent 1px);
+  background-size: 50px 50px;
   z-index: -1;
   pointer-events: none;
   opacity: 1;
@@ -208,16 +213,16 @@ body::after {
   background: transparent;
 }
 
-/* Professional section borders - subtle gradient lines */
+/* Cyberpunk section borders - neon gradient lines */
 .section::before {
   content: "";
   position: absolute;
   top: 0;
-  left: 5%;
-  right: 5%;
+  left: 2%;
+  right: 2%;
   height: 1px;
-  background: linear-gradient(90deg, transparent 0%, var(--cyber-primary) 50%, transparent 100%);
-  opacity: 0.2;
+  background: linear-gradient(90deg, transparent 0%, var(--cyber-neon-green) 25%, var(--cyber-primary) 50%, var(--cyber-neon-red) 75%, transparent 100%);
+  opacity: 0.4;
   z-index: 1;
 }
 
@@ -225,11 +230,11 @@ body::after {
   content: "";
   position: absolute;
   bottom: 0;
-  left: 5%;
-  right: 5%;
+  left: 2%;
+  right: 2%;
   height: 1px;
-  background: linear-gradient(90deg, transparent 0%, var(--cyber-primary) 50%, transparent 100%);
-  opacity: 0.2;
+  background: linear-gradient(90deg, transparent 0%, var(--cyber-neon-red) 25%, var(--cyber-primary) 50%, var(--cyber-neon-green) 75%, transparent 100%);
+  opacity: 0.4;
   z-index: 1;
 }
 
@@ -325,15 +330,108 @@ body::after {
   color: var(--cyber-primary-light);
 }
 
-/* PROFESSIONAL ANIMATIONS - Smooth and subtle */
+/* CYBERPUNK ANIMATIONS */
 
-/* Subtle status pulse for indicators */
-@keyframes statusPulse {
+/* Neon pulse for indicators */
+@keyframes neonPulse {
   0%, 100% {
     opacity: 0.7;
+    box-shadow: 0 0 5px currentColor;
   }
   50% {
     opacity: 1;
+    box-shadow: 0 0 15px currentColor, 0 0 30px currentColor;
+  }
+}
+
+/* Glitch effect for text */
+@keyframes glitch {
+  0%, 100% {
+    transform: translate(0);
+    text-shadow: 
+      0 0 10px var(--cyber-primary),
+      0 0 20px var(--cyber-primary);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+    text-shadow: 
+      -2px 0 var(--cyber-neon-red),
+      2px 0 var(--cyber-neon-green);
+  }
+  40% {
+    transform: translate(2px, -2px);
+    text-shadow: 
+      2px 0 var(--cyber-neon-green),
+      -2px 0 var(--cyber-neon-red);
+  }
+  60% {
+    transform: translate(-1px, 1px);
+    text-shadow: 
+      -1px 0 var(--cyber-neon-red),
+      1px 0 var(--cyber-neon-green);
+  }
+  80% {
+    transform: translate(1px, -1px);
+    text-shadow: 
+      1px 0 var(--cyber-neon-green),
+      -1px 0 var(--cyber-neon-red);
+  }
+}
+
+/* Scanline effect */
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+/* RGB shift on hover */
+@keyframes rgbShift {
+  0%, 100% {
+    text-shadow: 
+      0 0 10px var(--cyber-primary);
+  }
+  25% {
+    text-shadow: 
+      -2px 0 var(--cyber-neon-red),
+      2px 0 var(--cyber-neon-green),
+      0 0 10px var(--cyber-primary);
+  }
+  50% {
+    text-shadow: 
+      2px 0 var(--cyber-neon-green),
+      -2px 0 var(--cyber-neon-red),
+      0 0 15px var(--cyber-primary);
+  }
+  75% {
+    text-shadow: 
+      -1px 0 var(--cyber-neon-red),
+      1px 0 var(--cyber-neon-green),
+      0 0 10px var(--cyber-primary);
+  }
+}
+
+/* Flicker entry effect */
+@keyframes flicker {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  15% { opacity: 0.2; }
+  20% { opacity: 1; }
+  25% { opacity: 0.5; }
+  30% { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+/* Float animation for scroll indicator */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
   }
 }
 
@@ -407,16 +505,46 @@ body::after {
 .delay-400 { animation-delay: 0.4s; }
 .delay-500 { animation-delay: 0.5s; }
 
-/* PROFESSIONAL UTILITY CLASSES */
+/* CYBERPUNK UTILITY CLASSES */
+
+/* Glitch hover effect */
+.glitch-hover:hover {
+  animation: rgbShift 0.3s ease;
+}
+
+/* Flicker entry */
+.flicker-entry {
+  animation: flicker 0.6s ease-out both;
+}
+
+/* Scanline overlay */
+.scanline-overlay::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(0, 0, 0, 0.1) 51%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0.3;
+}
 
 /* Borders */
 .cyber-border {
-  border: 1px solid rgba(141, 186, 245, 0.2);
-  transition: border-color var(--transition-normal);
+  border: 1px solid rgba(11, 197, 234, 0.3);
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
 }
 
 .cyber-border:hover {
-  border-color: rgba(141, 186, 245, 0.4);
+  border-color: rgba(11, 197, 234, 0.6);
+  box-shadow: 0 0 15px rgba(11, 197, 234, 0.2);
 }
 
 /* Backgrounds */
@@ -429,9 +557,9 @@ body::after {
   background: var(--cyber-dark-elevated);
 }
 
-/* Professional gradient text - use sparingly */
+/* Neon gradient text */
 .cyber-gradient-text {
-  background: linear-gradient(135deg, var(--cyber-primary-light) 0%, var(--cyber-primary) 100%);
+  background: linear-gradient(135deg, var(--cyber-neon-green) 0%, var(--cyber-primary) 50%, var(--cyber-neon-red) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

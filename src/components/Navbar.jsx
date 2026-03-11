@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 // UI COMPONENTS
 import MenuIcon from '@mui/icons-material/Menu'
@@ -10,47 +11,48 @@ import MenuItem from '@mui/material/MenuItem'
 import Logo from './Logo'
 import logoLabs from '../assets/Logo-1.svg'
 import { styled } from '@mui/material/styles'
+import { COLORS } from './CyberComponents'
 
 /**
- * Professional Cyberpunk Navbar
+ * Vibrant Cyberpunk Navbar
  * 
  * Features:
- * - Glass effect with subtle blur
- * - Elegant border with gradient accent
- * - Smooth transitions on all interactions
- * - Professional hover states
+ * - Dark glass effect with neon accents
+ * - Glitch-style hover animations
+ * - Gradient border highlights
+ * - High-tech aesthetic
  */
 
 const CyberAppBar = styled(AppBar)(({ theme }) => ({
-  background: 'rgba(10, 10, 15, 0.85)',
-  backdropFilter: 'blur(16px)',
-  borderBottom: '1px solid rgba(141, 186, 245, 0.15)',
-  boxShadow: '0 4px 24px rgba(0, 0, 0, 0.3)',
-  // Subtle top accent line
+  background: 'rgba(10, 10, 15, 0.9)',
+  backdropFilter: 'blur(20px)',
+  borderBottom: `1px solid ${COLORS.primary}25`,
+  boxShadow: `0 4px 30px rgba(0, 0, 0, 0.5), 0 0 20px ${COLORS.primary}10`,
+  // Neon top accent line
   '&::before': {
     content: '""',
     position: 'absolute',
     top: 0,
     left: 0,
     right: 0,
-    height: '1px',
-    background: 'linear-gradient(90deg, transparent 0%, rgba(141, 186, 245, 0.4) 50%, transparent 100%)',
-    opacity: 0.6
+    height: '2px',
+    background: `linear-gradient(90deg, transparent 0%, ${COLORS.neonGreen} 25%, ${COLORS.primary} 50%, ${COLORS.neonRed} 75%, transparent 100%)`,
+    opacity: 0.7
   }
 }))
 
 const NavButton = styled(Link)(({ theme }) => ({
-  color: '#c8d4e0',
+  color: COLORS.whiteMuted,
   fontSize: '0.85rem',
-  fontFamily: 'BlenderPro-Medium',
+  fontFamily: 'BlenderPro-Medium, monospace',
   textTransform: 'uppercase',
-  letterSpacing: '0.08em',
+  letterSpacing: '0.1em',
   padding: theme.spacing(1, 2),
   position: 'relative',
   textDecoration: 'none',
   transition: 'all 0.3s ease',
-  borderRadius: '4px',
-  // Underline animation
+  borderRadius: '2px',
+  // Underline animation with neon glow
   '&::after': {
     content: '""',
     position: 'absolute',
@@ -58,53 +60,69 @@ const NavButton = styled(Link)(({ theme }) => ({
     left: '50%',
     transform: 'translateX(-50%)',
     width: 0,
-    height: '1px',
-    backgroundColor: '#8DBAF5',
+    height: '2px',
+    backgroundColor: COLORS.primary,
+    boxShadow: `0 0 10px ${COLORS.primary}`,
     transition: 'width 0.3s ease',
   },
   '&:hover': {
-    color: '#8DBAF5',
-    backgroundColor: 'rgba(141, 186, 245, 0.06)',
+    color: COLORS.primary,
+    textShadow: `0 0 10px ${COLORS.primary}50`,
+    backgroundColor: `${COLORS.primary}10`,
     '&::after': {
-      width: '60%',
+      width: '80%',
     }
   }
 }))
 
 const CyberMenu = styled(Menu)(({ theme }) => ({
   '& .MuiPaper-root': {
-    background: 'rgba(10, 10, 15, 0.95)',
-    backdropFilter: 'blur(16px)',
-    border: '1px solid rgba(141, 186, 245, 0.2)',
-    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)',
-    borderRadius: '8px',
+    background: 'rgba(10, 10, 15, 0.98)',
+    backdropFilter: 'blur(20px)',
+    border: `1px solid ${COLORS.primary}30`,
+    boxShadow: `0 8px 40px rgba(0, 0, 0, 0.6), 0 0 20px ${COLORS.primary}15`,
+    borderRadius: '4px',
     marginTop: theme.spacing(1),
-    minWidth: '200px',
+    minWidth: '220px',
+    // Corner accent
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      top: 0,
+      right: 0,
+      width: '20px',
+      height: '20px',
+      borderTop: `2px solid ${COLORS.neonGreen}`,
+      borderRight: `2px solid ${COLORS.neonGreen}`,
+    }
   },
   '& .MuiMenuItem-root': {
-    color: '#c8d4e0',
-    fontFamily: 'BlenderPro-Medium',
+    color: COLORS.whiteMuted,
+    fontFamily: 'BlenderPro-Medium, monospace',
     textTransform: 'uppercase',
-    letterSpacing: '0.06em',
+    letterSpacing: '0.08em',
     fontSize: '0.85rem',
     padding: theme.spacing(1.5, 2.5),
     transition: 'all 0.3s ease',
+    borderLeft: '2px solid transparent',
     '&:hover': {
-      background: 'rgba(141, 186, 245, 0.08)',
-      color: '#8DBAF5'
+      background: `${COLORS.primary}15`,
+      color: COLORS.primary,
+      borderLeftColor: COLORS.primary,
     }
   }
 }))
 
 const MenuButton = styled(IconButton)(({ theme }) => ({
-  color: '#8DBAF5',
-  border: '1px solid rgba(141, 186, 245, 0.25)',
-  borderRadius: '6px',
+  color: COLORS.primary,
+  border: `1px solid ${COLORS.primary}40`,
+  borderRadius: '4px',
   padding: theme.spacing(1),
   transition: 'all 0.3s ease',
   '&:hover': {
-    background: 'rgba(141, 186, 245, 0.08)',
-    borderColor: 'rgba(141, 186, 245, 0.4)',
+    background: `${COLORS.primary}15`,
+    borderColor: COLORS.primary,
+    boxShadow: `0 0 15px ${COLORS.primary}30`,
   }
 }))
 
@@ -149,16 +167,15 @@ const Navbar = () => {
           alignItems="center" 
           sx={{ flexGrow: 1, display: { md: 'none' } }}
         >
-          <Logo 
-            imgUrl={logoLabs} 
-            alt="Jonathan Wildemer Logo" 
-            sx={{
-              transition: 'all 0.3s ease',
-              '&:hover': {
-                transform: 'scale(1.05)',
-              }
-            }} 
-          />
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: 'spring', stiffness: 400 }}
+          >
+            <Logo 
+              imgUrl={logoLabs} 
+              alt="Jonathan Wildemer Logo" 
+            />
+          </motion.div>
 
           <MenuButton
             onClick={handleOpenNavMenu}
@@ -196,16 +213,15 @@ const Navbar = () => {
           alignItems="center" 
           sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}
         >
-          <Logo 
-            imgUrl={logoLabs} 
-            alt="Jonathan Wildemer Logo" 
-            sx={{
-              transition: 'all 0.3s ease',
-              '&:hover': {
-                transform: 'scale(1.05)',
-              }
-            }} 
-          />
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: 'spring', stiffness: 400 }}
+          >
+            <Logo 
+              imgUrl={logoLabs} 
+              alt="Jonathan Wildemer Logo" 
+            />
+          </motion.div>
 
           <Stack 
             component="nav" 
@@ -214,12 +230,17 @@ const Navbar = () => {
             aria-label="Main navigation"
           >
             {pages?.filter(page => page?.show).map((page, index) => (
-              <NavButton 
-                key={index} 
-                href={page.path}
+              <motion.div
+                key={index}
+                whileHover={{ y: -2 }}
+                transition={{ type: 'spring', stiffness: 400 }}
               >
-                {page.label}
-              </NavButton>
+                <NavButton 
+                  href={page.path}
+                >
+                  {page.label}
+                </NavButton>
+              </motion.div>
             ))}
           </Stack>
         </Stack>

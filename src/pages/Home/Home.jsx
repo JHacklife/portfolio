@@ -1,31 +1,55 @@
 import { Box, Divider, Link, Stack, Typography } from '@mui/material'
 import React from 'react'
+import { motion } from 'framer-motion'
+import { ChevronDown } from 'lucide-react'
 import Navbar from '../../components/Navbar'
 import TechBackground from '../../components/TechBackground'
 import { 
   SectionContainer, 
   GlowText, 
   GradientText,
-  InfoPanel, 
   StatusIndicator,
   CyberDivider,
-  FadeInUp 
+  FadeInUp,
+  GlitchText,
+  FlickerIn,
+  COLORS,
 } from '../../components/CyberComponents'
 import mailTo, { config } from '../../utils/mail'
 import contactIcons from '../Contact/ContactIcons'
 
 /**
- * Home Page - Professional Cyberpunk Hero Section
+ * Home Page - Vibrant Cyberpunk Hero Section
  * 
- * Design features:
- * - Clean, readable typography with subtle glow
- * - Professional status indicators
- * - Elegant fade-in animations
- * - Consistent spacing and layout
+ * Features:
+ * - Glitch text effects on hover
+ * - Flicker entry animations
+ * - Floating scroll indicator
+ * - Neon color scheme
+ * - Clean layout without sidebar widgets
  */
+
+// Floating animation for scroll indicator
+const floatAnimation = {
+  animate: {
+    y: [0, 10, 0],
+    transition: {
+      duration: 2,
+      repeat: Infinity,
+      ease: 'easeInOut'
+    }
+  }
+};
 
 function Home() {
   const contacts = contactIcons({ size: "24" })
+
+  const scrollToNext = () => {
+    const aboutSection = document.getElementById('about');
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <Stack sx={{ minHeight: '100vh' }}>
@@ -49,8 +73,8 @@ function Home() {
           alignItems="center" 
           sx={{ zIndex: 10, maxWidth: '900px', px: 2 }}
         >
-          {/* Hero Title */}
-          <FadeInUp delay={0}>
+          {/* Hero Title with Glitch Effect */}
+          <FlickerIn delay={0.2}>
             <Stack spacing={2} alignItems="center">
               <Stack 
                 direction={{ xs: 'column', sm: 'row' }} 
@@ -58,55 +82,68 @@ function Home() {
                 justifyContent="center" 
                 alignItems="center"
               >
-                <GlowText 
+                <GlitchText 
                   variant="h1" 
-                  className="fade-in-up"
-                  sx={{ fontWeight: 700 }}
+                  sx={{ 
+                    fontWeight: 700,
+                    fontSize: { xs: '2.5rem', sm: '3.5rem', md: '4.5rem' },
+                    fontFamily: 'BlenderPro-Bold, sans-serif',
+                  }}
                 >
                   JONATHAN
-                </GlowText>
-                <GradientText 
-                  variant="h1"
-                  className="fade-in-up delay-100"
-                  sx={{ fontWeight: 900 }}
+                </GlitchText>
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
                 >
-                  WILDEMER
-                </GradientText>
+                  <GradientText 
+                    variant="h1"
+                    sx={{ 
+                      fontWeight: 900,
+                      fontSize: { xs: '2.5rem', sm: '3.5rem', md: '4.5rem' },
+                      fontFamily: 'BlenderPro-Heavy, sans-serif',
+                    }}
+                  >
+                    WILDEMER
+                  </GradientText>
+                </motion.div>
               </Stack>
 
-              <FadeInUp delay={0.2}>
+              <FadeInUp delay={0.5}>
                 <Typography
                   variant="h4"
                   sx={{
-                    color: '#8DBAF5',
+                    color: COLORS.primary,
                     fontFamily: 'BlenderPro-Medium',
-                    letterSpacing: '0.15em',
+                    letterSpacing: '0.2em',
                     textTransform: 'uppercase',
                     mt: 2,
                     textAlign: 'center',
+                    fontSize: { xs: '0.9rem', sm: '1.2rem', md: '1.4rem' },
+                    textShadow: `0 0 20px ${COLORS.primary}40`,
                   }}
                 >
                   Fullstack Web & Mobile Developer
                 </Typography>
               </FadeInUp>
 
-              {/* Decorative line */}
-              <FadeInUp delay={0.3}>
+              {/* Decorative neon line */}
+              <FadeInUp delay={0.6}>
                 <Box
                   sx={{
-                    width: '200px',
-                    height: '1px',
-                    background: 'linear-gradient(90deg, transparent 0%, #8DBAF5 50%, transparent 100%)',
+                    width: '250px',
+                    height: '2px',
+                    background: `linear-gradient(90deg, transparent, ${COLORS.neonGreen}, ${COLORS.primary}, ${COLORS.neonRed}, transparent)`,
                     mt: 3,
-                    opacity: 0.5,
                   }}
                 />
               </FadeInUp>
             </Stack>
-          </FadeInUp>
+          </FlickerIn>
 
           {/* Status indicators */}
-          <FadeInUp delay={0.4}>
+          <FadeInUp delay={0.7}>
             <Stack 
               direction="row" 
               spacing={4} 
@@ -116,14 +153,15 @@ function Home() {
               justifyContent="center"
             >
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <StatusIndicator active={true} />
+                <StatusIndicator active={true} color={COLORS.neonGreen} />
                 <Typography 
                   variant="caption" 
                   sx={{ 
-                    color: '#4ade80', 
+                    color: COLORS.neonGreen, 
                     textTransform: 'uppercase', 
-                    letterSpacing: '0.1em',
+                    letterSpacing: '0.15em',
                     fontFamily: 'BlenderPro-Medium',
+                    textShadow: `0 0 10px ${COLORS.neonGreen}50`,
                   }}
                 >
                   ONLINE
@@ -131,14 +169,15 @@ function Home() {
               </Box>
 
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <StatusIndicator active={true} />
+                <StatusIndicator active={true} color={COLORS.primary} />
                 <Typography 
                   variant="caption" 
                   sx={{ 
-                    color: '#8DBAF5', 
+                    color: COLORS.primary, 
                     textTransform: 'uppercase', 
-                    letterSpacing: '0.1em',
+                    letterSpacing: '0.15em',
                     fontFamily: 'BlenderPro-Medium',
+                    textShadow: `0 0 10px ${COLORS.primary}50`,
                   }}
                 >
                   AVAILABLE FOR HIRE
@@ -154,7 +193,7 @@ function Home() {
           justifyContent="space-between"
           sx={{
             position: "absolute",
-            bottom: "60px",
+            bottom: "100px",
             left: { xs: "20px", md: "40px" },
             right: { xs: "20px", md: "40px" },
             zIndex: 5,
@@ -162,7 +201,7 @@ function Home() {
           }}
         >
           {/* Left panel - Email */}
-          <FadeInUp delay={0.5}>
+          <FadeInUp delay={0.8}>
             <Stack alignItems="center" spacing={2}>
               <Link
                 href={mailTo}
@@ -170,14 +209,15 @@ function Home() {
                 className="verticalText"
                 sx={{
                   textDecoration: "none",
-                  color: '#8DBAF5',
+                  color: COLORS.primary,
                   fontSize: '0.8rem',
                   fontFamily: 'BlenderPro-Medium',
                   opacity: 0.7,
                   transition: 'all 0.3s ease',
                   '&:hover': {
-                    color: '#B5D4FF',
+                    color: COLORS.neonCyan,
                     opacity: 1,
+                    textShadow: `0 0 10px ${COLORS.primary}`,
                   }
                 }}
               >
@@ -187,7 +227,7 @@ function Home() {
                 orientation="vertical"
                 sx={{
                   height: "60px",
-                  borderColor: 'rgba(141, 186, 245, 0.2)',
+                  borderColor: `${COLORS.primary}40`,
                   borderWidth: "1px",
                 }}
               />
@@ -195,32 +235,36 @@ function Home() {
           </FadeInUp>
 
           {/* Right panel - Social links */}
-          <FadeInUp delay={0.6}>
+          <FadeInUp delay={0.9}>
             <Stack alignItems="center" spacing={2}>
               <Stack spacing={1.5}>
                 {contacts.map((contact, index) => (
-                  <Link
+                  <motion.div
                     key={index}
-                    href={contact?.url}
-                    target="_blank"
-                    aria-label={contact?.label || 'Social link'}
-                    sx={{
-                      textDecoration: "none",
-                      color: '#8DBAF5',
-                      opacity: 0.7,
-                      transition: 'all 0.3s ease',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      '&:hover': {
-                        color: '#B5D4FF',
-                        opacity: 1,
-                        transform: 'translateY(-2px)',
-                      }
-                    }}
+                    whileHover={{ scale: 1.2, y: -2 }}
+                    transition={{ type: 'spring', stiffness: 400 }}
                   >
-                    {contact?.icon}
-                  </Link>
+                    <Link
+                      href={contact?.url}
+                      target="_blank"
+                      aria-label={contact?.label || 'Social link'}
+                      sx={{
+                        textDecoration: "none",
+                        color: COLORS.primary,
+                        opacity: 0.7,
+                        transition: 'all 0.3s ease',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        '&:hover': {
+                          color: COLORS.neonCyan,
+                          opacity: 1,
+                        }
+                      }}
+                    >
+                      {contact?.icon}
+                    </Link>
+                  </motion.div>
                 ))}
               </Stack>
 
@@ -228,7 +272,7 @@ function Home() {
                 orientation="vertical"
                 sx={{
                   height: "60px",
-                  borderColor: 'rgba(141, 186, 245, 0.2)',
+                  borderColor: `${COLORS.primary}40`,
                   borderWidth: "1px",
                 }}
               />
@@ -236,82 +280,50 @@ function Home() {
           </FadeInUp>
         </Stack>
 
-        {/* Info Panel - Desktop only */}
-        <InfoPanel sx={{ display: { xs: 'none', lg: 'block' } }}>
-          <Stack spacing={2.5}>
-            <Box>
-              <Typography 
-                variant="overline" 
-                sx={{ 
-                  color: '#8DBAF5', 
-                  fontWeight: 600,
-                  fontSize: '0.65rem',
-                  letterSpacing: '0.1em',
-                }}
-              >
-                SYSTEM STATUS
-              </Typography>
-              <Stack spacing={1} sx={{ mt: 1 }}>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <Typography variant="caption" sx={{ color: '#808898' }}>CPU:</Typography>
-                  <Typography variant="caption" sx={{ color: '#4ade80' }}>OPTIMAL</Typography>
-                </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <Typography variant="caption" sx={{ color: '#808898' }}>MEMORY:</Typography>
-                  <Typography variant="caption" sx={{ color: '#4ade80' }}>85%</Typography>
-                </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <Typography variant="caption" sx={{ color: '#808898' }}>NETWORK:</Typography>
-                  <Typography variant="caption" sx={{ color: '#4ade80' }}>CONNECTED</Typography>
-                </Box>
-              </Stack>
-            </Box>
-
-            <CyberDivider sx={{ my: 1.5 }} />
-
-            <Box>
-              <Typography 
-                variant="overline" 
-                sx={{ 
-                  color: '#8DBAF5', 
-                  fontWeight: 600,
-                  fontSize: '0.65rem',
-                  letterSpacing: '0.1em',
-                }}
-              >
-                LOCATION
-              </Typography>
-              <Typography variant="caption" sx={{ display: 'block', mt: 0.5, color: '#c8d4e0' }}>
-                Buenos Aires, ARG
-              </Typography>
-            </Box>
-
-            <Box>
-              <Typography 
-                variant="overline" 
-                sx={{ 
-                  color: '#8DBAF5', 
-                  fontWeight: 600,
-                  fontSize: '0.65rem',
-                  letterSpacing: '0.1em',
-                }}
-              >
-                LOCAL TIME
-              </Typography>
-              <Typography 
-                variant="caption" 
-                sx={{ 
-                  display: 'block', 
-                  mt: 0.5, 
-                  color: '#c8d4e0',
-                  fontFamily: 'monospace',
-                }}
-              >
-                {new Date().toLocaleTimeString()}
-              </Typography>
-            </Box>
-          </Stack>
-        </InfoPanel>
+        {/* Scroll Down Indicator */}
+        <motion.div
+          variants={floatAnimation}
+          animate="animate"
+          style={{
+            position: 'absolute',
+            bottom: '40px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            cursor: 'pointer',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '8px',
+            zIndex: 10,
+          }}
+          onClick={scrollToNext}
+        >
+          <Typography
+            variant="caption"
+            sx={{
+              color: COLORS.primary,
+              fontFamily: 'BlenderPro-Medium, monospace',
+              letterSpacing: '0.2em',
+              textTransform: 'uppercase',
+              fontSize: '0.7rem',
+              opacity: 0.8,
+            }}
+          >
+            Scroll Down
+          </Typography>
+          <motion.div
+            animate={{ y: [0, 5, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+          >
+            <ChevronDown 
+              size={28} 
+              color={COLORS.primary}
+              style={{
+                filter: `drop-shadow(0 0 10px ${COLORS.primary})`,
+              }}
+            />
+          </motion.div>
+        </motion.div>
       </SectionContainer>
     </Stack>
   )
