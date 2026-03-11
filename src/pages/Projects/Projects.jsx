@@ -54,7 +54,7 @@ function Projects() {
               }}
             />
             <GlowText variant="h3" sx={{ fontWeight: 600 }}>
-              PROJECTS
+              PROYECTOS
             </GlowText>
           </Stack>
           
@@ -84,8 +84,8 @@ function Projects() {
             lineHeight: 1.7,
           }}
         >
-          A selection of professional projects showcasing full-stack development, 
-          modern UI/UX design, and innovative solutions.
+          Una selección de proyectos profesionales que muestran desarrollo full-stack, 
+          diseño moderno UI/UX y soluciones innovadoras.
         </Typography>
       </FadeInUp>
 

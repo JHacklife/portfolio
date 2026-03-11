@@ -130,12 +130,12 @@ const Navbar = () => {
   const navigateTo = useNavigate()
 
   const pages = [
-    { path: '#', label: 'Home', show: true },
-    { path: '#about', label: 'About', show: true },
-    { path: '#langsAndTools', label: 'Skills', show: true },
-    { path: '#projects', label: 'Projects', show: true },
-    { path: '#certificates', label: 'Certificates', show: true },
-    { path: '#contact', label: 'Contact', show: true },
+    { path: '#', label: 'Inicio', show: true },
+    { path: '#about', label: 'Sobre Mí', show: true },
+    { path: '#langsAndTools', label: 'Habilidades', show: true },
+    { path: '#projects', label: 'Proyectos', show: true },
+    { path: '#certificates', label: 'Certificados', show: false },
+    { path: '#contact', label: 'Contacto', show: true },
   ]
 
   const [anchorElNav, setAnchorElNav] = useState(null)
@@ -150,10 +150,10 @@ const Navbar = () => {
 
   return (
     <CyberAppBar position="fixed" id="navbar">
-      <Toolbar 
-        variant="dense" 
-        sx={{ 
-          minHeight: '64px', 
+      <Toolbar
+        variant="dense"
+        sx={{
+          minHeight: '64px',
           padding: { xs: '0 16px', md: '0 32px' },
           maxWidth: '1400px',
           margin: '0 auto',
@@ -161,19 +161,19 @@ const Navbar = () => {
         }}
       >
         {/* MOBILE */}
-        <Stack 
-          direction="row" 
-          justifyContent="space-between" 
-          alignItems="center" 
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
           sx={{ flexGrow: 1, display: { md: 'none' } }}
         >
           <motion.div
             whileHover={{ scale: 1.05 }}
             transition={{ type: 'spring', stiffness: 400 }}
           >
-            <Logo 
-              imgUrl={logoLabs} 
-              alt="Jonathan Wildemer Logo" 
+            <Logo
+              imgUrl={logoLabs}
+              alt="Jonathan Wildemer Logo"
             />
           </motion.div>
 
@@ -194,8 +194,8 @@ const Navbar = () => {
             onClose={handleCloseNavMenu}
           >
             {pages?.filter(page => page?.show).map((page) => (
-              <MenuItem 
-                key={page.label} 
+              <MenuItem
+                key={page.label}
                 onClick={handleCloseNavMenu}
                 component="a"
                 href={page.path}
@@ -207,25 +207,25 @@ const Navbar = () => {
         </Stack>
 
         {/* DESKTOP */}
-        <Stack 
-          direction="row" 
-          justifyContent="space-between" 
-          alignItems="center" 
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
           sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}
         >
           <motion.div
             whileHover={{ scale: 1.05 }}
             transition={{ type: 'spring', stiffness: 400 }}
           >
-            <Logo 
-              imgUrl={logoLabs} 
-              alt="Jonathan Wildemer Logo" 
+            <Logo
+              imgUrl={logoLabs}
+              alt="Jonathan Wildemer Logo"
             />
           </motion.div>
 
-          <Stack 
-            component="nav" 
-            direction="row" 
+          <Stack
+            component="nav"
+            direction="row"
             spacing={0.5}
             aria-label="Main navigation"
           >
@@ -235,7 +235,7 @@ const Navbar = () => {
                 whileHover={{ y: -2 }}
                 transition={{ type: 'spring', stiffness: 400 }}
               >
-                <NavButton 
+                <NavButton
                   href={page.path}
                 >
                   {page.label}

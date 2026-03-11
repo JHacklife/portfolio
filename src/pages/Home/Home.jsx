@@ -82,7 +82,7 @@ function Home() {
                 justifyContent="center" 
                 alignItems="center"
               >
-                <GlitchText 
+                <GlowText 
                   variant="h1" 
                   sx={{ 
                     fontWeight: 700,
@@ -91,13 +91,13 @@ function Home() {
                   }}
                 >
                   JONATHAN
-                </GlitchText>
+                </GlowText>
                 <motion.div
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.4 }}
                 >
-                  <GradientText 
+                  <GlowText 
                     variant="h1"
                     sx={{ 
                       fontWeight: 900,
@@ -106,7 +106,7 @@ function Home() {
                     }}
                   >
                     WILDEMER
-                  </GradientText>
+                  </GlowText>
                 </motion.div>
               </Stack>
 
@@ -124,7 +124,7 @@ function Home() {
                     textShadow: `0 0 20px ${COLORS.primary}40`,
                   }}
                 >
-                  Fullstack Web & Mobile Developer
+                  Desarrollador Fullstack Web & Mobile
                 </Typography>
               </FadeInUp>
 
@@ -134,7 +134,7 @@ function Home() {
                   sx={{
                     width: '250px',
                     height: '2px',
-                    background: `linear-gradient(90deg, transparent, ${COLORS.neonGreen}, ${COLORS.primary}, ${COLORS.neonRed}, transparent)`,
+                    background: `linear-gradient(90deg, transparent, ${COLORS.primary}, transparent)`,
                     mt: 3,
                   }}
                 />
@@ -164,7 +164,7 @@ function Home() {
                     textShadow: `0 0 10px ${COLORS.neonGreen}50`,
                   }}
                 >
-                  ONLINE
+                  EN LÍNEA
                 </Typography>
               </Box>
 
@@ -180,7 +180,7 @@ function Home() {
                     textShadow: `0 0 10px ${COLORS.primary}50`,
                   }}
                 >
-                  AVAILABLE FOR HIRE
+                  DISPONIBLE PARA CONTRATAR
                 </Typography>
               </Box>
             </Stack>
@@ -309,7 +309,7 @@ function Home() {
               opacity: 0.8,
             }}
           >
-            Scroll Down
+            Desplázate
           </Typography>
           <motion.div
             animate={{ y: [0, 5, 0] }}

@@ -40,7 +40,7 @@ function About() {
                 }}
               />
               <GlowText variant="h2">
-                ABOUT ME
+                SOBRE MÍ
               </GlowText>
               <Box
                 sx={{
@@ -57,7 +57,7 @@ function About() {
               fontSize: '1rem',
               lineHeight: 1.7,
             }}>
-              Developer & Innovator | Technical lead with passion for emerging technology
+              Desarrollador e Innovador | Líder técnico con pasión por la tecnología emergente
             </Typography>
           </Stack>
         </FadeInUp>
@@ -108,7 +108,7 @@ function About() {
                       fontFamily: 'BlenderPro-Medium',
                       fontSize: '1.1rem',
                     }}>
-                      FULLSTACK DEVELOPER @{' '}
+                      DESARROLLADOR FULLSTACK @{' '}
                       <Link
                         href="http://infinitelabs.tech/"
                         target="_blank"
@@ -137,12 +137,12 @@ function About() {
                     lineHeight: 1.8,
                     fontSize: '1rem',
                   }}>
-                    Web developer and technical lead with experience in coordination and 
-                    execution of digital projects. Creative entrepreneur specialized in 
-                    web and mobile application development, with interest in wearable 
-                    technology and innovation. Capable of planning, estimating, and 
-                    supervising complex tasks, providing agile solutions and leading 
-                    teams toward successful delivery of high-quality products.
+                    Desarrollador web y líder técnico con experiencia en coordinación y 
+                    ejecución de proyectos digitales. Emprendedor creativo especializado en 
+                    desarrollo de aplicaciones web y móviles, con interés en tecnología 
+                    wearable e innovación. Capaz de planificar, estimar y 
+                    supervisar tareas complejas, brindando soluciones ágiles y liderando 
+                    equipos hacia la entrega exitosa de productos de alta calidad.
                   </Typography>
                 </TechFrame>
               </FadeInUp>
@@ -163,7 +163,7 @@ function About() {
                 }}
               />
               <Typography variant="h4" sx={{ color: '#8DBAF5' }}>
-                PROFESSIONAL DATA
+                DATOS PROFESIONALES
               </Typography>
             </Stack>
           </FadeInUp>
@@ -171,10 +171,10 @@ function About() {
           <Grid container spacing={2}>
             {[
               {
-                title: "Most Valued Project",
+                title: "Proyecto Más Valorado",
                 content: (
                   <>
-                    Electronic anti-kidnapping bracelet{' '}
+                    Pulsera electrónica antisecuestro{' '}
                     <Link href="https://culturageek.com.ar/argentino-creo-una-pulsera-anti-secuestro/" target="_blank" rel="noopener noreferrer" sx={{ color: '#8DBAF5' }}>
                       'PULSE'
                     </Link>
@@ -182,10 +182,10 @@ function About() {
                 )
               },
               {
-                title: "Awards & Mentions",
+                title: "Premios y Menciones",
                 content: (
                   <>
-                    First prize and innovation mention at{' '}
+                    Primer premio y mención a la innovación en{' '}
                     <Link href="https://www.argentina.gob.ar/noticias/primera-hackaton-nacional-para-ayudar-frenar-la-violencia-contra-las-mujeres-0/" target="_blank" rel="noopener noreferrer" sx={{ color: '#8DBAF5' }}>
                       '#HALV'
                     </Link>{' & '}
@@ -196,21 +196,21 @@ function About() {
                 )
               },
               {
-                title: "Speaker",
+                title: "Orador",
                 content: (
                   <>
                     <Link href="https://www.fits.ong/argentina/oradores.php/" target="_blank" rel="noopener noreferrer" sx={{ color: '#8DBAF5' }}>
                       FITS
                     </Link>{' '}
-                    (Festival of Innovation and Social Technology) at Konex
+                    (Festival de Innovación y Tecnología Social) en Konex
                   </>
                 )
               },
               {
-                title: "Experience",
+                title: "Experiencia",
                 content: (
                   <>
-                    View my experience on{' '}
+                    Ver mi experiencia en{' '}
                     <Link href="https://www.linkedin.com/in/jonathanhacklife/" target="_blank" rel="noopener noreferrer" sx={{ color: '#8DBAF5' }}>
                       LinkedIn
                     </Link>
@@ -218,22 +218,22 @@ function About() {
                 )
               },
               {
-                title: "Projects",
+                title: "Proyectos",
                 content: (
                   <>
-                    All my projects are available{' '}
+                    Todos mis proyectos están disponibles{' '}
                     <Link href="https://gitlab.com/users/jonathanhacklife/projects/" target="_blank" rel="noopener noreferrer" sx={{ color: '#8DBAF5' }}>
-                      here
+                      aquí
                     </Link>
                   </>
                 )
               },
               {
-                title: "Interests",
-                content: "React, Node, Flutter, Dart, Automation & UX/UI Design"
+                title: "Intereses",
+                content: "React, Node, Flutter, Dart, Automatización y Diseño UX/UI"
               },
               {
-                title: "Volunteering",
+                title: "Voluntariado",
                 content: (
                   <>
                     <Link href="https://frontend.cafe/equipo/" target="_blank" rel="noopener noreferrer" sx={{ color: '#8DBAF5' }}>
@@ -249,16 +249,16 @@ function About() {
                 )
               },
               {
-                title: "Fun Fact",
-                content: "I'm a Drone Racing pilot"
+                title: "Dato Curioso",
+                content: "Soy piloto de Carreras de Drones"
               },
               {
-                title: "Meeting",
+                title: "Reunión",
                 content: (
                   <>
-                    Schedule a{' '}
+                    Agenda una{' '}
                     <Link href="https://calendly.com/jonathanhacklife/1to1/" target="_blank" rel="noopener noreferrer" sx={{ color: '#8DBAF5' }}>
-                      meeting with me
+                      reunión conmigo
                     </Link>
                   </>
                 )

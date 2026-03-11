@@ -127,7 +127,7 @@ const SectionContainer = styled(Box)(({ theme }) => ({
     left: '2%',
     right: '2%',
     height: '1px',
-    background: `linear-gradient(90deg, transparent 0%, ${COLORS.neonGreen} 25%, ${COLORS.primary} 50%, ${COLORS.neonRed} 75%, transparent 100%)`,
+    background: `linear-gradient(90deg, transparent 0%, ${COLORS.primary} 50%, transparent 100%)`,
     opacity: 0.5
   },
   '&::after': {
@@ -137,7 +137,7 @@ const SectionContainer = styled(Box)(({ theme }) => ({
     left: '2%',
     right: '2%',
     height: '1px',
-    background: `linear-gradient(90deg, transparent 0%, ${COLORS.neonRed} 25%, ${COLORS.primary} 50%, ${COLORS.neonGreen} 75%, transparent 100%)`,
+    background: `linear-gradient(90deg, transparent 0%, ${COLORS.primary} 50%, transparent 100%)`,
     opacity: 0.5
   },
   [theme.breakpoints.down('md')]: {
@@ -196,13 +196,11 @@ const GlowText = styled(Typography)(({ glowcolor = COLORS.primary }) => ({
 }));
 
 /**
- * GradientText - Neon gradient text
+ * GradientText - Simple text with cyan color (no gradient)
  */
 const GradientText = styled(Typography)(() => ({
-  background: `linear-gradient(135deg, ${COLORS.neonGreen} 0%, ${COLORS.primary} 50%, ${COLORS.neonRed} 100%)`,
-  WebkitBackgroundClip: 'text',
-  WebkitTextFillColor: 'transparent',
-  backgroundClip: 'text',
+  color: COLORS.primary,
+  textShadow: `0 0 10px ${COLORS.primary}, 0 0 20px ${COLORS.primary}`,
 }));
 
 /**
@@ -218,10 +216,10 @@ const AccentText = styled(Typography)(() => ({
 // ============================================
 
 /**
- * CyberDivider - Neon gradient divider
+ * CyberDivider - Simple cyan divider
  */
 const CyberDivider = styled(Divider)(({ theme, showdot = 'false' }) => ({
-  background: `linear-gradient(90deg, transparent 0%, ${COLORS.neonGreen} 25%, ${COLORS.primary} 50%, ${COLORS.neonRed} 75%, transparent 100%)`,
+  background: `linear-gradient(90deg, transparent 0%, ${COLORS.primary} 50%, transparent 100%)`,
   height: '1px',
   border: 'none',
   position: 'relative',
@@ -423,8 +421,8 @@ const ProjectCard = styled(Box)(({ theme }) => ({
     right: 0,
     width: '30px',
     height: '30px',
-    borderTop: `2px solid ${COLORS.neonGreen}`,
-    borderRight: `2px solid ${COLORS.neonGreen}`,
+    borderTop: `2px solid ${COLORS.primary}`,
+    borderRight: `2px solid ${COLORS.primary}`,
     opacity: 0,
     transition: 'opacity 0.3s ease',
   }
@@ -468,18 +466,12 @@ const FadeInUp = ({ children, delay = 0, ...props }) => (
 );
 
 /**
- * GlitchText - Text with glitch effect on hover
+ * GlitchText - Text with subtle glow (no glitch effect)
  */
 const GlitchText = ({ children, variant = 'h1', ...props }) => (
-  <motion.div
-    initial="initial"
-    whileHover="hover"
-    variants={glitchVariants}
-  >
-    <GlowText variant={variant} {...props}>
-      {children}
-    </GlowText>
-  </motion.div>
+  <GlowText variant={variant} {...props}>
+    {children}
+  </GlowText>
 );
 
 /**

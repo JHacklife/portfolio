@@ -18,28 +18,27 @@ import Footer from "../components/Footer";
 
 export default function Page() {
   const { currentSection, sectionRefs } = useScrollToSection([
-    "home", 
-    "about", 
-    "langsAndTools", 
-    "projects", 
-    "certificates", 
+    "home",
+    "about",
+    "langsAndTools",
+    "projects",
     "contact"
   ]);
 
   return (
-    <Box 
-      sx={{ 
-        position: 'relative', 
+    <Box
+      sx={{
+        position: 'relative',
         minHeight: '100vh',
         backgroundColor: '#0a0a0f',
       }}
     >
       <TechBackground />
-      
-      <Stack 
+
+      <Stack
         component="main"
-        sx={{ 
-          position: 'relative', 
+        sx={{
+          position: 'relative',
           zIndex: 1,
         }}
       >
@@ -47,7 +46,6 @@ export default function Page() {
         <About ref={sectionRefs.current.about} />
         <LangsAndTools ref={sectionRefs.current.langsAndTools} />
         <Projects ref={sectionRefs.current.projects} />
-        <Certificates ref={sectionRefs.current.certificates} />
         <Contact ref={sectionRefs.current.contact} />
         <Footer />
       </Stack>

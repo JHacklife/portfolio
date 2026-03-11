@@ -43,7 +43,7 @@ export default function Contact() {
         <FadeInUp>
           <Stack spacing={2} alignItems="center">
             <GlowText variant="h2">
-              GET IN TOUCH
+              CONTACTO
             </GlowText>
             <Typography 
               variant="body1" 
@@ -54,7 +54,7 @@ export default function Contact() {
                 lineHeight: 1.7,
               }}
             >
-              Have a project in mind or want to collaborate? Feel free to reach out through any of these channels.
+              ¿Tienes un proyecto en mente o quieres colaborar? No dudes en contactarme a través de cualquiera de estos canales.
             </Typography>
           </Stack>
         </FadeInUp>
@@ -88,7 +88,7 @@ export default function Contact() {
               variant="overline" 
               sx={{ color: '#8DBAF5', letterSpacing: '0.15em' }}
             >
-              CONNECT WITH ME
+              CONECTA CONMIGO
             </Typography>
             
             <Grid 

@@ -53,7 +53,7 @@ export default function Certificates() {
               }}
             />
             <GlowText variant="h3" sx={{ fontWeight: 600 }}>
-              CERTIFICATIONS
+              CERTIFICACIONES
             </GlowText>
           </Stack>
           

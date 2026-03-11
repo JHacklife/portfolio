@@ -49,7 +49,7 @@ export default function Footer() {
             letterSpacing: '0.02em',
           }}
         >
-          Designed & Built by{' '}
+          Diseñado y Construido por{' '}
           <Link
             href="https://www.linkedin.com/in/jonathanhacklife/"
             target="_blank"
@@ -77,7 +77,7 @@ export default function Footer() {
             letterSpacing: '0.04em',
           }}
         >
-          © {currentYear} All rights reserved
+          © {currentYear} Todos los derechos reservados
         </Typography>
       </Stack>
     </FooterContainer>
