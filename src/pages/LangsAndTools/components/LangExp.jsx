@@ -26,7 +26,7 @@ export default function LangExp({ lang, exp, newExp }) {
     <LangCard>
       <Stack spacing={1.25}>
 
-        {/* XP Value */}
+        {/* XP Value — 2 decimals, uppercase suffix e.g. "1.23K" */}
         <Typography
           variant="h4"
           sx={{
@@ -36,7 +36,7 @@ export default function LangExp({ lang, exp, newExp }) {
             textShadow: `0 0 12px ${COLORS.primary}60`,
           }}
         >
-          {abbreviateNumber(exp)}
+          {abbreviateNumber(exp, 2, true)}
         </Typography>
 
         {/* Language Name + today XP */}
@@ -46,6 +46,7 @@ export default function LangExp({ lang, exp, newExp }) {
             sx={{
               color: COLORS.white,
               fontFamily: 'BlenderPro-Medium',
+              textTransform: 'uppercase',
             }}
           >
             {lang}
@@ -60,7 +61,7 @@ export default function LangExp({ lang, exp, newExp }) {
                 textShadow: `0 0 8px ${COLORS.neonGreen}60`,
               }}
             >
-              +{abbreviateNumber(newExp)}
+              +{abbreviateNumber(newExp, 2, true)}
             </Typography>
           </Visible>
         </Stack>
