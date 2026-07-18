@@ -1,23 +1,34 @@
-﻿import React, { useState } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 // UI COMPONENTS
 import MenuIcon from '@mui/icons-material/Menu'
-import { AppBar, Slide, Box, Button, IconButton, Stack, Toolbar, Tooltip, Link, Typography, useScrollTrigger } from '@mui/material'
+import CloseIcon from '@mui/icons-material/Close'
+import { AppBar, Box, IconButton, Stack, Toolbar, Link, Typography } from '@mui/material'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import Logo from './Logo'
 import logoLabs from '../assets/Logo-1.svg'
 import { styled } from '@mui/material/styles'
+import { COLORS } from './CyberComponents'
 
-// ICONS
-import { ListAlt, Logout } from '@mui/icons-material/'
+/**
+ * Vibrant Cyberpunk Navbar
+ * 
+ * Features:
+ * - Dark glass effect with neon accents
+ * - Glitch-style hover animations
+ * - Gradient border highlights
+ * - High-tech aesthetic
+ */
 
 const CyberAppBar = styled(AppBar)(({ theme }) => ({
-  background: 'rgba(0, 0, 0, 0.9)',
+  background: 'rgba(10, 10, 15, 0.9)',
   backdropFilter: 'blur(20px)',
-  borderBottom: '1px solid rgba(0, 212, 255, 0.3)',
-  boxShadow: '0 4px 20px rgba(0, 212, 255, 0.1)',
+  borderBottom: `1px solid ${COLORS.primary}25`,
+  boxShadow: `0 4px 30px rgba(0, 0, 0, 0.5), 0 0 20px ${COLORS.primary}10`,
+  // Neon top accent line
   '&::before': {
     content: '""',
     position: 'absolute',
@@ -25,171 +36,211 @@ const CyberAppBar = styled(AppBar)(({ theme }) => ({
     left: 0,
     right: 0,
     height: '2px',
-    background: 'linear-gradient(90deg, transparent 0%, #00d4ff 50%, transparent 100%)',
-    opacity: 0.8
+    background: `linear-gradient(90deg, transparent 0%, ${COLORS.neonGreen} 25%, ${COLORS.primary} 50%, ${COLORS.neonRed} 75%, transparent 100%)`,
+    opacity: 0.7
   }
 }))
 
-const CyberButton = styled(Button)(({ theme }) => ({
-  color: '#ffffff',
-  fontSize: '0.9rem',
-  fontFamily: 'BlenderPro-Medium',
+const NavButton = styled(Link)(({ theme }) => ({
+  color: COLORS.whiteMuted,
+  fontSize: '1rem',
+  fontFamily: 'BlenderPro-Medium, monospace',
   textTransform: 'uppercase',
-  letterSpacing: '0.1em',
+  letterSpacing: '0.08em',
   padding: theme.spacing(1, 2),
   position: 'relative',
-  border: '1px solid transparent',
+  textDecoration: 'none',
   transition: 'all 0.3s ease',
-  '&::before': {
+  borderRadius: '2px',
+  // Underline animation with neon glow
+  '&::after': {
     content: '""',
     position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    background: 'linear-gradient(45deg, #00d4ff, #ff0066)',
-    opacity: 0,
-    transition: 'opacity 0.3s ease',
-    zIndex: -1
+    bottom: 4,
+    left: '50%',
+    transform: 'translateX(-50%)',
+    width: 0,
+    height: '2px',
+    backgroundColor: COLORS.primary,
+    boxShadow: `0 0 10px ${COLORS.primary}`,
+    transition: 'width 0.3s ease',
   },
   '&:hover': {
-    color: '#00d4ff',
-    border: '1px solid rgba(0, 212, 255, 0.5)',
-    textShadow: '0 0 10px #00d4ff',
-    transform: 'translateY(-2px)',
-    '&::before': {
-      opacity: 0.1
+    color: COLORS.primary,
+    textShadow: `0 0 10px ${COLORS.primary}50`,
+    backgroundColor: `${COLORS.primary}10`,
+    '&::after': {
+      width: '80%',
     }
   }
 }))
 
 const CyberMenu = styled(Menu)(({ theme }) => ({
   '& .MuiPaper-root': {
-    background: 'rgba(0, 0, 0, 0.95)',
+    background: 'rgba(10, 10, 15, 0.98)',
     backdropFilter: 'blur(20px)',
-    border: '1px solid rgba(0, 212, 255, 0.3)',
-    boxShadow: '0 8px 32px rgba(0, 212, 255, 0.2)',
-    borderRadius: '8px'
+    border: `1px solid ${COLORS.primary}30`,
+    boxShadow: `0 8px 40px rgba(0, 0, 0, 0.6), 0 0 20px ${COLORS.primary}15`,
+    borderRadius: '4px',
+    marginTop: theme.spacing(1),
+    minWidth: '220px',
+    // Corner accent
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      top: 0,
+      right: 0,
+      width: '20px',
+      height: '20px',
+      borderTop: `2px solid ${COLORS.neonGreen}`,
+      borderRight: `2px solid ${COLORS.neonGreen}`,
+    }
   },
   '& .MuiMenuItem-root': {
-    color: '#ffffff',
-    fontFamily: 'BlenderPro-Medium',
+    color: COLORS.whiteMuted,
+    fontFamily: 'BlenderPro-Medium, monospace',
     textTransform: 'uppercase',
-    letterSpacing: '0.05em',
+    letterSpacing: '0.08em',
+    fontSize: '1rem',
+    padding: theme.spacing(1.75, 3),
+    transition: 'all 0.3s ease',
+    borderLeft: '2px solid transparent',
     '&:hover': {
-      background: 'rgba(0, 212, 255, 0.1)',
-      color: '#00d4ff'
+      background: `${COLORS.primary}15`,
+      color: COLORS.primary,
+      borderLeftColor: COLORS.primary,
     }
   }
 }))
 
+const MenuButton = styled(IconButton)(({ theme }) => ({
+  color: COLORS.primary,
+  border: `1px solid ${COLORS.primary}40`,
+  borderRadius: '4px',
+  padding: theme.spacing(1),
+  transition: 'all 0.3s ease',
+  '&:hover': {
+    background: `${COLORS.primary}15`,
+    borderColor: COLORS.primary,
+    boxShadow: `0 0 15px ${COLORS.primary}30`,
+  }
+}))
 
 const Navbar = () => {
   const navigateTo = useNavigate()
 
   const pages = [
-    { path: '#', label: 'Home', show: true },
-    { path: '#about', label: 'About', show: true },
-    { path: '#langsAndTools', label: 'Lang & Tools', show: true },
-    { path: '#projects', label: 'Projects', show: true },
-    { path: '#certificates', label: 'Certificates', show: true },
-    { path: '#contact', label: 'Contact', show: true },
-  ]
-
-  const settings = [
-    { label: 'Perfil', icon: <ListAlt />, action: () => navigateTo("/perfil") },
-    { label: 'Cerrar sesión', icon: <Logout />, action: () => console.log("Cerrando sesión") }
+    { path: '#', label: 'Inicio', show: true },
+    { path: '#about', label: 'Sobre Mí', show: true },
+    { path: '#langsAndTools', label: 'Habilidades', show: true },
+    { path: '#projects', label: 'Proyectos', show: true },
+    { path: '#certificates', label: 'Certificados', show: false },
+    { path: '#contact', label: 'Contacto', show: true },
   ]
 
   const [anchorElNav, setAnchorElNav] = useState(null)
-  const [anchorElUser, setAnchorElUser] = useState(null)
 
-  const handleOpenNavMenu = () => {
+  const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget)
-  }
-  const handleOpenUserMenu = () => {
-    setAnchorElUser(event.currentTarget)
   }
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null)
   }
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null)
-  }
-
-  function HideOnScroll(props) {
-    const { children, window } = props;
-    // Note that you normally won't need to set the window ref as useScrollTrigger
-    // will default to window.
-    const trigger = useScrollTrigger({ target: window ? window() : undefined })
-    return <Slide appear={false} direction="down" in={!trigger}>{children}</Slide>
-  }
   return (
     <CyberAppBar position="fixed" id="navbar">
-      <Toolbar variant="dense" sx={{ minHeight: '64px', padding: '0 24px' }}>
+      <Toolbar
+        variant="dense"
+        sx={{
+          minHeight: '64px',
+          padding: { xs: '0 16px', md: '0 32px' },
+          maxWidth: '1400px',
+          margin: '0 auto',
+          width: '100%',
+        }}
+      >
         {/* MOBILE */}
-        <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ flexGrow: 1, display: { md: 'none' } }}>
-          <Logo imgUrl={logoLabs} alt="logo" sx={{
-            filter: 'drop-shadow(0 0 10px #00d4ff)',
-            transition: 'all 0.3s ease',
-            '&:hover': {
-              filter: 'drop-shadow(0 0 20px #00d4ff) brightness(1.2)'
-            }
-          }} />
-
-          <IconButton
-            onClick={handleOpenNavMenu}
-            size="large"
-            aria-label="menu"
-            sx={{
-              color: '#00d4ff',
-              border: '1px solid rgba(0, 212, 255, 0.3)',
-              '&:hover': {
-                background: 'rgba(0, 212, 255, 0.1)',
-                borderColor: 'rgba(0, 212, 255, 0.5)'
-              }
-            }}
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+          sx={{ flexGrow: 1, display: { md: 'none' } }}
+        >
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: 'spring', stiffness: 400 }}
           >
-            <MenuIcon />
-          </IconButton>
+            <Logo
+              imgUrl={logoLabs}
+              alt="Jonathan Wildemer Logo"
+            />
+          </motion.div>
+
+          <MenuButton
+            onClick={handleOpenNavMenu}
+            aria-label="Open navigation menu"
+          >
+            {anchorElNav ? <CloseIcon /> : <MenuIcon />}
+          </MenuButton>
 
           <CyberMenu
-            id="menu-appbar"
+            id="menu-appbar-mobile"
             anchorEl={anchorElNav}
-            anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+            anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
             keepMounted
             transformOrigin={{ vertical: 'top', horizontal: 'right' }}
             open={Boolean(anchorElNav)}
             onClose={handleCloseNavMenu}
           >
             {pages?.filter(page => page?.show).map((page) => (
-              <Link key={page.label} href={page.path} sx={{ textDecoration: 'none' }}>
-                <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography variant="body2">{page.label}</Typography>
-                </MenuItem>
-              </Link>
+              <MenuItem
+                key={page.label}
+                onClick={handleCloseNavMenu}
+                component="a"
+                href={page.path}
+              >
+                {page.label}
+              </MenuItem>
             ))}
           </CyberMenu>
         </Stack>
 
         {/* DESKTOP */}
-        <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-          <Logo imgUrl={logoLabs} alt="logo" sx={{
-            filter: 'drop-shadow(0 0 10px #00d4ff)',
-            transition: 'all 0.3s ease',
-            '&:hover': {
-              filter: 'drop-shadow(0 0 20px #00d4ff) brightness(1.2)',
-              transform: 'scale(1.05)'
-            }
-          }} />
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+          sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}
+        >
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: 'spring', stiffness: 400 }}
+          >
+            <Logo
+              imgUrl={logoLabs}
+              alt="Jonathan Wildemer Logo"
+            />
+          </motion.div>
 
-          <Stack direction="row" spacing={1}>
+          <Stack
+            component="nav"
+            direction="row"
+            spacing={0.5}
+            aria-label="Main navigation"
+          >
             {pages?.filter(page => page?.show).map((page, index) => (
-              <CyberButton key={index} href={page.path} className="scale">
-                {page.label}
-              </CyberButton>
+              <motion.div
+                key={index}
+                whileHover={{ y: -2 }}
+                transition={{ type: 'spring', stiffness: 400 }}
+              >
+                <NavButton
+                  href={page.path}
+                >
+                  {page.label}
+                </NavButton>
+              </motion.div>
             ))}
           </Stack>
         </Stack>

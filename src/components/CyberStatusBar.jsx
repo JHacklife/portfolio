@@ -1,71 +1,108 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Typography, Stack } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import { styled, keyframes } from '@mui/material/styles';
+
+/**
+ * Professional Cyberpunk Status Bar
+ * 
+ * Features:
+ * - Subtle glass effect
+ * - Elegant status indicators
+ * - Smooth animations (respects reduced motion)
+ * - Clean, readable typography
+ */
+
+const subtlePulse = keyframes`
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+`;
 
 const StatusBarContainer = styled(Box)(({ theme }) => ({
   position: 'fixed',
   bottom: 0,
   left: 0,
   right: 0,
-  height: '40px',
-  background: 'rgba(0, 0, 0, 0.95)',
-  backdropFilter: 'blur(20px)',
-  borderTop: '1px solid rgba(0, 212, 255, 0.3)',
+  height: '36px',
+  background: 'rgba(10, 10, 15, 0.9)',
+  backdropFilter: 'blur(12px)',
+  borderTop: '1px solid rgba(141, 186, 245, 0.12)',
   zIndex: 1000,
   display: 'flex',
   alignItems: 'center',
   padding: '0 24px',
-  fontFamily: 'Arame, monospace',
+  fontFamily: 'BlenderPro-Medium, monospace',
+  // Subtle top accent
   '&::before': {
     content: '""',
     position: 'absolute',
     top: 0,
-    left: 0,
-    right: 0,
-    height: '2px',
-    background: 'linear-gradient(90deg, #ff0066 0%, #00d4ff 50%, #ff0066 100%)',
-    animation: 'statusPulse 3s ease-in-out infinite'
-  },
-  '@keyframes statusPulse': {
-    '0%, 100%': { opacity: 0.6 },
-    '50%': { opacity: 1 }
+    left: '10%',
+    right: '10%',
+    height: '1px',
+    background: 'linear-gradient(90deg, transparent 0%, rgba(141, 186, 245, 0.3) 50%, transparent 100%)',
   },
   [theme.breakpoints.down('md')]: {
     height: '32px',
     padding: '0 16px',
-    fontSize: '0.7rem'
   }
 }));
 
 const StatusItem = styled(Box)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
-  gap: theme.spacing(0.5),
-  color: '#ffffff',
-  fontSize: '0.75rem',
+  gap: theme.spacing(0.75),
+  color: '#a0b0c0',
+  fontSize: '0.7rem',
   textTransform: 'uppercase',
-  letterSpacing: '0.05em'
+  letterSpacing: '0.04em',
 }));
 
 const StatusIndicator = styled(Box)(({ active }) => ({
-  width: '6px',
-  height: '6px',
+  width: '5px',
+  height: '5px',
   borderRadius: '50%',
-  backgroundColor: active ? '#00ff88' : '#ff0066',
-  boxShadow: active ? '0 0 8px #00ff88' : '0 0 8px #ff0066',
-  animation: active ? 'statusBlink 1.5s infinite' : 'none',
-  '@keyframes statusBlink': {
-    '0%, 100%': { opacity: 0.6 },
-    '50%': { opacity: 1 }
+  backgroundColor: active ? '#4ade80' : '#64748b',
+  boxShadow: active ? '0 0 6px #4ade80' : 'none',
+  animation: active ? `${subtlePulse} 2s ease-in-out infinite` : 'none',
+  flexShrink: 0,
+  '@media (prefers-reduced-motion: reduce)': {
+    animation: 'none',
+  }
+}));
+
+const StatusLabel = styled(Typography)(({ theme }) => ({
+  fontSize: '0.7rem',
+  fontFamily: 'BlenderPro-Medium',
+  letterSpacing: '0.04em',
+  textTransform: 'uppercase',
+}));
+
+const StatusValue = styled(Typography)(({ color = '#8DBAF5' }) => ({
+  fontSize: '0.7rem',
+  fontFamily: 'BlenderPro-Medium',
+  letterSpacing: '0.02em',
+  color: color,
+}));
+
+const Divider = styled(Box)(({ theme }) => ({
+  width: '1px',
+  height: '16px',
+  backgroundColor: 'rgba(141, 186, 245, 0.15)',
+  margin: '0 12px',
+  [theme.breakpoints.down('sm')]: {
+    display: 'none',
   }
 }));
 
 const CyberStatusBar = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
-  const [systemStatus, setSystemStatus] = useState({
+  const [systemStatus] = useState({
     connection: true,
-    performance: 85,
-    security: true
+    security: true,
   });
 
   useEffect(() => {
@@ -86,50 +123,56 @@ const CyberStatusBar = () => {
   };
 
   return (
-    <StatusBarContainer>
-      <Stack direction="row" justifyContent="space-between" alignItems="center" width="100%">
+    <StatusBarContainer role="status" aria-label="System status bar">
+      <Stack 
+        direction="row" 
+        justifyContent="space-between" 
+        alignItems="center" 
+        width="100%"
+      >
         {/* Left side - System status */}
-        <Stack direction="row" spacing={3} alignItems="center">
+        <Stack direction="row" spacing={2} alignItems="center">
           <StatusItem>
             <StatusIndicator active={systemStatus.connection} />
-            <Typography variant="caption">NET</Typography>
-          </StatusItem>
-
-          <StatusItem>
-            <StatusIndicator active={systemStatus.security} />
-            <Typography variant="caption">SEC</Typography>
-          </StatusItem>
-
-          <StatusItem>
-            <Typography variant="caption" sx={{ color: '#00d4ff' }}>
-              CPU: {systemStatus.performance}%
-            </Typography>
+            <StatusLabel>NET</StatusLabel>
           </StatusItem>
 
           <StatusItem sx={{ display: { xs: 'none', sm: 'flex' } }}>
-            <Typography variant="caption" sx={{ color: '#00ffff' }}>
-              JONATHAN_WILDEMER_PORTFOLIO_V2.0
-            </Typography>
+            <StatusIndicator active={systemStatus.security} />
+            <StatusLabel>SEC</StatusLabel>
+          </StatusItem>
+
+          <Divider />
+
+          <StatusItem sx={{ display: { xs: 'none', md: 'flex' } }}>
+            <StatusValue color="#c8d4e0">
+              PORTFOLIO_V2.0
+            </StatusValue>
           </StatusItem>
         </Stack>
 
         {/* Right side - Time and location */}
-        <Stack direction="row" spacing={3} alignItems="center">
+        <Stack direction="row" spacing={2} alignItems="center">
           <StatusItem sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <Typography variant="caption" sx={{ color: '#ff0066' }}>
-              BUENOS_AIRES_ARG
-            </Typography>
+            <StatusValue color="#808898">
+              BUENOS_AIRES
+            </StatusValue>
           </StatusItem>
 
+          <Divider />
+
           <StatusItem>
-            <Typography variant="caption" sx={{ color: '#00d4ff', fontFamily: 'monospace' }}>
+            <StatusValue 
+              color="#8DBAF5"
+              sx={{ fontFamily: 'monospace', letterSpacing: '0.08em' }}
+            >
               {formatTime(currentTime)}
-            </Typography>
+            </StatusValue>
           </StatusItem>
 
           <StatusItem>
             <StatusIndicator active={true} />
-            <Typography variant="caption">ONLINE</Typography>
+            <StatusLabel sx={{ color: '#4ade80' }}>ONLINE</StatusLabel>
           </StatusItem>
         </Stack>
       </Stack>

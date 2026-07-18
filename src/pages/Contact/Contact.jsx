@@ -1,23 +1,136 @@
-﻿import React from 'react'
-import { Grid, Typography, Stack, Link } from '@mui/material'
-import mailTo from '../../utils/mail'
-import { Email } from '@mui/icons-material'
+import React from 'react'
+import { Grid, Typography, Stack, Link, Box } from '@mui/material'
 import contactIcons from './ContactIcons'
 import qrcode from '../../assets/QR.svg'
+import { 
+  SectionContainer, 
+  GlowText, 
+  TechFrame,
+  CyberDivider,
+  FadeInUp 
+} from '../../components/CyberComponents'
+
+/**
+ * Contact Section - Professional contact information
+ * 
+ * Features:
+ * - Clean, centered layout
+ * - QR code for quick access
+ * - Professional social icons with hover effects
+ */
 
 export default function Contact() {
-  const contacts = contactIcons({ size: "50" })
+  const contacts = contactIcons({ size: "36" })
+
   return (
-    <Stack className="section gridBackground" id="contact" justifyContent="center" alignItems="center" spacing={10} px={2}>
-      <Typography variant="h2" gutterBottom>Contáctame por:</Typography>
-      <img src={qrcode} height="200px" />
-      <Grid container>
-        {contacts.map((contact, index) => <Grid key={index} item xs sm md lg xl className="scale">
-          <Link href={contact?.url} target="_blank" color="secondary.main" sx={{ textDecoration: "none" }}>
-            {contact?.icon}
-          </Link>
-        </Grid>)}
-      </Grid>
-    </Stack>
+    <SectionContainer 
+      className="section gridBackground" 
+      id="contact" 
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: '80vh',
+        py: { xs: 8, md: 10 },
+      }}
+    >
+      <Stack 
+        spacing={5} 
+        alignItems="center" 
+        sx={{ maxWidth: '600px', px: 2 }}
+      >
+        {/* Header */}
+        <FadeInUp>
+          <Stack spacing={2} alignItems="center">
+            <GlowText variant="h2">
+              CONTACTO
+            </GlowText>
+            <Typography 
+              variant="body1" 
+              sx={{ 
+                color: '#a0b0c0', 
+                textAlign: 'center',
+                maxWidth: '400px',
+                lineHeight: 1.7,
+              }}
+            >
+              ¿Tienes un proyecto en mente o quieres colaborar? No dudes en contactarme a través de cualquiera de estos canales.
+            </Typography>
+          </Stack>
+        </FadeInUp>
+
+        {/* QR Code */}
+        <FadeInUp delay={0.1}>
+          <TechFrame sx={{ p: 3 }}>
+            <Box
+              component="img"
+              src={qrcode}
+              alt="Contact QR Code"
+              sx={{
+                height: '160px',
+                width: '160px',
+                filter: 'brightness(0.9) contrast(1.1)',
+                transition: 'filter 0.3s ease',
+                '&:hover': {
+                  filter: 'brightness(1) contrast(1.1)',
+                }
+              }}
+            />
+          </TechFrame>
+        </FadeInUp>
+
+        <CyberDivider showdot="true" sx={{ width: '200px' }} />
+
+        {/* Social Icons */}
+        <FadeInUp delay={0.2}>
+          <Stack spacing={2} alignItems="center">
+            <Typography 
+              variant="overline" 
+              sx={{ color: '#8DBAF5', letterSpacing: '0.15em' }}
+            >
+              CONECTA CONMIGO
+            </Typography>
+            
+            <Grid 
+              container 
+              spacing={3} 
+              justifyContent="center"
+              sx={{ maxWidth: '400px' }}
+            >
+              {contacts.map((contact, index) => (
+                <Grid item key={index}>
+                  <Link 
+                    href={contact?.url} 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={contact?.label || 'Social link'}
+                    sx={{ 
+                      textDecoration: "none",
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      width: '52px',
+                      height: '52px',
+                      borderRadius: '8px',
+                      border: '1px solid rgba(141, 186, 245, 0.2)',
+                      color: '#8DBAF5',
+                      transition: 'all 0.3s ease',
+                      '&:hover': {
+                        borderColor: 'rgba(141, 186, 245, 0.5)',
+                        backgroundColor: 'rgba(141, 186, 245, 0.08)',
+                        transform: 'translateY(-3px)',
+                        color: '#B5D4FF',
+                      }
+                    }}
+                  >
+                    {contact?.icon}
+                  </Link>
+                </Grid>
+              ))}
+            </Grid>
+          </Stack>
+        </FadeInUp>
+      </Stack>
+    </SectionContainer>
   )
 }

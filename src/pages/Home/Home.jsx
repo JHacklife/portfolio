@@ -1,227 +1,497 @@
-import { Box, Divider, Grid, Link, Stack, Typography } from '@mui/material'
-import React from 'react'
+import { Box, Divider, Link, Stack, Tooltip, Typography } from '@mui/material'
+import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { ChevronDown } from 'lucide-react'
 import Navbar from '../../components/Navbar'
 import TechBackground from '../../components/TechBackground'
-import { SectionContainer, GlowText, InfoPanel } from '../../components/CyberComponents'
+import {
+  SectionContainer,
+  StatusIndicator,
+  FadeInUp,
+  FlickerIn,
+  COLORS,
+} from '../../components/CyberComponents'
 import mailTo, { config } from '../../utils/mail'
 import contactIcons from '../Contact/ContactIcons'
 
+// ─── WhatsApp link ────────────────────────────────────────────────────────────
+const WA_NUMBER = '541165553533' // country code 54 (AR) + number
+const WA_URL = `https://wa.me/${WA_NUMBER}?text=Hola%20Jonathan%2C%20me%20interesa%20contratarte%20para%20un%20proyecto`
+
+// ─── Glitch swap: WILDEMER → HACKLIFE ────────────────────────────────────────
+function GlitchSwap() {
+  const [hovered, setHovered] = useState(false)
+
+  const baseStyle = {
+    fontFamily: 'BlenderPro-Heavy, sans-serif',
+    fontWeight: 900,
+    fontSize: 'inherit',
+    lineHeight: 'inherit',
+    userSelect: 'none',
+    display: 'inline-block',
+    position: 'relative',
+    cursor: 'pointer',
+  }
+
+  // Glitch keyframes injected inline via style tag
+  return (
+    <>
+      <style>{`
+        @keyframes glitchSlice1 {
+          0%   { clip-path: inset(0% 0 80% 0); transform: translate(-4px, 0);  }
+          20%  { clip-path: inset(20% 0 60% 0); transform: translate(4px, 2px); }
+          40%  { clip-path: inset(50% 0 30% 0); transform: translate(-6px, -2px); }
+          60%  { clip-path: inset(70% 0 10% 0); transform: translate(3px, 1px); }
+          80%  { clip-path: inset(10% 0 70% 0); transform: translate(-2px, 3px); }
+          100% { clip-path: inset(0% 0 80% 0); transform: translate(0); }
+        }
+        @keyframes glitchSlice2 {
+          0%   { clip-path: inset(60% 0 5% 0);  transform: translate(4px, 0); }
+          25%  { clip-path: inset(30% 0 40% 0); transform: translate(-4px, -1px); }
+          50%  { clip-path: inset(5% 0 70% 0);  transform: translate(6px, 2px); }
+          75%  { clip-path: inset(80% 0 5% 0);  transform: translate(-3px, -2px); }
+          100% { clip-path: inset(60% 0 5% 0);  transform: translate(0); }
+        }
+        @keyframes rgbFlicker {
+          0%,100% { text-shadow: -3px 0 #ff003c, 3px 0 #00ff41, 0 0 20px #0bc5ea; opacity: 1; }
+          25%      { text-shadow: 3px 0 #ff003c, -3px 0 #00ff41, 0 0 30px #0bc5ea; opacity: 0.85; }
+          50%      { text-shadow: -2px 0 #00ffff, 2px 0 #ff003c, 0 0 25px #00ff41; opacity: 1; }
+          75%      { text-shadow: 2px 0 #00ff41, -2px 0 #00ffff, 0 0 20px #ff003c; opacity: 0.9; }
+        }
+        .glitch-wrap { position: relative; display: inline-block; }
+        .glitch-wrap .glitch-clone {
+          position: absolute;
+          top: 0; left: 0;
+          pointer-events: none;
+          width: 100%;
+        }
+        .glitch-wrap:hover .glitch-clone:nth-child(2) {
+          animation: glitchSlice1 0.15s steps(1) infinite;
+          color: #ff003c;
+        }
+        .glitch-wrap:hover .glitch-clone:nth-child(3) {
+          animation: glitchSlice2 0.18s steps(1) infinite;
+          color: #00ff41;
+        }
+        .glitch-wrap:hover .glitch-main {
+          animation: rgbFlicker 0.2s steps(1) infinite;
+        }
+      `}</style>
+
+      {/*
+        The glitch-wrap has a fixed size from the invisible spacer span.
+        All animated layers are position:absolute so they never affect layout.
+        This means the container height is ALWAYS exactly 1 line tall.
+      */}
+      <Box
+        className="glitch-wrap"
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        sx={{
+          position: 'relative',
+          display: 'inline-block',
+          /* height is set by the invisible spacer below — never changes */
+        }}
+      >
+        {/* Invisible spacer — defines stable width/height (HACKLIFE is wider) */}
+        <span
+          aria-hidden="true"
+          style={{
+            ...baseStyle,
+            visibility: 'hidden',
+            pointerEvents: 'none',
+            /* keeps block size constant; animated layers sit on top */
+          }}
+        >
+          HACKLIFE
+        </span>
+
+        {/* Animated word — absolutely positioned so it doesn't affect flow */}
+        <AnimatePresence mode="wait">
+          {!hovered ? (
+            <motion.span
+              key="wildemer"
+              className="glitch-main"
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8, filter: 'blur(4px)' }}
+              transition={{ duration: 0.18 }}
+              style={{
+                ...baseStyle,
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                color: COLORS.white,
+                textShadow: `0 0 14px ${COLORS.primary}80`,
+              }}
+            >
+              WILDEMER
+            </motion.span>
+          ) : (
+            <motion.span
+              key="hacklife"
+              className="glitch-main"
+              initial={{ opacity: 0, y: 10, skewX: -10, filter: 'blur(6px)' }}
+              animate={{ opacity: 1, y: 0, skewX: 0, filter: 'blur(0px)' }}
+              exit={{ opacity: 0, y: -10, skewX: 10, filter: 'blur(6px)' }}
+              transition={{ duration: 0.2, ease: 'easeOut' }}
+              style={{
+                ...baseStyle,
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                color: COLORS.neonCyan,
+                textShadow: `
+                  0 0 8px ${COLORS.neonCyan},
+                  0 0 20px ${COLORS.neonCyan},
+                  0 0 40px ${COLORS.primary}
+                `,
+              }}
+            >
+              HACKLIFE
+            </motion.span>
+          )}
+        </AnimatePresence>
+
+        {/* Glitch RGB clone layers — absolutely positioned, transparent until hover */}
+        <span className="glitch-clone" aria-hidden="true"
+          style={{ ...baseStyle, fontSize: 'inherit', color: 'transparent', position: 'absolute', top: 0, left: 0, width: '100%' }}>
+          {hovered ? 'HACKLIFE' : 'WILDEMER'}
+        </span>
+        <span className="glitch-clone" aria-hidden="true"
+          style={{ ...baseStyle, fontSize: 'inherit', color: 'transparent', position: 'absolute', top: 0, left: 0, width: '100%' }}>
+          {hovered ? 'HACKLIFE' : 'WILDEMER'}
+        </span>
+      </Box>
+    </>
+  )
+}
+
+// ─── WhatsApp hire button ─────────────────────────────────────────────────────
+function WhatsAppButton() {
+  return (
+    <Tooltip title="Abrir WhatsApp" placement="top" arrow>
+      <motion.a
+        href={WA_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        whileHover={{ scale: 1.05, y: -2 }}
+        whileTap={{ scale: 0.97 }}
+        transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+        style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+      >
+        <Box
+          sx={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '10px',
+            px: { xs: 2.5, md: 3 },
+            py: { xs: 1, md: 1.25 },
+            border: `1.5px solid ${COLORS.neonGreen}`,
+            borderRadius: '3px',
+            background: `rgba(0, 255, 65, 0.06)`,
+            cursor: 'pointer',
+            transition: 'all 0.3s ease',
+            boxShadow: `0 0 12px rgba(0, 255, 65, 0.2)`,
+            '&:hover': {
+              background: `rgba(0, 255, 65, 0.14)`,
+              boxShadow: `0 0 24px rgba(0, 255, 65, 0.4), inset 0 0 12px rgba(0, 255, 65, 0.06)`,
+            },
+          }}
+        >
+          {/* WhatsApp icon SVG */}
+          <svg width="18" height="18" viewBox="0 0 24 24" fill={COLORS.neonGreen} xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+
+          <Stack direction="row" alignItems="center" spacing={1}>
+            <StatusIndicator active={true} color={COLORS.neonGreen} />
+            <Typography
+              variant="caption"
+              sx={{
+                color: COLORS.neonGreen,
+                textTransform: 'uppercase',
+                letterSpacing: '0.15em',
+                fontFamily: 'BlenderPro-Medium',
+                textShadow: `0 0 10px ${COLORS.neonGreen}80`,
+                fontWeight: 700,
+                whiteSpace: 'nowrap',
+              }}
+            >
+              DISPONIBLE PARA CONTRATAR
+            </Typography>
+          </Stack>
+        </Box>
+      </motion.a>
+    </Tooltip>
+  )
+}
+
+// ─── Float animation ──────────────────────────────────────────────────────────
+const floatAnimation = {
+  animate: {
+    y: [0, 10, 0],
+    transition: { duration: 2, repeat: Infinity, ease: 'easeInOut' }
+  }
+}
+
+// ─── Page ─────────────────────────────────────────────────────────────────────
 function Home() {
-  const contacts = contactIcons({ size: "28" })
+  const contacts = contactIcons({ size: '24' })
+
+  const scrollToNext = () => {
+    const aboutSection = document.getElementById('about')
+    if (aboutSection) aboutSection.scrollIntoView({ behavior: 'smooth' })
+  }
 
   return (
-    <Stack>
+    <Stack sx={{ minHeight: '100vh' }}>
+      <TechBackground />
       <Navbar />
-      <Box id="top"></Box>
+      <Box id="top" />
 
-      <SectionContainer className="section gridBackground"
+      <SectionContainer
+        className="section"
         sx={{
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
           position: 'relative',
-          overflow: 'hidden'
+          overflow: 'hidden',
         }}
       >
-        {/* Main Content */}
-        <Stack spacing={4} alignItems="center" sx={{ zIndex: 10 }}>
+        {/* ── Main Content ── */}
+        <Stack spacing={4} alignItems="center" sx={{ zIndex: 10, maxWidth: '960px', px: { xs: 2, md: 4 } }}>
 
-          {/* Hero Title */}
-          <Stack spacing={2} alignItems="center">
-            <Stack direction="row" spacing={3} justifyContent="center" flexWrap="wrap">
-              <GlowText variant="h1" className="scale slide-in-top cyber-glow">
-                JONATHAN
-              </GlowText>
-              <GlowText variant="h1" className="scale slide-in-top cyber-glow"
+          {/* Hero name block */}
+          <FlickerIn delay={0.2}>
+            <Stack spacing={2} alignItems="center">
+              {/* Name row — both words share the same Box so baseline is identical */}
+              <Box
                 sx={{
-                  fontWeight: 900,
-                  color: '#ff0066',
-                  textShadow: '0 0 20px #ff0066, 0 0 40px #ff0066'
+                  display: 'flex',
+                  flexDirection: { xs: 'column', sm: 'row' },
+                  /* baseline keeps both words on the same text baseline
+                     regardless of wrapper heights */
+                  alignItems: { xs: 'center', sm: 'baseline' },
+                  justifyContent: 'center',
+                  gap: { xs: '0.1em', sm: '0.25em' },
+                  lineHeight: 1,
+                  fontSize: { xs: '2.8rem', sm: '3.8rem', md: '5rem' },
                 }}
               >
-                WILDEMER
-              </GlowText>
+                {/* First name — inline-block so it sits on the same baseline as GlitchSwap */}
+                <motion.span
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  style={{
+                    display: 'inline-block',
+                    fontSize: 'inherit',
+                    lineHeight: 1,
+                    fontFamily: 'BlenderPro-Bold, sans-serif',
+                    fontWeight: 900,
+                    letterSpacing: '0.04em',
+                    color: COLORS.white,
+                    textShadow: `0 0 14px ${COLORS.primary}60`,
+                    userSelect: 'none',
+                  }}
+                >
+                  JONATHAN
+                </motion.span>
+
+                {/* Last name — glitch swap, also inline-block */}
+                <motion.span
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                  style={{ display: 'inline-block', fontSize: 'inherit', lineHeight: 1 }}
+                >
+                  <GlitchSwap />
+                </motion.span>
+              </Box>
+
+              {/* Sub-title */}
+              <FadeInUp delay={0.5}>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    color: COLORS.primary,
+                    fontFamily: 'BlenderPro-Medium',
+                    letterSpacing: '0.2em',
+                    textTransform: 'uppercase',
+                    mt: 1,
+                    textAlign: 'center',
+                    fontSize: { xs: '1rem', sm: '1.25rem', md: '1.5rem' },
+                    textShadow: `0 0 20px ${COLORS.primary}40`,
+                  }}
+                >
+                  Desarrollador Fullstack Web &amp; Mobile
+                </Typography>
+              </FadeInUp>
+
+              {/* Neon divider */}
+              <FadeInUp delay={0.6}>
+                <Box
+                  sx={{
+                    width: { xs: '180px', md: '280px' },
+                    height: '2px',
+                    background: `linear-gradient(90deg, transparent, ${COLORS.primary}, transparent)`,
+                    mt: 2,
+                  }}
+                />
+              </FadeInUp>
             </Stack>
+          </FlickerIn>
 
-            <Typography
-              variant="h4"
-              className="scale slide-in-bottom text-glow"
-              sx={{
-                color: '#00ffff',
-                fontFamily: 'BlenderPro-Medium',
-                letterSpacing: '0.2em',
-                textTransform: 'uppercase',
-                marginTop: 2,
-                textShadow: '0 0 15px #00ffff'
-              }}
+          {/* Status row */}
+          <FadeInUp delay={0.7}>
+            <Stack
+              direction={{ xs: 'column', sm: 'row' }}
+              spacing={{ xs: 2, sm: 4 }}
+              alignItems="center"
+              justifyContent="center"
+              sx={{ mt: 2 }}
             >
-              Fullstack Web & Mobile Developer
-            </Typography>
+              {/* Online indicator */}
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                <StatusIndicator active={true} color={COLORS.neonGreen} />
+                <Typography
+                  variant="caption"
+                  sx={{
+                    color: COLORS.neonGreen,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.15em',
+                    fontFamily: 'BlenderPro-Medium',
+                    textShadow: `0 0 10px ${COLORS.neonGreen}50`,
+                  }}
+                >
+                  EN LÍNEA
+                </Typography>
+              </Box>
 
-            {/* Cyber decorative line */}
-            <Box
-              sx={{
-                width: '300px',
-                height: '2px',
-                background: 'linear-gradient(90deg, transparent 0%, #00d4ff 50%, transparent 100%)',
-                marginTop: 3,
-                animation: 'cyberPulse 2s infinite'
-              }}
-            />
-          </Stack>
-
-          {/* Status indicators */}
-          <Stack direction="row" spacing={4} alignItems="center" sx={{ marginTop: 4 }}>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-              <Box
-                sx={{
-                  width: 8,
-                  height: 8,
-                  borderRadius: '50%',
-                  backgroundColor: '#00ff88',
-                  boxShadow: '0 0 10px #00ff88',
-                  animation: 'cyberPulse 1.5s infinite'
-                }}
-              />
-              <Typography variant="caption" sx={{ color: '#00ff88', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-                ONLINE
-              </Typography>
-            </Box>
-
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-              <Box
-                sx={{
-                  width: 8,
-                  height: 8,
-                  borderRadius: '50%',
-                  backgroundColor: '#00d4ff',
-                  boxShadow: '0 0 10px #00d4ff',
-                  animation: 'cyberPulse 2s infinite'
-                }}
-              />
-              <Typography variant="caption" sx={{ color: '#00d4ff', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-                AVAILABLE FOR HIRE
-              </Typography>
-            </Box>
-          </Stack>
+              {/* WhatsApp CTA button */}
+              <WhatsAppButton />
+            </Stack>
+          </FadeInUp>
         </Stack>
 
-        {/* Side panels */}
+        {/* ── Side panels – Desktop only ── */}
         <Stack
           direction="row"
           justifyContent="space-between"
           sx={{
-            position: "absolute",
-            bottom: "40px",
-            left: "40px",
-            right: "40px",
-            zIndex: 5
+            position: 'absolute',
+            bottom: '100px',
+            left: { xs: '20px', md: '40px' },
+            right: { xs: '20px', md: '40px' },
+            zIndex: 5,
+            display: { xs: 'none', md: 'flex' },
           }}
         >
-          {/* Left panel - Email */}
-          <Stack alignItems="center" spacing={2}>
-            <Link
-              href={mailTo}
-              target="_blank"
-              className="verticalText scale"
-              sx={{
-                textDecoration: "none",
-                color: '#00ffff',
-                fontSize: '0.9rem',
-                fontFamily: 'BlenderPro-Medium',
-                '&:hover': {
-                  color: '#ffffff',
-                  textShadow: '0 0 10px #00ffff'
-                }
-              }}
-            >
-              {config?.to}
-            </Link>
-            <Divider
-              orientation="vertical"
-              sx={{
-                height: "80px",
-                borderColor: '#00d4ff',
-                borderWidth: "1px",
-                boxShadow: '0 0 5px #00d4ff'
-              }}
-            />
-          </Stack>
-
-          {/* Right panel - Social links */}
-          <Stack alignItems="center" spacing={2}>
-            <Stack spacing={2}>
-              {contacts.map((contact, index) => (
-                <Grid key={index} item className="scale">
-                  <Link
-                    href={contact?.url}
-                    target="_blank"
-                    sx={{
-                      textDecoration: "none",
-                      color: '#00d4ff',
-                      transition: 'all 0.3s ease',
-                      '&:hover': {
-                        color: '#ffffff',
-                        filter: 'drop-shadow(0 0 10px #00d4ff)'
-                      }
-                    }}
-                  >
-                    {contact?.icon}
-                  </Link>
-                </Grid>
-              ))}
+          {/* Left – Email */}
+          <FadeInUp delay={0.8}>
+            <Stack alignItems="center" spacing={2}>
+              <Link
+                href={mailTo}
+                target="_blank"
+                className="verticalText"
+                sx={{
+                  textDecoration: 'none',
+                  color: COLORS.primary,
+                  fontSize: '0.8rem',
+                  fontFamily: 'BlenderPro-Medium',
+                  opacity: 0.7,
+                  transition: 'all 0.3s ease',
+                  '&:hover': { color: COLORS.neonCyan, opacity: 1, textShadow: `0 0 10px ${COLORS.primary}` },
+                }}
+              >
+                {config?.to}
+              </Link>
+              <Divider
+                orientation="vertical"
+                sx={{ height: '60px', borderColor: `${COLORS.primary}40`, borderWidth: '1px' }}
+              />
             </Stack>
+          </FadeInUp>
 
-            <Divider
-              orientation="vertical"
-              sx={{
-                height: "80px",
-                borderColor: '#00d4ff',
-                borderWidth: "1px",
-                boxShadow: '0 0 5px #00d4ff'
-              }}
-            />
-          </Stack>
+          {/* Right – Social icons */}
+          <FadeInUp delay={0.9}>
+            <Stack alignItems="center" spacing={2}>
+              <Stack spacing={1.5}>
+                {contacts.map((contact, index) => (
+                  <motion.div
+                    key={index}
+                    whileHover={{ scale: 1.2, y: -2 }}
+                    transition={{ type: 'spring', stiffness: 400 }}
+                  >
+                    <Link
+                      href={contact?.url}
+                      target="_blank"
+                      aria-label={contact?.label || 'Social link'}
+                      sx={{
+                        textDecoration: 'none',
+                        color: COLORS.primary,
+                        opacity: 0.7,
+                        transition: 'all 0.3s ease',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        '&:hover': { color: COLORS.neonCyan, opacity: 1 },
+                      }}
+                    >
+                      {contact?.icon}
+                    </Link>
+                  </motion.div>
+                ))}
+              </Stack>
+              <Divider
+                orientation="vertical"
+                sx={{ height: '60px', borderColor: `${COLORS.primary}40`, borderWidth: '1px' }}
+              />
+            </Stack>
+          </FadeInUp>
         </Stack>
 
-        {/* Info Panel - Desktop only */}
-        <InfoPanel sx={{ display: { xs: 'none', lg: 'block' } }}>
-          <Stack spacing={2}>
-            <Typography variant="overline" sx={{ color: '#00d4ff', fontWeight: 600 }}>
-              SYSTEM STATUS
-            </Typography>
-            <Stack spacing={1}>
-              <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Typography variant="caption">CPU:</Typography>
-                <Typography variant="caption" sx={{ color: '#00ff88' }}>OPTIMAL</Typography>
-              </Box>
-              <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Typography variant="caption">MEMORY:</Typography>
-                <Typography variant="caption" sx={{ color: '#00ff88' }}>85%</Typography>
-              </Box>
-              <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Typography variant="caption">NETWORK:</Typography>
-                <Typography variant="caption" sx={{ color: '#00ff88' }}>CONNECTED</Typography>
-              </Box>
-            </Stack>
-
-            <Divider sx={{ borderColor: 'rgba(0, 212, 255, 0.3)' }} />
-
-            <Typography variant="overline" sx={{ color: '#00d4ff', fontWeight: 600 }}>
-              LOCATION
-            </Typography>
-            <Typography variant="caption">
-              Buenos Aires, ARG
-            </Typography>
-
-            <Typography variant="overline" sx={{ color: '#00d4ff', fontWeight: 600 }}>
-              LOCAL TIME
-            </Typography>
-            <Typography variant="caption">
-              {new Date().toLocaleTimeString()}
-            </Typography>
-          </Stack>
-        </InfoPanel>
+        {/* ── Scroll indicator ── */}
+        <motion.div
+          variants={floatAnimation}
+          animate="animate"
+          style={{
+            position: 'absolute',
+            bottom: '36px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            cursor: 'pointer',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '6px',
+            zIndex: 10,
+          }}
+          onClick={scrollToNext}
+        >
+          <Typography
+            variant="caption"
+            sx={{
+              color: COLORS.primary,
+              fontFamily: 'BlenderPro-Medium, monospace',
+              letterSpacing: '0.2em',
+              textTransform: 'uppercase',
+              opacity: 0.8,
+            }}
+          >
+            Desplázate
+          </Typography>
+          <motion.div
+            animate={{ y: [0, 6, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+          >
+            <ChevronDown size={28} color={COLORS.primary} style={{ filter: `drop-shadow(0 0 10px ${COLORS.primary})` }} />
+          </motion.div>
+        </motion.div>
       </SectionContainer>
     </Stack>
   )

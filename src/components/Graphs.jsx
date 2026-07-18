@@ -34,67 +34,69 @@ export const BarChart = ({
     ],
     borderWidth: 1,
   }] }) => {
-  return <Bar
-    data={{
-      labels: valueX,
-      datasets: datasets,
-      datalabels: { align: 'center', anchor: 'center' }
-    }}
-    plugins={activatePlugins && [ChartDataLabels]}
-    options={{
-      indexAxis: indexAxis,
-      plugins: {
-        datalabels: {
-          display: true,
-          align: 'center',
-          anchor: 'center',
-          color: 'white',
-          font: { weight: 'bold' },
-          formatter: (value, context) => {
-            const datasets = context?.chart?.data?.datasets
-            const dataset = datasets?.[1]
-            const data = dataset?.data
-            const maxDataValue = !!data ? Math?.max(...data) : 0
-            const percentage = ((value / maxDataValue) * 100).toFixed(2)
-            return `${percentage}%`
+  const resolvedHeight = Number.parseInt(height, 10) || 140
+
+  return <div style={{ width: '100%', height: resolvedHeight, minHeight: resolvedHeight, maxHeight: resolvedHeight }}>
+    <Bar
+      data={{
+        labels: valueX,
+        datasets: datasets,
+        datalabels: { align: 'center', anchor: 'center' }
+      }}
+      plugins={activatePlugins && [ChartDataLabels]}
+      options={{
+        indexAxis: indexAxis,
+        plugins: {
+          datalabels: {
+            display: true,
+            align: 'center',
+            anchor: 'center',
+            color: 'white',
+            font: { weight: 'bold' },
+            formatter: (value, context) => {
+              const datasets = context?.chart?.data?.datasets
+              const dataset = datasets?.[1]
+              const data = dataset?.data
+              const maxDataValue = !!data ? Math?.max(...data) : 0
+              const percentage = ((value / maxDataValue) * 100).toFixed(2)
+              return `${percentage}%`
+            },
           },
         },
-      },
-      layout: {
-        padding: {
-          top: 24,
-          right: 16,
-          bottom: 0,
-          left: 8,
+        layout: {
+          padding: {
+            top: 24,
+            right: 16,
+            bottom: 0,
+            left: 8,
+          },
         },
-      },
-      elements: {
-        line: { fill: false },
-        point: {
-          hoverRadius: 7,
-          radius: 5,
+        elements: {
+          line: { fill: false },
+          point: {
+            hoverRadius: 7,
+            radius: 5,
+          },
         },
-      },
-      responsive: responsive,
-      maintainAspectRatio: maintainAspectRatio,
-      minHeight: minHeight, // Ajusta el valor del alto mínimo aquí
-      maxHeight: maxHeight, // Ajusta el valor del alto máximo aquí
-      aspectRatio: aspectRatio, // Ajusta el valor de la proporción del ancho y alto (aspectRatio) aquí
-      scales: {
-        x: {
-          stacked: true,
-          border: { display: viewGrid },
-          grid: { display: viewGrid },
+        responsive: responsive,
+        maintainAspectRatio: maintainAspectRatio,
+        aspectRatio: aspectRatio, // Ajusta el valor de la proporción del ancho y alto (aspectRatio) aquí
+        scales: {
+          x: {
+            stacked: true,
+            border: { display: viewGrid },
+            grid: { display: viewGrid },
+          },
+          y: {
+            stacked: true,
+            border: { display: viewGrid },
+            grid: { display: viewGrid },
+          },
         },
-        y: {
-          stacked: true,
-          border: { display: viewGrid },
-          grid: { display: viewGrid },
-        },
-      },
-    }}
-    height={height}
-  />
+      }}
+      height={resolvedHeight}
+    />
+  </div>
 }
 
 export const DoughnutChart = (props) => {
@@ -173,6 +175,7 @@ export const LineChart = ({
     borderColor: 'rgb(10, 166, 224, 1)',
     borderWidth: 1,
   }] }) => {
+  const resolvedHeight = Number.parseInt(height, 10) || 160
 
   const data = {
     labels: valueX,
@@ -192,9 +195,6 @@ export const LineChart = ({
     },
     responsive: responsive,
     maintainAspectRatio: maintainAspectRatio,
-    minHeight: minHeight, // Ajusta el valor del alto mínimo aquí
-    maxHeight: maxHeight, // Ajusta el valor del alto máximo aquí
-
     aspectRatio: aspectRatio, // Ajusta el valor de la proporción del ancho y alto (aspectRatio) aquí
     scales: {
       x: {
@@ -232,7 +232,11 @@ export const LineChart = ({
     },
   }
 
-  return <Line data={data} options={options} height={height} />
+  return (
+    <div style={{ width: '100%', height: resolvedHeight, minHeight: resolvedHeight, maxHeight: resolvedHeight }}>
+      <Line data={data} options={options} height={resolvedHeight} />
+    </div>
+  )
 }
 
 export default BarChart
