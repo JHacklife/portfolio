@@ -78,13 +78,35 @@ function GlitchSwap() {
         }
       `}</style>
 
+      {/*
+        The glitch-wrap has a fixed size from the invisible spacer span.
+        All animated layers are position:absolute so they never affect layout.
+        This means the container height is ALWAYS exactly 1 line tall.
+      */}
       <Box
         className="glitch-wrap"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        sx={{ position: 'relative', display: 'inline-block' }}
+        sx={{
+          position: 'relative',
+          display: 'inline-block',
+          /* height is set by the invisible spacer below — never changes */
+        }}
       >
-        {/* Main visible text */}
+        {/* Invisible spacer — defines stable width/height (HACKLIFE is wider) */}
+        <span
+          aria-hidden="true"
+          style={{
+            ...baseStyle,
+            visibility: 'hidden',
+            pointerEvents: 'none',
+            /* keeps block size constant; animated layers sit on top */
+          }}
+        >
+          HACKLIFE
+        </span>
+
+        {/* Animated word — absolutely positioned so it doesn't affect flow */}
         <AnimatePresence mode="wait">
           {!hovered ? (
             <motion.span
@@ -96,9 +118,12 @@ function GlitchSwap() {
               transition={{ duration: 0.18 }}
               style={{
                 ...baseStyle,
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
                 color: COLORS.white,
                 textShadow: `0 0 14px ${COLORS.primary}80`,
-                fontSize: 'inherit',
               }}
             >
               WILDEMER
@@ -108,18 +133,21 @@ function GlitchSwap() {
               key="hacklife"
               className="glitch-main"
               initial={{ opacity: 0, y: 10, skewX: -10, filter: 'blur(6px)' }}
-              animate={{ opacity: 1, y: 0,  skewX: 0,   filter: 'blur(0px)' }}
+              animate={{ opacity: 1, y: 0, skewX: 0, filter: 'blur(0px)' }}
               exit={{ opacity: 0, y: -10, skewX: 10, filter: 'blur(6px)' }}
               transition={{ duration: 0.2, ease: 'easeOut' }}
               style={{
                 ...baseStyle,
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
                 color: COLORS.neonCyan,
                 textShadow: `
                   0 0 8px ${COLORS.neonCyan},
                   0 0 20px ${COLORS.neonCyan},
                   0 0 40px ${COLORS.primary}
                 `,
-                fontSize: 'inherit',
               }}
             >
               HACKLIFE
@@ -127,11 +155,13 @@ function GlitchSwap() {
           )}
         </AnimatePresence>
 
-        {/* Glitch clone layers — only shown while hovered via CSS */}
-        <span className="glitch-clone" aria-hidden="true" style={{ ...baseStyle, fontSize: 'inherit', color: 'transparent' }}>
+        {/* Glitch RGB clone layers — absolutely positioned, transparent until hover */}
+        <span className="glitch-clone" aria-hidden="true"
+          style={{ ...baseStyle, fontSize: 'inherit', color: 'transparent', position: 'absolute', top: 0, left: 0, width: '100%' }}>
           {hovered ? 'HACKLIFE' : 'WILDEMER'}
         </span>
-        <span className="glitch-clone" aria-hidden="true" style={{ ...baseStyle, fontSize: 'inherit', color: 'transparent' }}>
+        <span className="glitch-clone" aria-hidden="true"
+          style={{ ...baseStyle, fontSize: 'inherit', color: 'transparent', position: 'absolute', top: 0, left: 0, width: '100%' }}>
           {hovered ? 'HACKLIFE' : 'WILDEMER'}
         </span>
       </Box>
@@ -243,20 +273,22 @@ function Home() {
                 sx={{
                   display: 'flex',
                   flexDirection: { xs: 'column', sm: 'row' },
-                  alignItems: 'center',
+                  /* baseline keeps both words on the same text baseline
+                     regardless of wrapper heights */
+                  alignItems: { xs: 'center', sm: 'baseline' },
                   justifyContent: 'center',
-                  gap: { xs: '0.1em', sm: '0.3em' },
+                  gap: { xs: '0.1em', sm: '0.25em' },
                   lineHeight: 1,
                   fontSize: { xs: '2.8rem', sm: '3.8rem', md: '5rem' },
                 }}
               >
-                {/* First name */}
-                <Box
-                  component={motion.div}
+                {/* First name — inline-block so it sits on the same baseline as GlitchSwap */}
+                <motion.span
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
-                  sx={{
+                  style={{
+                    display: 'inline-block',
                     fontSize: 'inherit',
                     lineHeight: 1,
                     fontFamily: 'BlenderPro-Bold, sans-serif',
@@ -268,18 +300,17 @@ function Home() {
                   }}
                 >
                   JONATHAN
-                </Box>
+                </motion.span>
 
-                {/* Last name — glitch swap */}
-                <Box
-                  component={motion.div}
+                {/* Last name — glitch swap, also inline-block */}
+                <motion.span
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.4 }}
-                  sx={{ fontSize: 'inherit', lineHeight: 1 }}
+                  style={{ display: 'inline-block', fontSize: 'inherit', lineHeight: 1 }}
                 >
                   <GlitchSwap />
-                </Box>
+                </motion.span>
               </Box>
 
               {/* Sub-title */}
