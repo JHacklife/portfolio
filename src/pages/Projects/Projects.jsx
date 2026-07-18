@@ -2,7 +2,7 @@ import { Grid, Stack, Typography, Box } from '@mui/material'
 import React from 'react'
 import Project from './components/Project'
 import projects from './projects.json'
-import { SectionContainer, GlowText, CyberDivider, FadeInUp } from '../../components/CyberComponents'
+import { SectionContainer, GlowText, CyberDivider, FadeInUp, COLORS } from '../../components/CyberComponents'
 
 /**
  * Projects Section - Professional Portfolio Showcase
@@ -48,17 +48,18 @@ function Projects() {
             <Box
               sx={{
                 width: '4px',
-                height: '32px',
-                background: 'linear-gradient(180deg, #8DBAF5 0%, transparent 100%)',
+                height: '36px',
+                background: `linear-gradient(180deg, ${COLORS.neonGreen} 0%, ${COLORS.primary} 100%)`,
                 borderRadius: '2px',
+                boxShadow: `0 0 10px ${COLORS.neonGreen}60`,
               }}
             />
-            <GlowText variant="h3" sx={{ fontWeight: 600 }}>
+            <GlowText variant="h3">
               PROYECTOS
             </GlowText>
           </Stack>
-          
-          {/* Decorative element */}
+
+          {/* Decorative dots */}
           <Box
             sx={{
               display: { xs: 'none', md: 'flex' },
@@ -66,23 +67,18 @@ function Projects() {
               gap: 1,
             }}
           >
-            <Box sx={{ width: 6, height: 6, bgcolor: '#8DBAF5', borderRadius: '50%' }} />
-            <Box sx={{ width: 40, height: 1, bgcolor: 'rgba(141, 186, 245, 0.3)' }} />
-            <Box sx={{ width: 4, height: 4, bgcolor: 'rgba(141, 186, 245, 0.5)', borderRadius: '50%' }} />
+            <Box sx={{ width: 8, height: 8, bgcolor: COLORS.neonGreen, borderRadius: '50%', boxShadow: `0 0 10px ${COLORS.neonGreen}` }} />
+            <Box sx={{ width: 48, height: 1, bgcolor: `rgba(11, 197, 234, 0.3)` }} />
+            <Box sx={{ width: 5, height: 5, bgcolor: COLORS.primary, borderRadius: '50%', boxShadow: `0 0 8px ${COLORS.primary}` }} />
           </Box>
         </Stack>
       </FadeInUp>
 
       {/* Project subtitle */}
       <FadeInUp delay={0.1}>
-        <Typography 
-          variant="body1" 
-          sx={{ 
-            color: '#a0b0c0', 
-            mb: 5, 
-            maxWidth: '600px',
-            lineHeight: 1.7,
-          }}
+        <Typography
+          variant="body1"
+          sx={{ color: COLORS.whiteMuted, mb: 5, maxWidth: '640px' }}
         >
           Una selección de proyectos profesionales que muestran desarrollo full-stack, 
           diseño moderno UI/UX y soluciones innovadoras.

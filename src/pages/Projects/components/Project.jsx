@@ -204,11 +204,11 @@ const Project = ({ img, title = "Proyecto", description = "Descripción del proy
                       : 'rgba(0, 0, 0, 0.6)',
                     border: `1.5px solid rgba(0, 212, 255, 0.8)`,
                     color: '#00d4ff',
-                    fontSize: '0.65rem',
+                    fontSize: '0.85rem',
                     fontFamily: 'BlenderPro-Medium, monospace',
-                    letterSpacing: '0.1em',
+                    letterSpacing: '0.08em',
                     textTransform: 'uppercase',
-                    height: '24px',
+                    height: '28px',
                     fontWeight: 600,
                     boxShadow: `0 0 20px rgba(0, 212, 255, ${isHovered ? 0.5 : 0.2}), 0 2px 8px rgba(0, 0, 0, 0.6)`,
                     transition: 'all 0.3s ease',
@@ -299,15 +299,14 @@ const Project = ({ img, title = "Proyecto", description = "Descripción del proy
                   <Typography
                     variant="caption"
                     sx={{
-                      color: 'rgba(0, 212, 255, 0.6)',
+                      color: 'rgba(0, 212, 255, 0.8)',
                       alignSelf: 'center',
-                      fontSize: '0.75rem',
                       fontWeight: 600,
                       letterSpacing: '0.05em',
-                      border: '1px solid rgba(0, 212, 255, 0.3)',
-                      padding: '2px 6px',
+                      border: '1px solid rgba(0, 212, 255, 0.4)',
+                      padding: '3px 8px',
                       borderRadius: '2px',
-                      backgroundColor: 'rgba(0, 212, 255, 0.05)',
+                      backgroundColor: 'rgba(0, 212, 255, 0.08)',
                     }}
                   >
                     +{herramientas.length - 5}

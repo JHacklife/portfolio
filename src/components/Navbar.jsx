@@ -43,10 +43,10 @@ const CyberAppBar = styled(AppBar)(({ theme }) => ({
 
 const NavButton = styled(Link)(({ theme }) => ({
   color: COLORS.whiteMuted,
-  fontSize: '0.85rem',
+  fontSize: '1rem',
   fontFamily: 'BlenderPro-Medium, monospace',
   textTransform: 'uppercase',
-  letterSpacing: '0.1em',
+  letterSpacing: '0.08em',
   padding: theme.spacing(1, 2),
   position: 'relative',
   textDecoration: 'none',
@@ -101,8 +101,8 @@ const CyberMenu = styled(Menu)(({ theme }) => ({
     fontFamily: 'BlenderPro-Medium, monospace',
     textTransform: 'uppercase',
     letterSpacing: '0.08em',
-    fontSize: '0.85rem',
-    padding: theme.spacing(1.5, 2.5),
+    fontSize: '1rem',
+    padding: theme.spacing(1.75, 3),
     transition: 'all 0.3s ease',
     borderLeft: '2px solid transparent',
     '&:hover': {

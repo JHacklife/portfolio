@@ -1,49 +1,37 @@
 import { Stack, Typography, Box } from "@mui/material"
-
-/**
- * Custom Data Display Component
- * 
- * Professional data card for displaying info items
- * with title and description/custom content.
- */
+import { COLORS } from "../../../components/CyberComponents"
 
 const CustomData = ({ title, description, custom }) => {
   return (
-    <Stack spacing={1}>
-      {/* Title with accent indicator */}
-      <Stack direction="row" spacing={1} alignItems="center">
+    <Stack spacing={1.25}>
+      {/* Title with neon accent bar */}
+      <Stack direction="row" spacing={1.25} alignItems="center">
         <Box
           sx={{
             width: '3px',
-            height: '14px',
-            background: '#8DBAF5',
-            borderRadius: '1px',
+            height: '18px',
+            background: `linear-gradient(180deg, ${COLORS.neonGreen} 0%, ${COLORS.primary} 100%)`,
+            borderRadius: '2px',
+            boxShadow: `0 0 8px ${COLORS.neonGreen}50`,
+            flexShrink: 0,
           }}
         />
-        <Typography 
+        <Typography
           variant="overline"
           sx={{
-            color: '#8DBAF5',
+            color: COLORS.primary,
             fontFamily: 'BlenderPro-Medium',
-            letterSpacing: '0.08em',
-            fontSize: '0.7rem',
             lineHeight: 1,
           }}
         >
           {title}
         </Typography>
       </Stack>
-      
+
       {/* Content */}
-      <Box sx={{ pl: 1.5 }}>
+      <Box sx={{ pl: 1.75 }}>
         {custom ?? (
-          <Typography 
-            variant="body2" 
-            sx={{ 
-              color: '#c8d4e0',
-              lineHeight: 1.6,
-            }}
-          >
+          <Typography variant="body2" sx={{ color: '#c8d8e8', lineHeight: 1.65 }}>
             {description}
           </Typography>
         )}

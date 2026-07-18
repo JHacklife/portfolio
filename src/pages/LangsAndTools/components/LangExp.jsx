@@ -3,24 +3,19 @@ import { styled } from "@mui/material/styles";
 import Visible from "../../../components/Visible";
 import abbreviateNumber from "../../../utils/abbreviateNumber";
 import { getLevel } from "../../../api/codestats";
-
-/**
- * Language Experience Card
- * 
- * Professional display of coding statistics per language
- * with subtle hover effects and clean typography.
- */
+import { COLORS } from "../../../components/CyberComponents";
 
 const LangCard = styled(Box)(({ theme }) => ({
-  padding: theme.spacing(2),
-  background: 'rgba(18, 18, 26, 0.6)',
-  border: '1px solid rgba(141, 186, 245, 0.15)',
-  borderRadius: '8px',
+  padding: theme.spacing(2.5),
+  background: 'rgba(13, 13, 20, 0.85)',
+  border: `1px solid rgba(11, 197, 234, 0.18)`,
+  borderRadius: '4px',
   transition: 'all 0.3s ease',
   '&:hover': {
-    borderColor: 'rgba(141, 186, 245, 0.35)',
-    transform: 'translateY(-2px)',
-    boxShadow: '0 8px 24px rgba(141, 186, 245, 0.08)',
+    borderColor: `rgba(11, 197, 234, 0.5)`,
+    transform: 'translateY(-3px)',
+    boxShadow: `0 8px 28px rgba(11, 197, 234, 0.15)`,
+    background: `rgba(11, 197, 234, 0.06)`,
   }
 }));
 
@@ -29,46 +24,40 @@ export default function LangExp({ lang, exp, newExp }) {
 
   return (
     <LangCard>
-      <Stack spacing={1}>
+      <Stack spacing={1.25}>
+
         {/* XP Value */}
-        <Typography 
-          variant="h4" 
-          sx={{ 
-            color: '#8DBAF5',
+        <Typography
+          variant="h4"
+          sx={{
+            color: COLORS.primary,
             fontFamily: 'BlenderPro-Bold',
-            fontSize: { xs: '1.75rem', md: '2rem' },
             lineHeight: 1,
+            textShadow: `0 0 12px ${COLORS.primary}60`,
           }}
         >
           {abbreviateNumber(exp)}
         </Typography>
 
-        {/* Language Name */}
-        <Stack 
-          direction="row" 
-          justifyContent="space-between" 
-          alignItems="center"
-        >
-          <Typography 
-            variant="subtitle2" 
-            sx={{ 
-              color: '#f0f4f8',
+        {/* Language Name + today XP */}
+        <Stack direction="row" justifyContent="space-between" alignItems="center">
+          <Typography
+            variant="subtitle2"
+            sx={{
+              color: COLORS.white,
               fontFamily: 'BlenderPro-Medium',
-              textTransform: 'uppercase',
-              letterSpacing: '0.05em',
-              fontSize: '0.85rem',
             }}
           >
             {lang}
           </Typography>
-          
+
           <Visible condition={newExp != 0}>
-            <Typography 
-              variant="caption" 
-              sx={{ 
-                color: '#4ade80',
+            <Typography
+              variant="caption"
+              sx={{
+                color: COLORS.neonGreen,
                 fontFamily: 'BlenderPro-Medium',
-                fontSize: '0.75rem',
+                textShadow: `0 0 8px ${COLORS.neonGreen}60`,
               }}
             >
               +{abbreviateNumber(newExp)}
@@ -77,35 +66,23 @@ export default function LangExp({ lang, exp, newExp }) {
         </Stack>
 
         {/* Level */}
-        <Stack 
-          direction="row" 
-          justifyContent="space-between" 
+        <Stack
+          direction="row"
+          justifyContent="space-between"
           alignItems="center"
-          sx={{
-            pt: 1,
-            borderTop: '1px solid rgba(141, 186, 245, 0.1)',
-          }}
+          sx={{ pt: 1, borderTop: `1px solid rgba(11, 197, 234, 0.12)` }}
         >
-          <Typography 
-            variant="caption" 
-            sx={{ 
-              color: '#808898',
-              textTransform: 'uppercase',
-              letterSpacing: '0.08em',
-              fontSize: '0.7rem',
-            }}
+          <Typography
+            variant="caption"
+            sx={{ color: COLORS.whiteMuted, letterSpacing: '0.1em' }}
           >
-            Level
+            LEVEL
           </Typography>
-          
+
           <Visible condition={exp != 0}>
-            <Typography 
-              variant="caption" 
-              sx={{ 
-                color: '#c8d4e0',
-                fontFamily: 'BlenderPro-Medium',
-                fontSize: '0.8rem',
-              }}
+            <Typography
+              variant="caption"
+              sx={{ color: '#c8d8e8', fontFamily: 'BlenderPro-Medium' }}
             >
               {level}
             </Typography>
