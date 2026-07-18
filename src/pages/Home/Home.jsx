@@ -6,7 +6,6 @@ import Navbar from '../../components/Navbar'
 import TechBackground from '../../components/TechBackground'
 import {
   SectionContainer,
-  GlowText,
   StatusIndicator,
   FadeInUp,
   FlickerIn,
@@ -26,7 +25,8 @@ function GlitchSwap() {
   const baseStyle = {
     fontFamily: 'BlenderPro-Heavy, sans-serif',
     fontWeight: 900,
-    lineHeight: 1,
+    fontSize: 'inherit',
+    lineHeight: 'inherit',
     userSelect: 'none',
     display: 'inline-block',
     position: 'relative',
@@ -238,45 +238,49 @@ function Home() {
           {/* Hero name block */}
           <FlickerIn delay={0.2}>
             <Stack spacing={2} alignItems="center">
-              <Stack
-                direction={{ xs: 'column', sm: 'row' }}
-                spacing={{ xs: 1, sm: 2 }}
-                justifyContent="center"
-                alignItems="center"
+              {/* Name row — both words share the same Box so baseline is identical */}
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: { xs: 'column', sm: 'row' },
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: { xs: '0.1em', sm: '0.3em' },
+                  lineHeight: 1,
+                  fontSize: { xs: '2.8rem', sm: '3.8rem', md: '5rem' },
+                }}
               >
                 {/* First name */}
-                <GlowText
-                  variant="h1"
+                <Box
+                  component={motion.div}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
                   sx={{
-                    fontWeight: 700,
-                    fontSize: { xs: '2.8rem', sm: '3.8rem', md: '5rem' },
+                    fontSize: 'inherit',
+                    lineHeight: 1,
                     fontFamily: 'BlenderPro-Bold, sans-serif',
+                    fontWeight: 900,
                     letterSpacing: '0.04em',
+                    color: COLORS.white,
+                    textShadow: `0 0 14px ${COLORS.primary}60`,
+                    userSelect: 'none',
                   }}
                 >
                   JONATHAN
-                </GlowText>
+                </Box>
 
                 {/* Last name — glitch swap */}
-                <motion.div
+                <Box
+                  component={motion.div}
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.4 }}
-                  style={{
-                    fontSize: 'inherit',
-                    // mirror the h1 font-size via CSS variable trick
-                  }}
+                  sx={{ fontSize: 'inherit', lineHeight: 1 }}
                 >
-                  <Box
-                    sx={{
-                      fontSize: { xs: '2.8rem', sm: '3.8rem', md: '5rem' },
-                      lineHeight: 1,
-                    }}
-                  >
-                    <GlitchSwap />
-                  </Box>
-                </motion.div>
-              </Stack>
+                  <GlitchSwap />
+                </Box>
+              </Box>
 
               {/* Sub-title */}
               <FadeInUp delay={0.5}>
